@@ -58,6 +58,7 @@ export const RouteLink = styled.div`
   width: 120px;
   cursor: pointer;
   text-transform: uppercase;
+  text-decoration: none;
 
   display: flex;
   align-items: center;

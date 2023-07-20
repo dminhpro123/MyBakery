@@ -1,37 +1,68 @@
 import { Link } from 'react-router-dom';
 import { Dropdown, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import logo from 'assets/images/logo.jpg';
-import { ROUTES } from 'constants/routes';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import * as S from './styles';
+import { ROUTES } from 'constants/routes';
 import { NAVBAR } from 'constants/userNavbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import logo from 'assets/images/logo.jpg';
+import { logoutUser } from 'redux/slicers/auth.slice';
+
+import * as S from './styles';
 
 function AdminHeader() {
-  // navigate(ROUTES.USER.PERSONAL_INFOR)
   const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
-  const items = [
-    {
-      key: '1',
-      label: (
-        <S.Icon
-          style={{ textDecoration: 'none' }}
-          onClick={() => navigate(ROUTES.USER.PERSONAL_INFOR)}
-        >
-          Thông tin cá nhân
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
+  const items = useMemo(
+    () => [
+      {
+        key: '1',
+        label: (
+          <S.Icon
+            style={{ textDecoration: 'none' }}
+            onClick={() => navigate(ROUTES.USER.PERSONAL_INFOR)}
+          >
+            Thông tin cá nhân
+          </S.Icon>
+        ),
+        disabled: userInfo.data.id ? false : true,
+      },
+      {
+        key: '2',
+        label: <S.Icon onClick={() => handleLogout()}>Đăng xuất</S.Icon>,
+        disabled: userInfo.data.id ? false : true,
+      },
+    ],
+    [userInfo.data.id]
+  );
+
+  const renderUserInfo = useMemo(() => {
+    return (
+      <Dropdown
+        menu={{
+          items,
+        }}
+        placement="bottomRight"
+        arrow
+      >
+        <S.Icon onClick={(e) => e.preventDefault()}>
+          <Space>
+            <FontAwesomeIcon icon={faUser} />
+          </Space>
         </S.Icon>
-      ),
-    },
-    {
-      key: '2',
-      label: <S.Icon>Đăng xuất</S.Icon>,
-      disabled: true,
-    },
-  ];
+      </Dropdown>
+    );
+  }, [items]);
 
   return (
     <>
@@ -48,12 +79,15 @@ function AdminHeader() {
             <S.TopNav>
               {NAVBAR.map((item) => {
                 return (
-                  <S.RouteLink
+                  <Link
                     key={item.url}
-                    onClick={() => navigate(item.url)}
+                    to={item.url}
+                    style={{ textDecoration: 'none' }}
                   >
-                    <span>{item.content}</span>
-                  </S.RouteLink>
+                    <S.RouteLink onClick={() => navigate(item.url)}>
+                      {item.content}
+                    </S.RouteLink>
+                  </Link>
                 );
               })}
             </S.TopNav>
@@ -79,19 +113,7 @@ function AdminHeader() {
                   <FontAwesomeIcon icon={faCartShopping} />
                 </S.Icon>
                 {/* <FontAwesomeIcon icon={faUser} /> */}
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                  placement="bottomRight"
-                  arrow
-                >
-                  <S.Icon onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <FontAwesomeIcon icon={faUser} />
-                    </Space>
-                  </S.Icon>
-                </Dropdown>
+                {renderUserInfo}
               </S.UserIcon>
             </S.UserBar>
           </S.HeadBottom>

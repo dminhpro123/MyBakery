@@ -242,6 +242,36 @@
       "createdAt": 1689481389282,
       "updatedAt": 1689481389282,
       "id": 1
+    },
+    {
+      "email": "minh1@gmail.com",
+      "password": "$2a$10$DxBs4O.3VWSizutPVrC3yex3qakdMBkT4KaG4OT9nkgSxIpWvRmZ.",
+      "fullName": "Duc Minh Van Nguyen",
+      "phone": "+84919695233",
+      "address": "asd",
+      "createdAt": 1689731542642,
+      "updatedAt": 1689731542642,
+      "id": 2
+    },
+    {
+      "email": "minh2@gmail.com",
+      "password": "$2a$10$k5QJQOxgQkOgGJ0eNFWtDuPvyZQlFfmcNzFf5WFsoUGY2SDu5xKJq",
+      "fullName": "Duc Minh Van Nguyen",
+      "phone": "+84231123151",
+      "address": "asd",
+      "createdAt": 1689732275487,
+      "updatedAt": 1689732275487,
+      "id": 3
+    },
+    {
+      "email": "minh3@gmail.com",
+      "password": "$2a$10$xuYbgiPNGKE05AFmTZjW8uXNMUxKr92DQskMcOEwfNYiMSOsJ/NsG",
+      "fullName": "Duc Minh Van Nguyen",
+      "phone": "+84213512315",
+      "address": "daa",
+      "createdAt": 1689733475834,
+      "updatedAt": 1689733475834,
+      "id": 4
     }
   ],
   "contacts": [
@@ -270,103 +300,6 @@
       "createdAt": 1689511936806,
       "updatedAt": 1689511936806,
       "id": 3
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512006385,
-      "updatedAt": 1689512006385,
-      "id": 4
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512220407,
-      "updatedAt": 1689512220407,
-      "id": 5
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512221588,
-      "updatedAt": 1689512221588,
-      "id": 6
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512222747,
-      "updatedAt": 1689512222747,
-      "id": 7
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512287799,
-      "updatedAt": 1689512287799,
-      "id": 8
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512303652,
-      "updatedAt": 1689512303652,
-      "id": 9
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512316812,
-      "updatedAt": 1689512316812,
-      "id": 10
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689512367304,
-      "updatedAt": 1689512367304,
-      "id": 11
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "a.asd@asd.cas",
-      "phone": "+84412321412",
-      "title": "s",
-      "createdAt": 1689512416885,
-      "updatedAt": 1689512416885,
-      "id": 12
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "loadinga@aasd.asd",
-      "phone": "+84111111111",
-      "createdAt": 1689512470034,
-      "updatedAt": 1689512470034,
-      "id": 13
     }
   ]
 }
