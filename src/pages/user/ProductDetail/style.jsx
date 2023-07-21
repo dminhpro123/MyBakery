@@ -40,3 +40,7 @@ export const ReviewWrapper = styled.div`
 export const ReviewListWrapper = styled.div`
   margin: 5 0 5 0;
 `;
+
+export const ReviewAttention = styled.div`
+  margin: 5 0 5 0;
+`;

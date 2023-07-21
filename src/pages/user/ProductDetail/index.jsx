@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Row,
   Col,
@@ -24,6 +24,7 @@ import {
 } from 'redux/slicers/review.slice';
 
 import * as S from './style';
+import { ROUTES } from 'constants/routes';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const ProductDetail = () => {
   const { productSlug } = useParams();
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
+  const navigate = useNavigate();
 
   const productRate =
     reviewList.data.reduce((total, item) => total + item.rate, 0) /
@@ -107,6 +109,7 @@ const ProductDetail = () => {
     return reviewList.data.map((item) => {
       return (
         <S.ReviewListWrapper key={item.id}>
+          <br />
           <Space>
             <h3>{item.user.fullName}</h3>
             {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
@@ -142,7 +145,7 @@ const ProductDetail = () => {
           bordered={false}
           style={{ marginTop: 16 }}
         >
-          {userInfo.data.id && (
+          {userInfo.data.id ? (
             <S.ReviewWrapper>
               <Form
                 form={reviewForm}
@@ -189,6 +192,17 @@ const ProductDetail = () => {
                 </Form.Item>
               </Form>
             </S.ReviewWrapper>
+          ) : (
+            <S.ReviewAttention>
+              <h2>Quý khách cần đăng nhập để đánh giá</h2>
+              <Button
+                type="primary"
+                htmlType="submit"
+                onClick={() => navigate(ROUTES.LOGIN)}
+              >
+                Đăng nhập
+              </Button>
+            </S.ReviewAttention>
           )}
           {renderReviewList}
         </Card>

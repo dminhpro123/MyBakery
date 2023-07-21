@@ -31,7 +31,7 @@ function* createReviewListSaga(action) {
   try {
     const { data, callback } = action.payload;
     const result = yield axios.post('http://localhost:4000/reviews', data);
-    yield put(getReviewListSaga({ productId: data.productId }));
+    yield put(getReviewListRequest({ productId: data.productId }));
     yield callback();
     yield put(createReviewSuccess({ data: result.data }));
   } catch (e) {

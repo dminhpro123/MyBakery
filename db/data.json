@@ -338,6 +338,33 @@
       "createdAt": 1689922254555,
       "updatedAt": 1689922254555,
       "id": 4
+    },
+    {
+      "rate": 3,
+      "comment": "tạm ổn",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689923348995,
+      "updatedAt": 1689923348995,
+      "id": 5
+    },
+    {
+      "rate": 2.5,
+      "comment": "sơ sơ",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689923388903,
+      "updatedAt": 1689923388903,
+      "id": 6
+    },
+    {
+      "rate": 2,
+      "comment": "hmm",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689923446460,
+      "updatedAt": 1689923446460,
+      "id": 7
     }
   ]
 }
