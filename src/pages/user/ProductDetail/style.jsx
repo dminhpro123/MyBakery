@@ -30,3 +30,13 @@ export const ProductDetailDescription = styled.span`
     font-size: 14px;
   }
 `;
+
+export const ReviewWrapper = styled.div`
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #e6e6e6;
+`;
+
+export const ReviewListWrapper = styled.div`
+  margin: 5 0 5 0;
+`;

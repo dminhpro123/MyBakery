@@ -8,6 +8,7 @@ import advertismentReducer from 'redux/slicers/advertisment.slice';
 import newsReducer from 'redux/slicers/news.slice';
 import authReducer from 'redux/slicers/auth.slice';
 import contactReducer from 'redux/slicers/contact.slice';
+import reviewReducer from 'redux/slicers/review.slice';
 
 import rootSaga from 'redux/sagas';
 
@@ -22,6 +23,7 @@ const store = configureStore({
     news: newsReducer,
     auth: authReducer,
     contact: contactReducer,
+    review: reviewReducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({

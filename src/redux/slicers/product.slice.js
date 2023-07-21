@@ -8,8 +8,6 @@ const initialState = {
     error: null,
   },
 
-  idSelected: 0,
-
   productDetail: {
     data: {},
     loading: false,

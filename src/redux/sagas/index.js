@@ -7,6 +7,7 @@ import advertismentSaga from './advertisment.saga';
 import newsSaga from './news.saga';
 import authSaga from './auth.saga';
 import contactSaga from './contact.saga';
+import reviewSaga from './review.saga';
 
 export default function* rootSaga() {
   yield fork(productSaga);
@@ -16,4 +17,5 @@ export default function* rootSaga() {
   yield fork(newsSaga);
   yield fork(authSaga);
   yield fork(contactSaga);
+  yield fork(reviewSaga);
 }

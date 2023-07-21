@@ -19,10 +19,6 @@ function AdminHeader() {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
-
   const items = useMemo(
     () => [
       {
@@ -39,7 +35,9 @@ function AdminHeader() {
       },
       {
         key: '2',
-        label: <S.Icon onClick={() => handleLogout()}>Đăng xuất</S.Icon>,
+        label: (
+          <S.Icon onClick={() => dispatch(logoutUser())}>Đăng xuất</S.Icon>
+        ),
         disabled: userInfo.data.id ? false : true,
       },
     ],

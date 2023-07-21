@@ -301,5 +301,43 @@
       "updatedAt": 1689511936806,
       "id": 3
     }
+  ],
+  "reviews": [
+    {
+      "rate": 4,
+      "comment": "món này ok đó",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689918396105,
+      "updatedAt": 1689918396106,
+      "id": 1
+    },
+    {
+      "rate": 5,
+      "comment": "ngon thật đó",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689919155834,
+      "updatedAt": 1689919155834,
+      "id": 2
+    },
+    {
+      "rate": 1.5,
+      "comment": "hơi tệ",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689920955500,
+      "updatedAt": 1689920955500,
+      "id": 3
+    },
+    {
+      "rate": 5,
+      "comment": "ngon",
+      "userId": 1,
+      "productId": 1,
+      "createdAt": 1689922254555,
+      "updatedAt": 1689922254555,
+      "id": 4
+    }
   ]
 }

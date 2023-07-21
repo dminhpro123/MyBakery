@@ -1,25 +1,47 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Row, Col, Image, Descriptions } from 'antd';
+import {
+  Row,
+  Col,
+  Image,
+  Descriptions,
+  Card,
+  Form,
+  Input,
+  Button,
+  Rate,
+  Space,
+} from 'antd';
+import moment from 'moment';
 
-import { getProductDetailRequest } from 'redux/slicers/product.slice';
 import TopIcon from '../components/TopIcon';
+import { getProductDetailRequest } from 'redux/slicers/product.slice';
+import { formatMoney } from 'helper';
+import {
+  createReviewRequest,
+  getReviewListRequest,
+} from 'redux/slicers/review.slice';
 
 import * as S from './style';
-import { formatMoney } from 'helper';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const { productDetail } = useSelector((state) => state.product);
+  const { reviewList } = useSelector((state) => state.review);
+  const { userInfo } = useSelector((state) => state.auth);
   const { productSlug } = useParams();
-  const [id, name] = productSlug.split('-');
+  const [id] = productSlug.split('-');
+  const [reviewForm] = Form.useForm();
+
+  const productRate =
+    reviewList.data.reduce((total, item) => total + item.rate, 0) /
+    reviewList.data.length;
 
   useEffect(() => {
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
+    dispatch(getReviewListRequest({ productId: parseInt(id) }));
   }, []);
-
-  useEffect(() => {}, []);
 
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
@@ -33,6 +55,15 @@ const ProductDetail = () => {
               <S.ProductDetailName>
                 {productDetail.data.name}
               </S.ProductDetailName>
+            </Col>
+            <br />
+            <Col span={24}>
+              <div>
+                <Space align="baseline">
+                  <Rate value={productRate} allowHalf disabled />
+                  <span>{`(${productRate})`}</span>
+                </Space>
+              </div>
             </Col>
             <br />
             <Col span={24}>
@@ -57,7 +88,39 @@ const ProductDetail = () => {
         </Col>
       </>
     );
-  }, [productDetail.data]);
+  }, [productDetail.data, productRate]);
+
+  const handleReview = (values) => {
+    dispatch(
+      createReviewRequest({
+        data: {
+          ...values,
+          userId: userInfo.data.id,
+          productId: parseInt(id),
+        },
+        callback: () => reviewForm.resetFields(),
+      })
+    );
+  };
+
+  const renderReviewList = useMemo(() => {
+    return reviewList.data.map((item) => {
+      return (
+        <S.ReviewListWrapper key={item.id}>
+          <Space>
+            <h3>{item.user.fullName}</h3>
+            {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
+            <span>{moment(item.createAt).fromNow()}</span>
+          </Space>
+
+          <div>
+            <Rate value={item.rate} disabled style={{ fontSize: 12 }} />
+          </div>
+          <p>{item.comment}</p>
+        </S.ReviewListWrapper>
+      );
+    });
+  }, [reviewList.data]);
 
   return (
     <>
@@ -73,6 +136,62 @@ const ProductDetail = () => {
             a
           </Col>
         </Row>
+        <Card
+          size="small"
+          title={`Đánh giá (${reviewList.data.length})`}
+          bordered={false}
+          style={{ marginTop: 16 }}
+        >
+          {userInfo.data.id && (
+            <S.ReviewWrapper>
+              <Form
+                form={reviewForm}
+                name="reviewForm"
+                layout="vertical"
+                initialValues={{ rate: 5, comment: '' }}
+                onFinish={(values) => handleReview(values)}
+              >
+                <Form.Item
+                  label="Đánh giá sao"
+                  name="rate"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Đánh giá sao là bắt buộc',
+                    },
+                  ]}
+                >
+                  <Rate allowHalf />
+                </Form.Item>
+
+                <Form.Item
+                  label="nhận xét"
+                  name="comment"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'nhận xét là bắt buộc',
+                    },
+                  ]}
+                >
+                  <Input.TextArea />
+                </Form.Item>
+
+                <Form.Item
+                  wrapperCol={{
+                    offset: 8,
+                    span: 16,
+                  }}
+                >
+                  <Button type="primary" htmlType="submit">
+                    Gửi
+                  </Button>
+                </Form.Item>
+              </Form>
+            </S.ReviewWrapper>
+          )}
+          {renderReviewList}
+        </Card>
       </S.ProductDetailWrapper>
     </>
   );
