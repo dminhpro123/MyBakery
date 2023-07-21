@@ -126,7 +126,7 @@ const ContactUs = () => {
               },
             ]}
           >
-            <Input placeholder="09xxxxxx" addonBefore={phoneNumberPrefix} />
+            <Input placeholder="09xxxxxx" prefix={phoneNumberPrefix} />
           </Form.Item>
           <Form.Item name="title" label="Tiêu đề">
             <Input />

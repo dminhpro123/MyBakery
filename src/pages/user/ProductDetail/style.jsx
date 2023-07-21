@@ -31,6 +31,12 @@ export const ProductDetailDescription = styled.span`
   }
 `;
 
+export const AddToCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
 export const ReviewWrapper = styled.div`
   margin: 0 auto;
   padding: 16px;

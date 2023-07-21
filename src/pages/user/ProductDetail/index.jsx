@@ -12,6 +12,7 @@ import {
   Button,
   Rate,
   Space,
+  InputNumber,
 } from 'antd';
 import moment from 'moment';
 
@@ -25,6 +26,7 @@ import {
 
 import * as S from './style';
 import { ROUTES } from 'constants/routes';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -113,7 +115,7 @@ const ProductDetail = () => {
           <Space>
             <h3>{item.user.fullName}</h3>
             {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
-            <span>{moment(item.createAt).fromNow()}</span>
+            <span>{moment(item.createdAt).fromNow()}</span>
           </Space>
 
           <div>
@@ -136,7 +138,19 @@ const ProductDetail = () => {
         >
           {renderProductDetail}
           <Col xs={24} md={6} xl={8}>
-            a
+            <S.AddToCardWrapper>
+              <h2>
+                <strong>Số lượng:</strong>
+              </h2>
+              <InputNumber style={{ width: '100%' }} />
+              <Button
+                size="large"
+                type="primary"
+                icon={<ShoppingCartOutlined />}
+              >
+                Add to cart
+              </Button>
+            </S.AddToCardWrapper>
           </Col>
         </Row>
         <Card
