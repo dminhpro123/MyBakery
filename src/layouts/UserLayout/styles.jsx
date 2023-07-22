@@ -8,6 +8,6 @@ export const UserLayoutWrapper = styled.div`
 
 export const MainWrapper = styled.div`
   flex: 1;
-  margin-top: 15vh;
+  margin-top: 100px;
   background-color: #ede2d4;
 `;

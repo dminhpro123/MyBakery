@@ -15,8 +15,7 @@ export const HeaderWrapper = styled.div`
 
   padding: 0 16px;
   width: 100%;
-  height: 15vh;
-  min-height: 56px;
+  min-height: 100px;
   background-color: #e6e6e6;
   z-index: 99;
 `;
@@ -44,7 +43,7 @@ export const Logo = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  height: 100%;
+  height: 100px;
 `;
 
 export const TopNav = styled.div`
@@ -81,47 +80,6 @@ export const HeadBottom = styled.div`
 
   margin-top: 0.5px;
   margin-bottom: 10px;
-`;
-
-export const SearchInput = styled.input`
-  min-width: 270px;
-  max-width: 400px;
-  width: 100%;
-  padding: 12px 24px;
-
-  background-color: transparent;
-  transition: transform 250ms ease-in-out;
-  font-size: 14px;
-  line-height: 18px;
-
-  color: #575756;
-  background-color: transparent;
-  background-image: url(${faMagnifyingGlass});
-  background-repeat: no-repeat;
-  background-size: 18px 18px;
-  background-position: 95% center;
-
-  border-radius: 50px;
-  border: 1px solid #575756;
-  transition: all 250ms ease-in-out;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-
-  &::placeholder {
-    color: color(#575756 a(0.8));
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
-
-  &:hover,
-  &:focus {
-    padding: 12px 0;
-    outline: 0;
-    border: 1px solid transparent;
-    border-bottom: 1px solid #575756;
-    border-radius: 0;
-    background-position: 100% center;
-  }
 `;
 
 export const UserBar = styled.div`

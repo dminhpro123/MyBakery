@@ -9,6 +9,7 @@ import newsReducer from 'redux/slicers/news.slice';
 import authReducer from 'redux/slicers/auth.slice';
 import contactReducer from 'redux/slicers/contact.slice';
 import reviewReducer from 'redux/slicers/review.slice';
+import cartReducer from 'redux/slicers/cart.slice';
 
 import rootSaga from 'redux/sagas';
 
@@ -24,6 +25,7 @@ const store = configureStore({
     auth: authReducer,
     contact: contactReducer,
     review: reviewReducer,
+    cart: cartReducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({

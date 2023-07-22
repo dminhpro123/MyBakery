@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
@@ -13,8 +13,11 @@ import {
   Rate,
   Space,
   InputNumber,
+  Avatar,
+  notification,
 } from 'antd';
 import moment from 'moment';
+import { UserOutlined } from '@ant-design/icons';
 
 import TopIcon from '../components/TopIcon';
 import { getProductDetailRequest } from 'redux/slicers/product.slice';
@@ -27,12 +30,14 @@ import {
 import * as S from './style';
 import { ROUTES } from 'constants/routes';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const { productDetail } = useSelector((state) => state.product);
   const { reviewList } = useSelector((state) => state.review);
   const { userInfo } = useSelector((state) => state.auth);
+  const [quantity, setQuantity] = useState(1);
   const { productSlug } = useParams();
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
@@ -40,7 +45,7 @@ const ProductDetail = () => {
 
   const productRate =
     reviewList.data.reduce((total, item) => total + item.rate, 0) /
-    reviewList.data.length;
+      reviewList.data.length || 0;
 
   useEffect(() => {
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
@@ -65,13 +70,17 @@ const ProductDetail = () => {
               <div>
                 <Space align="baseline">
                   <Rate value={productRate} allowHalf disabled />
-                  <span>{`(${productRate})`}</span>
+                  <span>{`(${
+                    productRate === 0
+                      ? 'Chưa có đánh giá'
+                      : productRate.toFixed(2)
+                  })`}</span>
                 </Space>
               </div>
             </Col>
             <br />
             <Col span={24}>
-              <Descriptions layout="vertical">
+              <Descriptions layout="horizontal">
                 <Descriptions.Item
                   label="Đơn giá"
                   contentStyle={{ fontSize: 'xx-larger', fontWeight: 'bold' }}
@@ -94,6 +103,21 @@ const ProductDetail = () => {
     );
   }, [productDetail.data, productRate]);
 
+  const handleAddToCart = () => {
+    dispatch(
+      addToCartRequest({
+        data: {
+          productId: productDetail.data.id,
+          images: productDetail.data.images,
+          name: productDetail.data.name,
+          price: productDetail.data.price,
+          quantity: quantity,
+        },
+      })
+    );
+    notification.success({ message: 'Bỏ vào giỏ thành công' });
+  };
+
   const handleReview = (values) => {
     dispatch(
       createReviewRequest({
@@ -112,7 +136,8 @@ const ProductDetail = () => {
       return (
         <S.ReviewListWrapper key={item.id}>
           <br />
-          <Space>
+          <Space align="baseline">
+            <Avatar size={24} icon={<UserOutlined />} />
             <h3>{item.user.fullName}</h3>
             {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
             <span>{moment(item.createdAt).fromNow()}</span>
@@ -121,6 +146,7 @@ const ProductDetail = () => {
           <div>
             <Rate value={item.rate} disabled style={{ fontSize: 12 }} />
           </div>
+          <strong>Bình luận:</strong>
           <p>{item.comment}</p>
         </S.ReviewListWrapper>
       );
@@ -142,13 +168,19 @@ const ProductDetail = () => {
               <h2>
                 <strong>Số lượng:</strong>
               </h2>
-              <InputNumber style={{ width: '100%' }} />
+              <InputNumber
+                style={{ width: '100%' }}
+                value={quantity}
+                min={1}
+                onChange={(value) => setQuantity(value)}
+              />
               <Button
                 size="large"
                 type="primary"
                 icon={<ShoppingCartOutlined />}
+                onClick={() => handleAddToCart()}
               >
-                Add to cart
+                Thêm vào giỏ
               </Button>
             </S.AddToCardWrapper>
           </Col>

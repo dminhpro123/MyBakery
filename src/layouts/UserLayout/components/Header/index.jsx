@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Dropdown, Space } from 'antd';
+import { Dropdown, Space, Badge } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,8 +16,9 @@ import * as S from './styles';
 
 function AdminHeader() {
   const navigate = useNavigate();
-  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
+  const { cartList } = useSelector((state) => state.cart);
 
   const items = useMemo(
     () => [
@@ -65,15 +66,16 @@ function AdminHeader() {
   return (
     <>
       <S.HeaderWrapper>
+        <S.Logo>
+          <S.LogoImg
+            src={logo}
+            alt="logo"
+            onClick={() => navigate(ROUTES.USER.HOME)}
+          />
+        </S.Logo>
         <S.NavLinkContainer>
           <S.HeadTop>
-            <S.Logo>
-              <S.LogoImg
-                src={logo}
-                alt="logo"
-                onClick={() => navigate(ROUTES.USER.HOME)}
-              />
-            </S.Logo>
+            <div></div>
             <S.TopNav>
               {NAVBAR.map((item) => {
                 return (
@@ -92,10 +94,7 @@ function AdminHeader() {
           </S.HeadTop>
 
           <S.HeadBottom>
-            <div className="search-container">
-              <S.SearchInput type="text" placeholder="Search..." />
-              <div className="search"></div>
-            </div>
+            <div></div>
             <S.UserBar>
               <S.LoginLogoutBar>
                 <S.Log onClick={() => navigate(ROUTES.USER.LOGIN)}>
@@ -108,7 +107,15 @@ function AdminHeader() {
               </S.LoginLogoutBar>
               <S.UserIcon>
                 <S.Icon onClick={() => navigate(ROUTES.USER.CART)}>
-                  <FontAwesomeIcon icon={faCartShopping} />
+                  <Space size="large">
+                    {cartList.length === 0 ? (
+                      <FontAwesomeIcon icon={faCartShopping} />
+                    ) : (
+                      <Badge count={cartList.length} size="small">
+                        <FontAwesomeIcon icon={faCartShopping} />
+                      </Badge>
+                    )}
+                  </Space>
                 </S.Icon>
                 {/* <FontAwesomeIcon icon={faUser} /> */}
                 {renderUserInfo}
