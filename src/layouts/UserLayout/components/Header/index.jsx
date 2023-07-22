@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Dropdown, Space, Badge } from 'antd';
+import { Dropdown, Space, Badge, Popover } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +9,9 @@ import { NAVBAR } from 'constants/userNavbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import logo from 'assets/images/logo.jpg';
 import { logoutUser } from 'redux/slicers/auth.slice';
+import logo from 'assets/images/logo.jpg';
+import { MenuOutlined } from '@ant-design/icons';
 
 import * as S from './styles';
 
@@ -63,6 +64,16 @@ function AdminHeader() {
     );
   }, [items]);
 
+  const content = NAVBAR.map((item) => {
+    return (
+      <Link key={item.url} to={item.url} style={{ textDecoration: 'none' }}>
+        <S.RouteLink onClick={() => navigate(item.url)}>
+          {item.content}
+        </S.RouteLink>
+      </Link>
+    );
+  });
+
   return (
     <>
       <S.HeaderWrapper>
@@ -93,6 +104,12 @@ function AdminHeader() {
             </S.TopNav>
           </S.HeadTop>
 
+          <S.HeadTopHamburgerNavbar>
+            <Popover placement="top" content={content} trigger="click">
+              <MenuOutlined style={{ fontSize: 32, cursor: 'pointer' }} />
+            </Popover>
+          </S.HeadTopHamburgerNavbar>
+
           <S.HeadBottom>
             <div></div>
             <S.UserBar>
@@ -105,6 +122,7 @@ function AdminHeader() {
                   Đăng ký
                 </S.Log>
               </S.LoginLogoutBar>
+
               <S.UserIcon>
                 <S.Icon onClick={() => navigate(ROUTES.USER.CART)}>
                   <Space size="large">

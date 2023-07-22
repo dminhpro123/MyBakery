@@ -11,9 +11,8 @@ import { formatMoney } from 'helper';
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { cartList } = useSelector((state) => state.cart);
-
   const navigate = useNavigate();
+  const { cartList } = useSelector((state) => state.cart);
 
   const totalPrice = cartList.reduce(
     (total, item) => total + item.price * item.quantity,

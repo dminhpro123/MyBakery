@@ -13,6 +13,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
+  padding-top: 5px;
   padding: 0 16px;
   width: 100%;
   min-height: 100px;
@@ -26,7 +27,6 @@ export const NavLinkContainer = styled.nav`
 
   height: 8vh;
   width: 100vw;
-  font-size: calc(0.3rem + 2vmin);
 `;
 
 export const HeadTop = styled.div`
@@ -35,6 +35,20 @@ export const HeadTop = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+`;
+export const HeadTopHamburgerNavbar = styled.div`
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
 `;
 
 export const Logo = styled.div`
@@ -78,8 +92,7 @@ export const HeadBottom = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  margin-top: 0.5px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 export const UserBar = styled.div`
