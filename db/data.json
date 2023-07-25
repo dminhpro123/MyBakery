@@ -4,49 +4,67 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
+      "view": 9,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
-      "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
+      "updatedAt": 1690266472331,
+      "createdAt": 1689481189282
     },
     {
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
+      "view": 16,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
-      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1690266569949,
+      "createdAt": 1689481110282
     },
     {
       "id": 3,
       "name": "Bánh bao chiên",
       "price": 3000,
+      "view": 12,
       "description": "Thành phần: Bột mì, trứng gà, men ngọt, dầu,…",
       "categoryId": 2,
-      "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20chi%C3%AAn%20(3)_fix-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20chi%C3%AAn%20(3)_fix-608x416f.jpg",
+      "updatedAt": 1690266497889,
+      "createdAt": 1689481111282
     },
     {
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
+      "view": 10,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
-      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
+      "updatedAt": 1690266476105,
+      "createdAt": 1689481112282
     },
     {
       "id": 5,
       "name": "Bánh kem giáng sinh",
       "price": 205000,
+      "view": 15,
       "description": "Kích thước (đường kính bánh) : 20cm",
       "categoryId": 4,
-      "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
+      "updatedAt": 1690266566128,
+      "createdAt": 1689481113282
     },
     {
       "id": 6,
       "name": "Kem flan",
       "price": 7000,
+      "view": 13,
       "description": "Bánh Flan còn có tên gọi khác là Caramen. Đây là Một loại bánh vừa thơm ngon; mềm xốp; lại hấp dẫn được rất nhiều người từ nhiều lứa tuổi. Bánh được hấp chín từ các nguyên liệu chính là trứng và sữa; nước caramen. Đây là một loại bánh có lẽ xuất xứ từ nền ẩm thực châu Âu; tuy hiện nay đã phổ biến tại nhiều nơi trên thế giới.",
       "categoryId": 9,
-      "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg"
+      "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg",
+      "updatedAt": 1690266503964,
+      "createdAt": 1689481114282
     }
   ],
   "categories": [
@@ -134,11 +152,6 @@
     {
       "id": 2,
       "image": "http://dongtienbakery.com/image/cache/data/Banner/Valentine%20day04-1349x700f.jpg",
-      "description": ""
-    },
-    {
-      "id": 3,
-      "image": "https://nhahanglavong.com/wp-content/uploads/hinh-banh-flan-9.jpg",
       "description": ""
     }
   ],
@@ -317,58 +330,13 @@
       "id": 1
     },
     {
-      "rate": 5,
-      "comment": "ngon thật đó",
+      "rate": 3.5,
+      "comment": "Vị hơi lạ",
       "userId": 1,
-      "productId": 1,
-      "createdAt": 1689919155834,
-      "updatedAt": 1689919155834,
+      "productId": 4,
+      "createdAt": 1690262705710,
+      "updatedAt": 1690262705710,
       "id": 2
-    },
-    {
-      "rate": 1.5,
-      "comment": "hơi tệ",
-      "userId": 1,
-      "productId": 1,
-      "createdAt": 1689920955500,
-      "updatedAt": 1689920955500,
-      "id": 3
-    },
-    {
-      "rate": 5,
-      "comment": "ngon",
-      "userId": 1,
-      "productId": 1,
-      "createdAt": 1689922254555,
-      "updatedAt": 1689922254555,
-      "id": 4
-    },
-    {
-      "rate": 3,
-      "comment": "tạm ổn",
-      "userId": 1,
-      "productId": 1,
-      "createdAt": 1689923348995,
-      "updatedAt": 1689923348995,
-      "id": 5
-    },
-    {
-      "rate": 2.5,
-      "comment": "sơ sơ",
-      "userId": 1,
-      "productId": 1,
-      "createdAt": 1689923388903,
-      "updatedAt": 1689923388903,
-      "id": 6
-    },
-    {
-      "rate": 2,
-      "comment": "hmm",
-      "userId": 1,
-      "productId": 1,
-      "createdAt": 1689923446460,
-      "updatedAt": 1689923446460,
-      "id": 7
     }
   ]
 }

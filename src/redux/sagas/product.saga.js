@@ -8,6 +8,9 @@ import {
   getProductDetailRequest,
   getProductDetailSuccess,
   getProductDetailFailure,
+  addViewProductRequest,
+  addViewProductSuccess,
+  addViewProductFailure,
 } from 'redux/slicers/product.slice';
 
 function* getProductListSaga(action) {
@@ -52,7 +55,22 @@ function* getProductDetailSaga(action) {
   }
 }
 
+function* addViewProductSaga(action) {
+  try {
+    const { id, data } = action.payload;
+    console.log(data);
+    const result = yield axios.patch(
+      `http://localhost:4000/products/${id}`,
+      data
+    );
+    yield put(addViewProductSuccess({ data: result.data }));
+  } catch (e) {
+    yield put(addViewProductFailure('Đã có lỗi xảy ra!:' + e));
+  }
+}
+
 export default function* productSaga() {
   yield debounce(400, getProductListRequest.type, getProductListSaga);
   yield takeEvery(getProductDetailRequest.type, getProductDetailSaga);
+  yield takeEvery(addViewProductRequest.type, addViewProductSaga);
 }

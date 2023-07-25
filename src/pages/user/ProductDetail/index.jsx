@@ -20,7 +20,10 @@ import moment from 'moment';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 import TopIcon from '../components/TopIcon';
-import { getProductDetailRequest } from 'redux/slicers/product.slice';
+import {
+  addViewProductRequest,
+  getProductDetailRequest,
+} from 'redux/slicers/product.slice';
 import { formatMoney } from 'helper';
 import {
   createReviewRequest,
@@ -41,6 +44,7 @@ const ProductDetail = () => {
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
   const [existUserReview, setExistUserReview] = useState(false);
+  const [existUserReviewIndex, setExistUserReviewIndex] = useState(false);
   const navigate = useNavigate();
 
   const productRate =
@@ -50,7 +54,27 @@ const ProductDetail = () => {
   useEffect(() => {
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
     dispatch(getReviewListRequest({ productId: parseInt(id) }));
+    if (productDetail.data?.id) {
+      dispatch(
+        addViewProductRequest({
+          id: parseInt(id),
+          data: {
+            view: parseInt(productDetail.data.view) + 1,
+          },
+        })
+      );
+    }
   }, []);
+
+  useEffect(() => {
+    reviewList.data.map((item, index) => {
+      if (item.userId === userInfo.data.id) {
+        setExistUserReview(true);
+        setExistUserReviewIndex(index);
+        return <></>;
+      }
+    });
+  }, [reviewList.data, existUserReview, userInfo.data]);
 
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
@@ -137,7 +161,16 @@ const ProductDetail = () => {
         <S.ReviewListWrapper key={item.id}>
           <br />
           <Space align="baseline">
-            <Avatar size={24} icon={<UserOutlined />} />
+            <Avatar
+              size={24}
+              icon={
+                item.user.avatar ? (
+                  <img src={item.user.avatar} alt="Ảnh đại diện" />
+                ) : (
+                  <UserOutlined />
+                )
+              }
+            />
             <h3>{item.user.fullName}</h3>
             {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
             <span>{moment(item.createdAt).fromNow()}</span>
@@ -153,14 +186,46 @@ const ProductDetail = () => {
     });
   }, [reviewList.data]);
 
-  const renderExistReviewList = useMemo(() => {
-    reviewList.data.map((item) => {
-      if (item.userId === userInfo.data.id) {
-        setExistUserReview(true);
-      }
-    });
-    console.log(existUserReview);
-  }, [reviewList.data]);
+  const renderReviewUserExist = () => {
+    // existUserReviewIndex
+    return (
+      <>
+        <S.ReviewWrapper>
+          <h4>Bình luận của bạn:</h4>
+          <Space align="baseline">
+            <Avatar
+              size={24}
+              icon={
+                reviewList.data[existUserReviewIndex]?.user.avatar ? (
+                  <img
+                    alt="Ảnh đại diện"
+                    src={reviewList.data[existUserReviewIndex]?.user.avatar}
+                  />
+                ) : (
+                  <UserOutlined />
+                )
+              }
+            />
+            <h3>{reviewList.data[existUserReviewIndex]?.user.fullName}</h3>
+            <span>
+              {moment(
+                reviewList.data[existUserReviewIndex]?.createdAt
+              ).fromNow()}
+            </span>
+          </Space>
+          <div>
+            <Rate
+              value={reviewList.data[existUserReviewIndex]?.rate}
+              disabled
+              style={{ fontSize: 12 }}
+            />
+          </div>
+          <strong>Bình luận:</strong>
+          <p>{reviewList.data[existUserReviewIndex]?.comment}</p>
+        </S.ReviewWrapper>
+      </>
+    );
+  };
 
   return (
     <>
@@ -200,10 +265,9 @@ const ProductDetail = () => {
           bordered={false}
           style={{ marginTop: 16 }}
         >
-          {renderExistReviewList}
           {userInfo.data.id ? (
             existUserReview ? (
-              <div>banj da review</div>
+              renderReviewUserExist()
             ) : (
               <S.ReviewWrapper>
                 <Form

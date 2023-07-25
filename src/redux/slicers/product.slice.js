@@ -53,6 +53,22 @@ export const productSlice = createSlice({
       state.productDetail.loading = false;
       state.productDetail.error = error;
     },
+
+    //addViewProduct
+    addViewProductRequest: (state, action) => {
+      state.productDetail.loading = true;
+      state.productDetail.error = null;
+    },
+    addViewProductSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.productDetail.error = null;
+      state.productDetail.data = data;
+    },
+    addViewProductFailure: (state, action) => {
+      const { error } = action.payload;
+      state.productDetail.loading = false;
+      state.productDetail.error = error;
+    },
   },
 });
 
@@ -63,6 +79,9 @@ export const {
   getProductDetailRequest,
   getProductDetailSuccess,
   getProductDetailFailure,
+  addViewProductRequest,
+  addViewProductSuccess,
+  addViewProductFailure,
 } = productSlice.actions;
 
 export default productSlice.reducer;
