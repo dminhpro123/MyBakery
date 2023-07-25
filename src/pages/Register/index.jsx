@@ -35,7 +35,6 @@ const Register = () => {
           email: values.email,
           password: values.password,
           phone: phoneNumberPrefix + values.phone,
-          address: values.address,
         },
 
         callback: () => navigate(ROUTES.LOGIN),
@@ -147,19 +146,6 @@ const Register = () => {
               ]}
             >
               <Input addonBefore={phoneNumberPrefix} />
-            </Form.Item>
-
-            <Form.Item
-              label="Địa chỉ"
-              name="address"
-              rules={[
-                {
-                  required: true,
-                  message: 'Địa chỉ là bắt buộc',
-                },
-              ]}
-            >
-              <Input />
             </Form.Item>
 
             <Button type="primary" htmlType="submit" block>

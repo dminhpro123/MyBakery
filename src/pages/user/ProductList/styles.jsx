@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const ProductListWrapper = styled.div`
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 5px 0 5px 0;
 `;
 export const AsideWrapper = styled.nav`
   display: flex;

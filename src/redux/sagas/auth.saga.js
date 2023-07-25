@@ -11,6 +11,9 @@ import {
   getUserInfoRequest,
   getUserInfoSuccess,
   getUserInfoFailure,
+  updateUserInfoRequest,
+  updateUserInfoSuccess,
+  updateUserInfoFailure,
 } from 'redux/slicers/auth.slice';
 
 function* loginSaga(action) {
@@ -46,8 +49,23 @@ function* getUserInfoSaga(action) {
   }
 }
 
+function* updateUserInfoSaga(action) {
+  try {
+    const { data, callback } = action.payload;
+    const result = yield axios.patch(
+      `http://localhost:4000/users/${data.id}`,
+      data
+    );
+    yield callback();
+    yield put(updateUserInfoSuccess({ data: result.data }));
+  } catch (e) {
+    yield put(updateUserInfoFailure({ error: 'Lỗi' }));
+  }
+}
+
 export default function* authSaga() {
   yield takeEvery(loginRequest.type, loginSaga);
   yield takeEvery(registerRequest.type, registerSaga);
   yield takeEvery(getUserInfoRequest.type, getUserInfoSaga);
+  yield takeEvery(updateUserInfoRequest.type, updateUserInfoSaga);
 }

@@ -17,7 +17,7 @@ import {
   notification,
 } from 'antd';
 import moment from 'moment';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 import TopIcon from '../components/TopIcon';
 import { getProductDetailRequest } from 'redux/slicers/product.slice';
@@ -26,11 +26,10 @@ import {
   createReviewRequest,
   getReviewListRequest,
 } from 'redux/slicers/review.slice';
+import { ROUTES } from 'constants/routes';
+import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 import * as S from './style';
-import { ROUTES } from 'constants/routes';
-import { ShoppingCartOutlined } from '@ant-design/icons';
-import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -41,6 +40,7 @@ const ProductDetail = () => {
   const { productSlug } = useParams();
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
+  const [existUserReview, setExistUserReview] = useState(false);
   const navigate = useNavigate();
 
   const productRate =
@@ -153,6 +153,15 @@ const ProductDetail = () => {
     });
   }, [reviewList.data]);
 
+  const renderExistReviewList = useMemo(() => {
+    reviewList.data.map((item) => {
+      if (item.userId === userInfo.data.id) {
+        setExistUserReview(true);
+      }
+    });
+    console.log(existUserReview);
+  }, [reviewList.data]);
+
   return (
     <>
       <S.ProductDetailWrapper>
@@ -191,53 +200,58 @@ const ProductDetail = () => {
           bordered={false}
           style={{ marginTop: 16 }}
         >
+          {renderExistReviewList}
           {userInfo.data.id ? (
-            <S.ReviewWrapper>
-              <Form
-                form={reviewForm}
-                name="reviewForm"
-                layout="vertical"
-                initialValues={{ rate: 5, comment: '' }}
-                onFinish={(values) => handleReview(values)}
-              >
-                <Form.Item
-                  label="Đánh giá sao"
-                  name="rate"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Đánh giá sao là bắt buộc',
-                    },
-                  ]}
+            existUserReview ? (
+              <div>banj da review</div>
+            ) : (
+              <S.ReviewWrapper>
+                <Form
+                  form={reviewForm}
+                  name="reviewForm"
+                  layout="vertical"
+                  initialValues={{ rate: 5, comment: '' }}
+                  onFinish={(values) => handleReview(values)}
                 >
-                  <Rate allowHalf />
-                </Form.Item>
+                  <Form.Item
+                    label="Đánh giá sao"
+                    name="rate"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Đánh giá sao là bắt buộc',
+                      },
+                    ]}
+                  >
+                    <Rate allowHalf />
+                  </Form.Item>
 
-                <Form.Item
-                  label="nhận xét"
-                  name="comment"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'nhận xét là bắt buộc',
-                    },
-                  ]}
-                >
-                  <Input.TextArea />
-                </Form.Item>
+                  <Form.Item
+                    label="nhận xét"
+                    name="comment"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'nhận xét là bắt buộc',
+                      },
+                    ]}
+                  >
+                    <Input.TextArea />
+                  </Form.Item>
 
-                <Form.Item
-                  wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                  }}
-                >
-                  <Button type="primary" htmlType="submit">
-                    Gửi
-                  </Button>
-                </Form.Item>
-              </Form>
-            </S.ReviewWrapper>
+                  <Form.Item
+                    wrapperCol={{
+                      offset: 8,
+                      span: 16,
+                    }}
+                  >
+                    <Button type="primary" htmlType="submit">
+                      Gửi
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </S.ReviewWrapper>
+            )
           ) : (
             <S.ReviewAttention>
               <h2>Quý khách cần đăng nhập để đánh giá</h2>
