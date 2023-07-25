@@ -1,13 +1,15 @@
 import { useMemo } from 'react';
 import { Button, Table, InputNumber, Row, Col } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { updateCartRequest, deleteCartRequest } from 'redux/slicers/cart.slice';
+import { formatMoney } from 'helper';
+import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from 'constants/routes';
-import { formatMoney } from 'helper';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -78,7 +80,7 @@ const Cart = () => {
       key: 'action',
       render: (_, item) => (
         <Button danger onClick={() => handleDeleteCartItem(item.productId)}>
-          Xóa
+          <FontAwesomeIcon icon={faTrashCan} />
         </Button>
       ),
     },
