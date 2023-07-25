@@ -13,6 +13,18 @@ const initialState = {
     loading: false,
     error: null,
   },
+
+  outstandingProductList: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+
+  newProductList: {
+    data: [],
+    loading: false,
+    error: null,
+  },
 };
 
 export const productSlice = createSlice({
@@ -60,14 +72,44 @@ export const productSlice = createSlice({
       state.productDetail.error = null;
     },
     addViewProductSuccess: (state, action) => {
-      const { data } = action.payload;
       state.productDetail.error = null;
-      state.productDetail.data = data;
     },
     addViewProductFailure: (state, action) => {
       const { error } = action.payload;
       state.productDetail.loading = false;
       state.productDetail.error = error;
+    },
+
+    //outstandingProductList
+    getOutstandingProductListRequest: (state, action) => {
+      state.outstandingProductList.loading = true;
+      state.outstandingProductList.error = null;
+    },
+    getOutstandingProductListSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.outstandingProductList.error = null;
+      state.outstandingProductList.data = data;
+    },
+    getOutstandingProductListFailure: (state, action) => {
+      const { error } = action.payload;
+      state.outstandingProductList.loading = false;
+      state.outstandingProductList.error = error;
+    },
+
+    //newProductList
+    getNewProductListRequest: (state, action) => {
+      state.newProductList.loading = true;
+      state.newProductList.error = null;
+    },
+    getNewProductListSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.newProductList.error = null;
+      state.newProductList.data = data;
+    },
+    getNewProductListFailure: (state, action) => {
+      const { error } = action.payload;
+      state.newProductList.loading = false;
+      state.newProductList.error = error;
     },
   },
 });
@@ -82,6 +124,12 @@ export const {
   addViewProductRequest,
   addViewProductSuccess,
   addViewProductFailure,
+  getOutstandingProductListRequest,
+  getOutstandingProductListSuccess,
+  getOutstandingProductListFailure,
+  getNewProductListRequest,
+  getNewProductListSuccess,
+  getNewProductListFailure,
 } = productSlice.actions;
 
 export default productSlice.reducer;

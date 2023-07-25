@@ -11,6 +11,12 @@ import {
   addViewProductRequest,
   addViewProductSuccess,
   addViewProductFailure,
+  getOutstandingProductListRequest,
+  getOutstandingProductListSuccess,
+  getOutstandingProductListFailure,
+  getNewProductListRequest,
+  getNewProductListSuccess,
+  getNewProductListFailure,
 } from 'redux/slicers/product.slice';
 
 function* getProductListSaga(action) {
@@ -69,8 +75,49 @@ function* addViewProductSaga(action) {
   }
 }
 
+function* getOutstandingProductListSaga(action) {
+  try {
+    const result = yield axios.get('http://localhost:4000/products', {
+      params: {
+        _sort: 'view',
+        _order: 'desc',
+      },
+    });
+    yield put(
+      getOutstandingProductListSuccess({
+        data: result.data,
+      })
+    );
+  } catch (e) {
+    yield put(getOutstandingProductListFailure('Đã có lỗi xảy ra!'));
+  }
+}
+
+function* getNewProductListSaga(action) {
+  try {
+    const result = yield axios.get('http://localhost:4000/products', {
+      params: {
+        _sort: 'createdAt',
+        _order: 'desc',
+      },
+    });
+    yield put(
+      getNewProductListSuccess({
+        data: result.data,
+      })
+    );
+  } catch (e) {
+    yield put(getNewProductListFailure('Đã có lỗi xảy ra!'));
+  }
+}
+
 export default function* productSaga() {
   yield debounce(400, getProductListRequest.type, getProductListSaga);
   yield takeEvery(getProductDetailRequest.type, getProductDetailSaga);
   yield takeEvery(addViewProductRequest.type, addViewProductSaga);
+  yield takeEvery(
+    getOutstandingProductListRequest.type,
+    getOutstandingProductListSaga
+  );
+  yield takeEvery(getNewProductListRequest.type, getNewProductListSaga);
 }
