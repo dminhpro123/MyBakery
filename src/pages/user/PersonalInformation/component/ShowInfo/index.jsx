@@ -36,7 +36,7 @@ const ShowInfo = () => {
             {userInfo.data.gender}
           </Descriptions.Item>
           <Descriptions.Item label="Ngày sinh">
-            {userInfo.data.dateOfBirth}
+            {moment(userInfo.data.dateOfBirt).format('DD/MM/YYYY')}
           </Descriptions.Item>
           <Descriptions.Item label="Địa chỉ">
             {userInfo.data.address}

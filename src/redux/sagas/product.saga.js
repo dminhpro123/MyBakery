@@ -64,7 +64,6 @@ function* getProductDetailSaga(action) {
 function* addViewProductSaga(action) {
   try {
     const { id, data } = action.payload;
-    console.log(data);
     const result = yield axios.patch(
       `http://localhost:4000/products/${id}`,
       data

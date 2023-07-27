@@ -1,7 +1,7 @@
 import { Avatar, Col, Row } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserOutlined } from '@ant-design/icons';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 
 import UpdateInfo from './component/UpdateInfo';
@@ -14,8 +14,8 @@ import * as S from './style';
 
 const PersonalInformation = () => {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.auth);
   const [actionUserInfo, setActionUserInfo] = useState('');
+  const accessToken = localStorage.getItem('accessToken');
 
   useEffect(() => {
     setActionUserInfo('showInfo');
@@ -27,19 +27,16 @@ const PersonalInformation = () => {
     else if (actionUserInfo === 'updatePassword') return <UpdatePassword />;
   }, [actionUserInfo]);
 
-  if (!userInfo.data.id) return <Navigate to={ROUTES.USER.HOME} />;
-
+  if (!accessToken) return <Navigate to={ROUTES.USER.HOME} />;
   return (
     <>
       <S.PersonalInformationWrapper>
         <Row gutter={[16, 16]}>
           <Col span={6}>
             <S.MenuWrapper>
-              <Avatar icon={<UserOutlined />} />
               <S.MenuItem onClick={() => setActionUserInfo('showInfo')}>
                 Thông tin cá nhân
               </S.MenuItem>
-
               <S.MenuItem onClick={() => setActionUserInfo('updateInfo')}>
                 Chỉnh sửa thông tin
               </S.MenuItem>

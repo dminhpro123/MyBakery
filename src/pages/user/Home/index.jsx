@@ -55,7 +55,7 @@ function HomePage() {
         <S.ItemOfList key={item.id}>
           <Link
             to={generatePath(ROUTES.USER.PRODUCT_DETAIL, {
-              productSlug: `${item.id}-${item.name}`,
+              productSlug: `${item.id}-${item.name.toLowerCase()}`,
             })}
           >
             <Card
@@ -84,7 +84,7 @@ function HomePage() {
         <S.ItemOfList key={item.id}>
           <Link
             to={generatePath(ROUTES.USER.PRODUCT_DETAIL, {
-              productSlug: `${item.id}-${item.name}`,
+              productSlug: `${item.id}-${item.name.toLowerCase()}`,
             })}
           >
             <Card

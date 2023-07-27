@@ -19,6 +19,7 @@ export const MenuItem = styled.div`
   cursor: pointer;
   padding: 10px 0 10px 5px;
   border-bottom: 0.1px solid #726f6f;
+  margin-bottom: 1px;
 
   &:hover {
     background-color: #d2cece;

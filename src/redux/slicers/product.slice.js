@@ -66,6 +66,11 @@ export const productSlice = createSlice({
       state.productDetail.error = error;
     },
 
+    //clearProductDetail
+    clearProductDetailRequest: (state, action) => {
+      state.productDetail.data = {};
+    },
+
     //addViewProduct
     addViewProductRequest: (state, action) => {
       state.productDetail.loading = true;
@@ -121,6 +126,7 @@ export const {
   getProductDetailRequest,
   getProductDetailSuccess,
   getProductDetailFailure,
+  clearProductDetailRequest,
   addViewProductRequest,
   addViewProductSuccess,
   addViewProductFailure,

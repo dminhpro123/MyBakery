@@ -23,6 +23,7 @@ import TopIcon from '../components/TopIcon';
 import {
   addViewProductRequest,
   getProductDetailRequest,
+  clearProductDetailRequest,
 } from 'redux/slicers/product.slice';
 import { formatMoney } from 'helper';
 import {
@@ -44,7 +45,7 @@ const ProductDetail = () => {
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
   const [existUserReview, setExistUserReview] = useState(false);
-  const [existUserReviewIndex, setExistUserReviewIndex] = useState(false);
+  const [existUserReviewIndex, setExistUserReviewIndex] = useState(0);
   const navigate = useNavigate();
 
   const productRate =
@@ -54,27 +55,39 @@ const ProductDetail = () => {
   useEffect(() => {
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
     dispatch(getReviewListRequest({ productId: parseInt(id) }));
-    if (productDetail.data?.id) {
+    return () => dispatch(clearProductDetailRequest());
+  }, []);
+
+  useEffect(() => {
+    if (productDetail.data.id) {
       dispatch(
         addViewProductRequest({
           id: parseInt(id),
           data: {
-            view: parseInt(productDetail.data.view) + 1,
+            view: productDetail.data?.view + 1,
           },
         })
       );
     }
-  }, []);
+  }, [productDetail.data.id]);
 
-  useEffect(() => {
-    reviewList.data.map((item, index) => {
-      if (item.userId === userInfo.data.id) {
-        setExistUserReview(true);
-        setExistUserReviewIndex(index);
-        return <></>;
-      }
-    });
-  }, [reviewList.data, existUserReview, userInfo.data]);
+  const hasReview = useMemo(() => {
+    return reviewList.data.some((item) => item.userId === userInfo.data.id);
+  }, [reviewList.data, userInfo.data]);
+
+  // useEffect(() => {
+  //   reviewList.data.map((item, index) => {
+  //     console.log(item.userId === userInfo.data.id);
+  //     if (item.userId === userInfo.data.id) {
+  //       setExistUserReview(true);
+  //       setExistUserReviewIndex(index);
+  //       return <></>;
+  //     } else {
+  //       setExistUserReview(false);
+  //       setExistUserReviewIndex(0);
+  //     }
+  //   });
+  // }, [reviewList.data, userInfo.data]);
 
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
@@ -187,7 +200,6 @@ const ProductDetail = () => {
   }, [reviewList.data]);
 
   const renderReviewUserExist = () => {
-    // existUserReviewIndex
     return (
       <>
         <S.ReviewWrapper>
@@ -266,7 +278,7 @@ const ProductDetail = () => {
           style={{ marginTop: 16 }}
         >
           {userInfo.data.id ? (
-            existUserReview ? (
+            hasReview ? (
               renderReviewUserExist()
             ) : (
               <S.ReviewWrapper>

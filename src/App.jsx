@@ -6,8 +6,8 @@ import jwtDecode from 'jwt-decode';
 
 import { ROUTES } from 'constants/routes';
 
-// import '../node_modules/slick-carousel/slick/slick.css';
-// import '../node_modulesslick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import UserLayout from 'layouts/UserLayout';
 import HomePage from 'pages/user/Home';

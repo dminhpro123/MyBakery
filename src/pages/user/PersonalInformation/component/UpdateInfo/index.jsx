@@ -18,6 +18,7 @@ import { LoadingOutlined, UserOutlined } from '@ant-design/icons';
 import { updateUserInfoRequest } from 'redux/slicers/auth.slice';
 import { ROUTES } from 'constants/routes';
 import * as S from './style';
+import moment from 'moment';
 dayjs.extend(customParseFormat);
 
 const getBase64 = (img, callback) => {
@@ -89,8 +90,8 @@ const UpdateInfo = () => {
 
   const handleChangeDateOfBirth = (date, dateString) => {
     // console.log(date, dateString);
-    setValueDateOfBirth(dateString);
-    console.log(dateString);
+    setValueDateOfBirth(moment().valueOf(dateString));
+    console.log();
   };
 
   const handleSubmitForm = (values) => {
@@ -130,7 +131,10 @@ const UpdateInfo = () => {
             gender: userInfo.data?.gender,
             dateOfBirth:
               userInfo.data.dateOfBirth &&
-              dayjs(userInfo.data.dateOfBirth, dateFormat),
+              dayjs(
+                moment(userInfo.data.dateOfBirth).format('DD/MM/YYYY'),
+                dateFormat
+              ),
           }}
         >
           <Form.Item label="Ảnh đại diện" name="avatar">
@@ -168,8 +172,8 @@ const UpdateInfo = () => {
               {
                 type: 'string',
                 min: 3,
-                max: 20,
-                message: 'Họ và tên phải từ 3-20 kí tự',
+                max: 40,
+                message: 'Họ và tên phải từ 3-40 kí tự',
               },
             ]}
           >
@@ -222,7 +226,7 @@ const UpdateInfo = () => {
             // ]}
           >
             <DatePicker
-              // format={dateFormat}
+              format={dateFormat}
               onChange={handleChangeDateOfBirth}
               // value={valueDateOfBirth}
               placement="bottomLeft"
