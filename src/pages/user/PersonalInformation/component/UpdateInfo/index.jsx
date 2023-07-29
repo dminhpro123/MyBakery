@@ -14,11 +14,12 @@ import {
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { LoadingOutlined, UserOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 import { updateUserInfoRequest } from 'redux/slicers/auth.slice';
 import { ROUTES } from 'constants/routes';
+
 import * as S from './style';
-import moment from 'moment';
 dayjs.extend(customParseFormat);
 
 const getBase64 = (img, callback) => {
@@ -39,20 +40,20 @@ const beforeUpload = (file) => {
 };
 
 const UpdateInfo = () => {
-  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.auth);
   const [updateUserInfoForm] = Form.useForm();
   const [valueGender, setValueGender] = useState('');
   const [valueDateOfBirth, setValueDateOfBirth] = useState('');
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
+  const navigate = useNavigate();
   const dateFormat = 'DD/MM/YYYY';
   const phoneNumberPrefix = '+84';
 
   useEffect(() => {
     if (userInfo.data.dateOfBirth) {
-      setValueDateOfBirth(userInfo.data.dateOfBirth);
+      // setValueDateOfBirth(userInfo.data.dateOfBirth);
     }
     if (userInfo.data.avatar) {
       setImageUrl(userInfo.data.avatar);
@@ -89,9 +90,10 @@ const UpdateInfo = () => {
   };
 
   const handleChangeDateOfBirth = (date, dateString) => {
-    // console.log(date, dateString);
-    setValueDateOfBirth(moment().valueOf(dateString));
-    console.log();
+    let valueDOB = moment().valueOf(dateString);
+    setValueDateOfBirth(valueDOB);
+    console.log(valueDOB);
+    console.log(moment(valueDOB).format('DD/MM/YYYY'));
   };
 
   const handleSubmitForm = (values) => {
@@ -123,18 +125,16 @@ const UpdateInfo = () => {
           onFinish={(values) => handleSubmitForm(values)}
           autoComplete="off"
           initialValues={{
-            avatar: userInfo.data.avatar,
+            avatar: userInfo.data?.avatar,
             fullName: userInfo.data.fullName,
             email: userInfo.data.email,
             phone: userInfo.data.phone.substring(3),
             address: userInfo.data?.address,
             gender: userInfo.data?.gender,
-            dateOfBirth:
-              userInfo.data.dateOfBirth &&
-              dayjs(
-                moment(userInfo.data.dateOfBirth).format('DD/MM/YYYY'),
-                dateFormat
-              ),
+            dateOfBirth: dayjs(
+              moment(userInfo.data.dateOfBirth).format('DD/MM/YYYY'),
+              dateFormat
+            ),
           }}
         >
           <Form.Item label="Ảnh đại diện" name="avatar">
@@ -214,17 +214,7 @@ const UpdateInfo = () => {
             <Input addonBefore={phoneNumberPrefix} />
           </Form.Item>
 
-          <Form.Item
-            label="Ngày sinh"
-            name="dateOfBirth"
-            // rules={[
-            //   {
-            //     pattern:
-            //       /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/g,
-            //     message: 'Ngày sinh không đúng định dạng',
-            //   },
-            // ]}
-          >
+          <Form.Item label="Ngày sinh" name="dateOfBirth">
             <DatePicker
               format={dateFormat}
               onChange={handleChangeDateOfBirth}

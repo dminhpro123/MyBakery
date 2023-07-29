@@ -7,12 +7,17 @@ import { store } from './store';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'moment/locale/vi';
+import 'dayjs/locale/vi';
+import { ConfigProvider } from 'antd';
+import vn from 'antd/locale/vi_VN';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <ConfigProvider locale={vn}>
+        <App />
+      </ConfigProvider>
     </Provider>
   </BrowserRouter>
 );

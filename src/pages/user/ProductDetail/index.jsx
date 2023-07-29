@@ -44,7 +44,6 @@ const ProductDetail = () => {
   const { productSlug } = useParams();
   const [id] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
-  const [existUserReview, setExistUserReview] = useState(false);
   const [existUserReviewIndex, setExistUserReviewIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -75,19 +74,15 @@ const ProductDetail = () => {
     return reviewList.data.some((item) => item.userId === userInfo.data.id);
   }, [reviewList.data, userInfo.data]);
 
-  // useEffect(() => {
-  //   reviewList.data.map((item, index) => {
-  //     console.log(item.userId === userInfo.data.id);
-  //     if (item.userId === userInfo.data.id) {
-  //       setExistUserReview(true);
-  //       setExistUserReviewIndex(index);
-  //       return <></>;
-  //     } else {
-  //       setExistUserReview(false);
-  //       setExistUserReviewIndex(0);
-  //     }
-  //   });
-  // }, [reviewList.data, userInfo.data]);
+  useEffect(() => {
+    reviewList.data.map((item, index) => {
+      if (item.userId === userInfo.data.id) {
+        setExistUserReviewIndex(index);
+      } else {
+        setExistUserReviewIndex(0);
+      }
+    });
+  }, [reviewList.data, userInfo.data]);
 
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
