@@ -15,6 +15,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartList } = useSelector((state) => state.cart);
+  const cartListLS = localStorage.getItem('cartList');
 
   const totalPrice = cartList.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -106,9 +107,15 @@ const Cart = () => {
           >
             Tiếp tục mua hàng
           </Button>
-          <Button type="primary" ghost>
-            Thanh toán
-          </Button>
+          {cartList.length !== 0 ? (
+            <Button type="primary" ghost>
+              Thanh toán
+            </Button>
+          ) : (
+            <Button type="primary" ghost disabled>
+              Thanh toán
+            </Button>
+          )}
         </S.ButtonWrapper>
       </S.CartWrapper>
     </>
