@@ -24,6 +24,7 @@ const advertisementSettings = {
   autoplaySpeed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
+  arrows: false,
 };
 
 const someProductListSettings = {
@@ -33,6 +34,7 @@ const someProductListSettings = {
   autoplaySpeed: 2000,
   slidesToShow: 5,
   slidesToScroll: 1,
+  arrows: false,
 };
 
 function HomePage() {

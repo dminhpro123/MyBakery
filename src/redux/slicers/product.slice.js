@@ -25,6 +25,11 @@ const initialState = {
     loading: false,
     error: null,
   },
+  similarProduct: {
+    data: [],
+    loading: false,
+    error: null,
+  },
 };
 
 export const productSlice = createSlice({
@@ -116,6 +121,22 @@ export const productSlice = createSlice({
       state.newProductList.loading = false;
       state.newProductList.error = error;
     },
+
+    //similarProduct
+    getSimilarProductListRequest: (state, action) => {
+      state.similarProduct.loading = true;
+      state.similarProduct.error = null;
+    },
+    getSimilarProductListSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.similarProduct.error = null;
+      state.similarProduct.data = data;
+    },
+    getSimilarProductListFailure: (state, action) => {
+      const { error } = action.payload;
+      state.similarProduct.loading = false;
+      state.similarProduct.error = error;
+    },
   },
 });
 
@@ -136,6 +157,9 @@ export const {
   getNewProductListRequest,
   getNewProductListSuccess,
   getNewProductListFailure,
+  getSimilarProductListRequest,
+  getSimilarProductListSuccess,
+  getSimilarProductListFailure,
 } = productSlice.actions;
 
 export default productSlice.reducer;

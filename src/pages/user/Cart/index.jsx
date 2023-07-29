@@ -107,15 +107,9 @@ const Cart = () => {
           >
             Tiếp tục mua hàng
           </Button>
-          {cartList.length !== 0 ? (
-            <Button type="primary" ghost>
-              Thanh toán
-            </Button>
-          ) : (
-            <Button type="primary" ghost disabled>
-              Thanh toán
-            </Button>
-          )}
+          <Button type="primary" ghost disabled={cartList.length === 0}>
+            Thanh toán
+          </Button>
         </S.ButtonWrapper>
       </S.CartWrapper>
     </>

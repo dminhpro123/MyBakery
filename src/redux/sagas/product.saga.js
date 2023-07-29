@@ -17,6 +17,9 @@ import {
   getNewProductListRequest,
   getNewProductListSuccess,
   getNewProductListFailure,
+  getSimilarProductListRequest,
+  getSimilarProductListSuccess,
+  getSimilarProductListFailure,
 } from 'redux/slicers/product.slice';
 
 function* getProductListSaga(action) {
@@ -110,6 +113,24 @@ function* getNewProductListSaga(action) {
   }
 }
 
+function* getSimilarProductListSaga(action) {
+  const { categoryId } = action.payload;
+  try {
+    const result = yield axios.get('http://localhost:4000/products', {
+      params: {
+        categoryId: parseInt(categoryId),
+      },
+    });
+    yield put(
+      getSimilarProductListSuccess({
+        data: result.data,
+      })
+    );
+  } catch (e) {
+    yield put(getSimilarProductListFailure('Đã có lỗi xảy ra!'));
+  }
+}
+
 export default function* productSaga() {
   yield debounce(400, getProductListRequest.type, getProductListSaga);
   yield takeEvery(getProductDetailRequest.type, getProductDetailSaga);
@@ -119,4 +140,5 @@ export default function* productSaga() {
     getOutstandingProductListSaga
   );
   yield takeEvery(getNewProductListRequest.type, getNewProductListSaga);
+  yield takeEvery(getSimilarProductListRequest.type, getSimilarProductListSaga);
 }

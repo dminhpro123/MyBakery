@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, generatePath, useNavigate, useParams } from 'react-router-dom';
 import {
   Row,
   Col,
@@ -20,12 +20,13 @@ import moment from 'moment';
 import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 import TopIcon from '../components/TopIcon';
+import { formatMoney } from 'helper';
 import {
   addViewProductRequest,
   getProductDetailRequest,
   clearProductDetailRequest,
+  getSimilarProductListRequest,
 } from 'redux/slicers/product.slice';
-import { formatMoney } from 'helper';
 import {
   createReviewRequest,
   getReviewListRequest,
@@ -34,10 +35,13 @@ import { ROUTES } from 'constants/routes';
 import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 import * as S from './style';
+const { Meta } = Card;
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
-  const { productDetail } = useSelector((state) => state.product);
+  const { productDetail, similarProduct } = useSelector(
+    (state) => state.product
+  );
   const { reviewList } = useSelector((state) => state.review);
   const { userInfo } = useSelector((state) => state.auth);
   const [quantity, setQuantity] = useState(1);
@@ -67,8 +71,15 @@ const ProductDetail = () => {
           },
         })
       );
+      dispatch(
+        getSimilarProductListRequest({
+          categoryId: productDetail.data.categoryId,
+        })
+      );
     }
-  }, [productDetail.data.id]);
+    dispatch(getProductDetailRequest({ id: parseInt(id) }));
+    dispatch(getReviewListRequest({ productId: parseInt(id) }));
+  }, [productDetail.data.id, id]);
 
   const hasReview = useMemo(() => {
     return reviewList.data.some((item) => item.userId === userInfo.data.id);
@@ -234,6 +245,32 @@ const ProductDetail = () => {
     );
   };
 
+  const renderSimilarProductList = useMemo(() => {
+    return similarProduct.data
+      .filter((item) => item.id !== parseInt(id))
+      .map((item) => {
+        return (
+          <S.ItemOfList key={item.id}>
+            <Link
+              to={generatePath(ROUTES.USER.PRODUCT_DETAIL, {
+                productSlug: `${item.id}-${item.name.toLowerCase()}`,
+              })}
+            >
+              <Card
+                style={{
+                  width: 250,
+                  overflow: 'hidden',
+                }}
+                cover={<img alt={item.name} src={item.images} />}
+              >
+                <Meta title={item.name} description={formatMoney(item.price)} />
+              </Card>
+            </Link>
+          </S.ItemOfList>
+        );
+      });
+  }, [similarProduct.data]);
+
   return (
     <>
       <S.ProductDetailWrapper>
@@ -337,6 +374,12 @@ const ProductDetail = () => {
           )}
           {renderReviewList}
         </Card>
+        {similarProduct.data.length > 1 && (
+          <S.SimilarProductList>
+            <h2>Sản phẩm tương tự</h2>
+            {renderSimilarProductList}
+          </S.SimilarProductList>
+        )}
       </S.ProductDetailWrapper>
     </>
   );
