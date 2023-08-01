@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -10,6 +10,9 @@ import {
   message,
   Upload,
   Avatar,
+  Select,
+  Row,
+  Col,
 } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -20,6 +23,11 @@ import { updateUserInfoRequest } from 'redux/slicers/auth.slice';
 import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
+import {
+  getCityListRequest,
+  getDistrictListRequest,
+  getWardListRequest,
+} from 'redux/slicers/location.slice';
 dayjs.extend(customParseFormat);
 
 const getBase64 = (img, callback) => {
@@ -42,9 +50,11 @@ const beforeUpload = (file) => {
 const UpdateInfo = () => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.auth);
+  const { cityList, districtList, wardList } = useSelector(
+    (state) => state.location
+  );
   const [updateUserInfoForm] = Form.useForm();
   const [valueGender, setValueGender] = useState('');
-  const [valueDateOfBirth, setValueDateOfBirth] = useState('');
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const navigate = useNavigate();
@@ -52,12 +62,10 @@ const UpdateInfo = () => {
   const phoneNumberPrefix = '+84';
 
   useEffect(() => {
-    if (userInfo.data.dateOfBirth) {
-      // setValueDateOfBirth(userInfo.data.dateOfBirth);
-    }
     if (userInfo.data.avatar) {
       setImageUrl(userInfo.data.avatar);
     }
+    dispatch(getCityListRequest());
   }, []);
 
   const handleUpload = (info) => {
@@ -89,14 +97,13 @@ const UpdateInfo = () => {
     setValueGender(e.target.value);
   };
 
-  const handleChangeDateOfBirth = (date, dateString) => {
-    let valueDOB = moment().valueOf(dateString);
-    setValueDateOfBirth(valueDOB);
-    console.log(valueDOB);
-    console.log(moment(valueDOB).format('DD/MM/YYYY'));
-  };
-
   const handleSubmitForm = (values) => {
+    const { cityCode, districtCode, wardCode } = values;
+    const cityData = cityList.data.find((item) => item.code === cityCode);
+    const districtData = districtList.data.find(
+      (item) => item.code === districtCode
+    );
+    const wardData = wardList.data.find((item) => item.code === wardCode);
     dispatch(
       updateUserInfoRequest({
         data: {
@@ -108,12 +115,45 @@ const UpdateInfo = () => {
           phone: phoneNumberPrefix + values.phone,
           address: values.address,
           gender: values.gender,
-          dateOfBirth: valueDateOfBirth,
+          cityName: cityData?.name,
+          districtName: districtData?.name,
+          wardName: wardData?.name,
+          dateOfBirth: dayjs(values.dateOfBirth).valueOf(),
         },
         callback: () => navigate(ROUTES.USER.PERSONAL_INFOR),
       })
     );
   };
+
+  const renderCityOptions = useMemo(() => {
+    return cityList.data.map((item) => {
+      return (
+        <Select.Option key={item.id} value={item.code}>
+          {item.name}
+        </Select.Option>
+      );
+    });
+  }, [cityList.data]);
+
+  const renderDistrictOptions = useMemo(() => {
+    return districtList.data.map((item) => {
+      return (
+        <Select.Option key={item.id} value={item.code}>
+          {item.name}
+        </Select.Option>
+      );
+    });
+  }, [districtList.data]);
+
+  const renderWardListOptions = useMemo(() => {
+    return wardList.data.map((item) => {
+      return (
+        <Select.Option key={item.id} value={item.code}>
+          {item.name}
+        </Select.Option>
+      );
+    });
+  }, [wardList.data]);
 
   return (
     <>
@@ -131,10 +171,7 @@ const UpdateInfo = () => {
             phone: userInfo.data.phone.substring(3),
             address: userInfo.data?.address,
             gender: userInfo.data?.gender,
-            dateOfBirth: dayjs(
-              moment(userInfo.data.dateOfBirth).format('DD/MM/YYYY'),
-              dateFormat
-            ),
+            dateOfBirth: dayjs(userInfo.data?.dateOfBirth),
           }}
         >
           <Form.Item label="Ảnh đại diện" name="avatar">
@@ -213,24 +250,63 @@ const UpdateInfo = () => {
           >
             <Input addonBefore={phoneNumberPrefix} />
           </Form.Item>
-
-          <Form.Item label="Ngày sinh" name="dateOfBirth">
-            <DatePicker
-              format={dateFormat}
-              onChange={handleChangeDateOfBirth}
-              // value={valueDateOfBirth}
-              placement="bottomLeft"
-            />
-          </Form.Item>
-
-          <Form.Item label="Giới tính" name="gender">
-            <Radio.Group onChange={handleChangeGender} value={valueGender}>
-              <Radio value="Nam">Nam</Radio>
-              <Radio value="Nữ">Nữ</Radio>
-              <Radio value="Khác">Khác</Radio>
-            </Radio.Group>
-          </Form.Item>
-
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
+              <Form.Item label="Ngày sinh" name="dateOfBirth">
+                <DatePicker format={dateFormat} placement="bottomLeft" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Giới tính" name="gender">
+                <Radio.Group onChange={handleChangeGender} value={valueGender}>
+                  <Radio value="Nam">Nam</Radio>
+                  <Radio value="Nữ">Nữ</Radio>
+                  <Radio value="Khác">Khác</Radio>
+                </Radio.Group>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]}>
+            <Col span={8}>
+              <Form.Item label="Tỉnh/Thành" name="cityCode">
+                <Select
+                  onChange={(value) => {
+                    dispatch(getDistrictListRequest({ cityCode: value }));
+                    updateUserInfoForm.setFieldsValue({
+                      districtCode: undefined,
+                      wardCode: undefined,
+                    });
+                  }}
+                >
+                  {renderCityOptions}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Quận/Huyện" name="districtCode">
+                <Select
+                  onChange={(value) => {
+                    dispatch(getWardListRequest({ districtCode: value }));
+                    updateUserInfoForm.setFieldsValue({
+                      wardCode: undefined,
+                    });
+                  }}
+                  disabled={!updateUserInfoForm.getFieldValue('cityCode')}
+                >
+                  {renderDistrictOptions}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Phường/Xã" name="wardCode">
+                <Select
+                  disabled={!updateUserInfoForm.getFieldValue('districtCode')}
+                >
+                  {renderWardListOptions}
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
           <Form.Item label="Địa chỉ" name="address">
             <Input />
           </Form.Item>

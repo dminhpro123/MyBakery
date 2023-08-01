@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Card, Row, Col, Checkbox, Avatar, Input, Select, Button } from 'antd';
+import { Card, Row, Col, Checkbox, Input, Select, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath } from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import { getProductListRequest } from 'redux/slicers/product.slice';
 import { getCategoryListRequest } from 'redux/slicers/category.slice';
 import TopIcon from '../components/TopIcon';
 import { ROUTES } from 'constants/routes';
-import logoBakery from 'assets/images/logo.jpg';
 
 import * as S from './styles';
 import { formatMoney } from 'helper';
@@ -73,11 +72,7 @@ function ProductListPage() {
                 }}
                 cover={<img alt={item.name} src={item.images} />}
               >
-                <Meta
-                  avatar={<Avatar src={logoBakery} />}
-                  title={item.name}
-                  description={formatMoney(item.price)}
-                />
+                <Meta title={item.name} description={formatMoney(item.price)} />
               </Card>
             </Link>
           </S.ItemOfList>
@@ -132,8 +127,10 @@ function ProductListPage() {
               placeholder="sắp xếp theo giá"
               style={{ width: '100%' }}
             >
-              {/* <Select.Option value="name.asc">A-Z</Select.Option>
-                <Select.Option value="name.desc">Z-A</Select.Option> */}
+              {/* 
+                <Select.Option value="name.asc">A-Z</Select.Option>
+                <Select.Option value="name.desc">Z-A</Select.Option>
+              */}
               <Select.Option value="price.asc">Giá tăng dần</Select.Option>
               <Select.Option value="price.desc">Giá giảm dần</Select.Option>
             </Select>

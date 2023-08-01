@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfoRequest } from 'redux/slicers/auth.slice';
 import jwtDecode from 'jwt-decode';
 
-import { ROUTES } from 'constants/routes';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+import { ROUTES } from 'constants/routes';
 
 import UserLayout from 'layouts/UserLayout';
 import HomePage from 'pages/user/Home';
@@ -23,6 +23,10 @@ import ProductDetail from 'pages/user/ProductDetail';
 import Page404NotFound from 'pages/Page404NotFound';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
+
+import AdminLayout from 'layouts/AdminLayout';
+import Dashboard from 'pages/admin/Dashboard';
+import Checkout from 'pages/user/Checkout';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,12 +51,18 @@ function App() {
         <Route path={ROUTES.USER.EVENTS} element={<EventPage />} />
         <Route path={ROUTES.USER.CART} element={<Cart />} />
         <Route path={ROUTES.USER.PRODUCT_DETAIL} element={<ProductDetail />} />
+        <Route path={ROUTES.USER.CHECKOUT} element={<Checkout />} />
+
         <Route
           path={ROUTES.USER.PERSONAL_INFOR}
           element={<PersonalInformation />}
         />
         <Route path={ROUTES.USER.REGISTER} element={<Register />} />
         <Route path={ROUTES.USER.LOGIN} element={<Login />} />
+      </Route>
+
+      <Route element={<AdminLayout />}>
+        <Route path={ROUTES.ADMIN.DASHBOARD} element={<Dashboard />} />
       </Route>
 
       <Route path="*" element={<Page404NotFound />} />

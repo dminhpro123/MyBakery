@@ -10,6 +10,8 @@ import authReducer from 'redux/slicers/auth.slice';
 import contactReducer from 'redux/slicers/contact.slice';
 import reviewReducer from 'redux/slicers/review.slice';
 import cartReducer from 'redux/slicers/cart.slice';
+import locationReducer from 'redux/slicers/location.slice';
+import orderReducer from 'redux/slicers/order.slice';
 
 import rootSaga from 'redux/sagas';
 
@@ -26,6 +28,8 @@ const store = configureStore({
     contact: contactReducer,
     review: reviewReducer,
     cart: cartReducer,
+    location: locationReducer,
+    order: orderReducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({

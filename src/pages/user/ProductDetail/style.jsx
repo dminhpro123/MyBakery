@@ -58,5 +58,6 @@ export const SimilarProductList = styled.div`
 export const ItemOfList = styled.div`
   padding: 5px;
   gap: 10px;
+  width: 200px;
   cursor: pointer;
 `;

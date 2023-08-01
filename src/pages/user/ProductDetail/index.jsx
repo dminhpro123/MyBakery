@@ -99,7 +99,7 @@ const ProductDetail = () => {
     return productDetail.data === undefined ? null : (
       <>
         <Col xs={24} md={12} xl={8}>
-          <Image src={productDetail.data.images} />
+          <img src={productDetail.data.images} />
         </Col>
         <Col xs={24} md={6} xl={8}>
           <Row gutter={[12, 12]}>
@@ -123,7 +123,7 @@ const ProductDetail = () => {
             </Col>
             <br />
             <Col span={24}>
-              <Descriptions layout="horizontal">
+              <Descriptions>
                 <Descriptions.Item
                   label="Đơn giá"
                   contentStyle={{ fontSize: 'xx-larger', fontWeight: 'bold' }}
@@ -131,6 +131,8 @@ const ProductDetail = () => {
                 >
                   {formatMoney(productDetail.data.price)}
                 </Descriptions.Item>
+              </Descriptions>
+              <Descriptions>
                 <Descriptions.Item
                   label="Mô tả"
                   contentStyle={{ fontSize: 'xx-larger', fontWeight: 'bold' }}
@@ -258,7 +260,7 @@ const ProductDetail = () => {
             >
               <Card
                 style={{
-                  width: 250,
+                  width: 200,
                   overflow: 'hidden',
                 }}
                 cover={<img alt={item.name} src={item.images} />}

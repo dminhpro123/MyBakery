@@ -83,6 +83,7 @@ function* getOutstandingProductListSaga(action) {
       params: {
         _sort: 'view',
         _order: 'desc',
+        _limit: 8,
       },
     });
     yield put(
@@ -101,6 +102,7 @@ function* getNewProductListSaga(action) {
       params: {
         _sort: 'createdAt',
         _order: 'desc',
+        _limit: 8,
       },
     });
     yield put(
@@ -119,6 +121,7 @@ function* getSimilarProductListSaga(action) {
     const result = yield axios.get('http://localhost:4000/products', {
       params: {
         categoryId: parseInt(categoryId),
+        _limit: 8,
       },
     });
     yield put(

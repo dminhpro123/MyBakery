@@ -107,8 +107,13 @@ const Cart = () => {
           >
             Tiếp tục mua hàng
           </Button>
-          <Button type="primary" ghost disabled={cartList.length === 0}>
-            Thanh toán
+          <Button
+            type="primary"
+            ghost
+            disabled={cartList.length === 0}
+            onClick={() => navigate(ROUTES.USER.CHECKOUT)}
+          >
+            Tiếp theo
           </Button>
         </S.ButtonWrapper>
       </S.CartWrapper>

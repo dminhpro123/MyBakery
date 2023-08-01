@@ -1,4 +1,4 @@
-import { Avatar, Card, Col, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 import React, { useEffect, useMemo } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,6 @@ import {
   getOutstandingProductListRequest,
 } from 'redux/slicers/product.slice';
 import { ROUTES } from 'constants/routes';
-import logoBakery from 'assets/images/logo.jpg';
 import { formatMoney } from 'helper';
 
 import * as S from './styles';
@@ -67,11 +66,7 @@ function HomePage() {
               }}
               cover={<img alt={item.name} src={item.images} />}
             >
-              <Meta
-                avatar={<Avatar src={logoBakery} />}
-                title={item.name}
-                description={formatMoney(item.price)}
-              />
+              <Meta title={item.name} description={formatMoney(item.price)} />
             </Card>
           </Link>
         </S.ItemOfList>
@@ -96,11 +91,7 @@ function HomePage() {
               }}
               cover={<img alt={item.name} src={item.images} />}
             >
-              <Meta
-                avatar={<Avatar src={logoBakery} />}
-                title={item.name}
-                description={formatMoney(item.price)}
-              />
+              <Meta title={item.name} description={formatMoney(item.price)} />
             </Card>
           </Link>
         </S.ItemOfList>

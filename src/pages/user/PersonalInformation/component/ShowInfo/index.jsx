@@ -33,13 +33,16 @@ const ShowInfo = () => {
             {userInfo.data.email}
           </Descriptions.Item>
           <Descriptions.Item label="Giới tính">
-            {userInfo.data.gender}
+            {userInfo.data?.gender || ' '}
           </Descriptions.Item>
           <Descriptions.Item label="Ngày sinh">
-            {moment(userInfo.data.dateOfBirth).format('DD/MM/YYYY')}
+            {moment(userInfo.data?.dateOfBirth).format('DD/MM/YYYY') || ' '}
           </Descriptions.Item>
           <Descriptions.Item label="Địa chỉ">
-            {userInfo.data.address}
+            {userInfo.data.address && `${userInfo.data.address}`}
+            {userInfo.data.wardName && ` - ${userInfo.data.wardName}`}
+            {userInfo.data.districtName && ` - ${userInfo.data.districtName}`}
+            {userInfo.data.cityName && ` - ${userInfo.data.cityName}`}
           </Descriptions.Item>
         </Descriptions>
         <br />

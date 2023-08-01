@@ -1,0 +1,5 @@
+import styled from 'styled-components';
+
+export const CheckoutWrapper = styled.div`
+  margin: 5px 0 5px 0;
+`;
