@@ -15,7 +15,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <ConfigProvider locale={vn}>
+      <ConfigProvider
+        locale={vn}
+        theme={{
+          token: {
+            colorPrimary: '#e75a39',
+            borderRadius: 0,
+          },
+        }}
+      >
         <App />
       </ConfigProvider>
     </Provider>

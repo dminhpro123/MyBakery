@@ -160,7 +160,9 @@ function ProductListPage() {
           <Row gutter={[16, 16]}>{renderProductList}</Row>
           {productList.data.length !== productList.meta.total && (
             <Row justify="center" style={{ marginTop: '10px' }}>
-              <Button onClick={() => handleShowMore()}>Xem thêm</Button>
+              <Button type="primary" onClick={() => handleShowMore()}>
+                Xem thêm
+              </Button>
             </Row>
           )}
         </Col>

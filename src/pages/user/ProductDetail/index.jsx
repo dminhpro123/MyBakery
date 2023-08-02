@@ -46,7 +46,7 @@ const ProductDetail = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [quantity, setQuantity] = useState(1);
   const { productSlug } = useParams();
-  const [id] = productSlug.split('-');
+  const [id, name] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
   const [existUserReviewIndex, setExistUserReviewIndex] = useState(0);
   const navigate = useNavigate();
@@ -79,7 +79,12 @@ const ProductDetail = () => {
     }
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
     dispatch(getReviewListRequest({ productId: parseInt(id) }));
-  }, [productDetail.data.id, id]);
+    if (
+      productDetail.data.name &&
+      productDetail.data.name.toLowerCase() !== name
+    )
+      navigate(ROUTES.USER.HOME);
+  }, [productDetail.data.id, id, name, productDetail.data.name]);
 
   const hasReview = useMemo(() => {
     return reviewList.data.some((item) => item.userId === userInfo.data.id);
@@ -89,8 +94,6 @@ const ProductDetail = () => {
     reviewList.data.map((item, index) => {
       if (item.userId === userInfo.data.id) {
         setExistUserReviewIndex(index);
-      } else {
-        setExistUserReviewIndex(0);
       }
     });
   }, [reviewList.data, userInfo.data]);

@@ -102,14 +102,12 @@ const Cart = () => {
         <S.ButtonWrapper>
           <Button
             type="primary"
-            ghost
             onClick={() => navigate(ROUTES.USER.PRODUCT_LIST)}
           >
             Tiếp tục mua hàng
           </Button>
           <Button
             type="primary"
-            ghost
             disabled={cartList.length === 0}
             onClick={() => navigate(ROUTES.USER.CHECKOUT)}
           >
