@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 49,
+      "view": 53,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1690990217816,
+      "updatedAt": 1690990512655,
       "createdAt": 1689481189282
     },
     {

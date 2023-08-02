@@ -35,6 +35,16 @@ function ProductListPage() {
     return () => dispatch(clearFilterParams());
   }, []);
 
+  useEffect(() => {
+    dispatch(
+      getProductListRequest({
+        ...filterParams,
+        page: 1,
+        limit: PRODUCT_LIMIT,
+      })
+    );
+  }, [filterParams]);
+
   const handleFilter = (key, values) => {
     const newFilterParams = {
       ...filterParams,
