@@ -67,6 +67,37 @@ export const locationSlice = createSlice({
       state.wardList.loading = false;
       state.wardList.error = error;
     },
+    // getDistrictExist
+    getDistrictExistRequest: (state, action) => {
+      state.districtList.loading = true;
+      state.districtList.error = null;
+    },
+    getDistrictExistSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.districtList.loading = false;
+      state.districtList.data = data;
+    },
+    getDistrictExistFailure: (state, action) => {
+      const { error } = action.payload;
+      state.districtList.loading = false;
+      state.districtList.error = error;
+    },
+
+    // getWardExist
+    getWardExistRequest: (state, action) => {
+      state.wardList.loading = true;
+      state.wardList.error = null;
+    },
+    getWardExistSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.wardList.loading = false;
+      state.wardList.data = data;
+    },
+    getWardExistFailure: (state, action) => {
+      const { error } = action.payload;
+      state.wardList.loading = false;
+      state.wardList.error = error;
+    },
   },
 });
 
@@ -80,6 +111,13 @@ export const {
   getWardListRequest,
   getWardListSuccess,
   getWardListFailure,
+
+  getDistrictExistRequest,
+  getDistrictExistSuccess,
+  getDistrictExistFailure,
+  getWardExistRequest,
+  getWardExistSuccess,
+  getWardExistFailure,
 } = locationSlice.actions;
 
 export default locationSlice.reducer;

@@ -29,7 +29,7 @@ const UpdatePassword = () => {
     <>
       <S.UpdatePasswordWrapper>
         <Form
-          name="registerForm"
+          name="updateUserPasswordForm"
           form={updateUserPasswordForm}
           layout="vertical"
           onFinish={(values) => handleSubmitForm(values)}

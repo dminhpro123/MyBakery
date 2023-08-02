@@ -25,7 +25,9 @@ import { ROUTES } from 'constants/routes';
 import * as S from './style';
 import {
   getCityListRequest,
+  getDistrictExistRequest,
   getDistrictListRequest,
+  getWardExistRequest,
   getWardListRequest,
 } from 'redux/slicers/location.slice';
 dayjs.extend(customParseFormat);
@@ -67,6 +69,44 @@ const UpdateInfo = () => {
     }
     dispatch(getCityListRequest());
   }, []);
+
+  useEffect(() => {
+    if (userInfo.data.districtCode)
+      dispatch(
+        getDistrictExistRequest({
+          code: userInfo.data.cityCode,
+        })
+      );
+
+    if (userInfo.data.wardCode)
+      dispatch(getWardExistRequest({ code: userInfo.data.districtCode }));
+  }, [
+    userInfo.data.districtCode,
+    userInfo.data.cityCode,
+    userInfo.data.wardCode,
+  ]);
+
+  useEffect(() => {
+    if (wardList.data.length !== 0 && userInfo.data.wardCode) {
+      let wardExist = wardList.data.filter(
+        (item) => item.code === userInfo.data.wardCode
+      )[0]?.code;
+      updateUserInfoForm.setFieldValue('wardCode', wardExist);
+    }
+    if (districtList.data.length !== 0 && userInfo.data.districtCode) {
+      let districtExist = districtList.data.filter(
+        (item) => item.code === userInfo.data.districtCode
+      )[0]?.code;
+
+      updateUserInfoForm.setFieldValue('districtCode', districtExist);
+    }
+  }, [
+    districtList.data,
+    updateUserInfoForm,
+    userInfo.data.districtCode,
+    userInfo.data.wardCode,
+    wardList.data,
+  ]);
 
   const handleUpload = (info) => {
     if (info.file.status === 'uploading') {
@@ -115,8 +155,11 @@ const UpdateInfo = () => {
           phone: phoneNumberPrefix + values.phone,
           address: values.address,
           gender: values.gender,
+          cityCode,
           cityName: cityData?.name,
+          districtCode,
           districtName: districtData?.name,
+          wardCode,
           wardName: wardData?.name,
           dateOfBirth: dayjs(values.dateOfBirth).valueOf(),
         },
@@ -159,7 +202,7 @@ const UpdateInfo = () => {
     <>
       <S.UpdateUserInfoWrapper>
         <Form
-          name="registerForm"
+          name="updateUserInfoForm"
           form={updateUserInfoForm}
           layout="vertical"
           onFinish={(values) => handleSubmitForm(values)}
@@ -172,6 +215,7 @@ const UpdateInfo = () => {
             address: userInfo.data?.address,
             gender: userInfo.data?.gender,
             dateOfBirth: dayjs(userInfo.data?.dateOfBirth),
+            cityCode: userInfo.data?.cityCode,
           }}
         >
           <Form.Item label="Ảnh đại diện" name="avatar">
@@ -250,6 +294,7 @@ const UpdateInfo = () => {
           >
             <Input addonBefore={phoneNumberPrefix} />
           </Form.Item>
+
           <Row gutter={[16, 16]}>
             <Col span={12}>
               <Form.Item label="Ngày sinh" name="dateOfBirth">
@@ -266,6 +311,7 @@ const UpdateInfo = () => {
               </Form.Item>
             </Col>
           </Row>
+
           <Row gutter={[16, 16]}>
             <Col span={8}>
               <Form.Item label="Tỉnh/Thành" name="cityCode">
@@ -291,6 +337,7 @@ const UpdateInfo = () => {
                       wardCode: undefined,
                     });
                   }}
+                  // defaultValue={districtExist}
                   disabled={!updateUserInfoForm.getFieldValue('cityCode')}
                 >
                   {renderDistrictOptions}

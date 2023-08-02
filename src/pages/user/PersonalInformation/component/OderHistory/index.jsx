@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useMemo } from 'react';
 import { Button, Table, Tag } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';

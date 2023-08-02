@@ -1,16 +1,18 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Card, Row, Col, Checkbox, Input, Select, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, generatePath } from 'react-router-dom';
+import { Link, generatePath, useNavigate } from 'react-router-dom';
+import qs from 'qs';
 
 import { PRODUCT_LIMIT } from 'constants/paging';
 import { getProductListRequest } from 'redux/slicers/product.slice';
 import { getCategoryListRequest } from 'redux/slicers/category.slice';
 import TopIcon from '../components/TopIcon';
 import { ROUTES } from 'constants/routes';
+import { formatMoney } from 'helper';
+import { clearFilterParams, setFilterParams } from 'redux/slicers/common.slice';
 
 import * as S from './styles';
-import { formatMoney } from 'helper';
 
 const { Meta } = Card;
 
@@ -18,27 +20,27 @@ function ProductListPage() {
   const dispatch = useDispatch();
   const { productList } = useSelector((state) => state.product);
   const { categoriesList } = useSelector((state) => state.category);
-  const [filterParams, setFilterParams] = useState({
-    categoryId: [],
-    keyword: '',
-    order: '',
-  });
+  const { filterParams } = useSelector((state) => state.common);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCategoryListRequest());
     dispatch(
       getProductListRequest({
+        ...filterParams,
         page: 1,
         limit: PRODUCT_LIMIT,
       })
     );
+    return () => dispatch(clearFilterParams());
   }, []);
 
   const handleFilter = (key, values) => {
-    setFilterParams({
+    const newFilterParams = {
       ...filterParams,
       [key]: values,
-    });
+    };
+    dispatch(setFilterParams(newFilterParams));
     dispatch(
       getProductListRequest({
         ...filterParams,
@@ -47,6 +49,10 @@ function ProductListPage() {
         limit: PRODUCT_LIMIT,
       })
     );
+    navigate({
+      pathname: ROUTES.USER.PRODUCT_LIST,
+      search: qs.stringify(newFilterParams),
+    });
   };
 
   const renderProductList = useMemo(() => {
@@ -112,6 +118,7 @@ function ProductListPage() {
           <Card title="Sản phẩm" size="small">
             <Checkbox.Group
               onChange={(values) => handleFilter('categoryId', values)}
+              value={filterParams.categoryId}
             >
               <Row>{renderCategoryList}</Row>
             </Checkbox.Group>
@@ -120,12 +127,14 @@ function ProductListPage() {
               onChange={(e) => handleFilter('keyword', e.target.value)}
               placeholder="Search..."
               style={{ width: '100%', margin: '5px 0 5px 0' }}
+              value={filterParams.keyword}
             />
 
             <Select
               onChange={(value) => handleFilter('sort', value)}
               placeholder="sắp xếp theo giá"
               style={{ width: '100%' }}
+              value={filterParams.sort}
             >
               {/* 
                 <Select.Option value="name.asc">A-Z</Select.Option>

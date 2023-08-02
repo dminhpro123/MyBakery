@@ -15,3 +15,18 @@ export const FooterBottom = styled.div`
   color: white;
   height: 9vh;
 `;
+
+export const CategoryListWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+`;
+export const CategoryItem = styled.div`
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 0.3rem;
+
+  &:hover {
+    background-color: #e56c50;
+  }
+`;
