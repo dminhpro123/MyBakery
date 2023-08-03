@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ProductListWrapper = styled.div`
   margin: 5px 0 5px 0;
 `;
+
 export const AsideWrapper = styled.nav`
   display: flex;
   flex-direction: column;
@@ -19,4 +20,10 @@ export const ItemOfList = styled.div`
 
 export const NoData = styled.div`
   color: blueviolet;
+`;
+
+export const LoadingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;

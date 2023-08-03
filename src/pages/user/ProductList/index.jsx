@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Card, Row, Col, Checkbox, Input, Select, Button } from 'antd';
+import { Card, Row, Col, Checkbox, Input, Select, Button, Empty } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -11,6 +11,7 @@ import TopIcon from '../components/TopIcon';
 import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
 import { clearFilterParams, setFilterParams } from 'redux/slicers/common.slice';
+import loadingSpin from 'assets/gif/loading-spin.gif';
 
 import T from 'components/Typography';
 import * as S from './styles';
@@ -22,9 +23,14 @@ function ProductListPage() {
   const { productList } = useSelector((state) => state.product);
   const { categoriesList } = useSelector((state) => state.category);
   const { filterParams } = useSelector((state) => state.common);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     dispatch(getCategoryListRequest());
     dispatch(
       getProductListRequest({
@@ -33,10 +39,15 @@ function ProductListPage() {
         limit: PRODUCT_LIMIT,
       })
     );
+
     return () => dispatch(clearFilterParams());
   }, []);
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     dispatch(
       getProductListRequest({
         ...filterParams,
@@ -67,7 +78,13 @@ function ProductListPage() {
   };
 
   const renderProductList = useMemo(() => {
-    if (productList.data.length === 0) {
+    if (loading === true) {
+      return (
+        <S.LoadingWrapper>
+          <img src={loadingSpin} width={300} alt="loading" />
+        </S.LoadingWrapper>
+      );
+    } else if (productList.data.length === 0) {
       return (
         <S.NoData>
           <h1>Xin lỗi quý khách hiện nay chưa có hàng!!!</h1>
@@ -96,7 +113,7 @@ function ProductListPage() {
         );
       });
     }
-  }, [productList.data]);
+  }, [productList.data, loading]);
 
   const handleShowMore = () => {
     dispatch(
@@ -158,7 +175,7 @@ function ProductListPage() {
         </Col>
 
         <Col lg={18} xs={24}>
-          <Row gutter={[16, 16]}>{renderProductList}</Row>
+          <Row>{renderProductList}</Row>
           {productList.data.length !== productList.meta.total && (
             <Row justify="center" style={{ marginTop: '10px' }}>
               <Button type="primary" onClick={() => handleShowMore()}>
