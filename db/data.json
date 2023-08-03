@@ -15,11 +15,11 @@
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 108,
+      "view": 109,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1690992243394,
+      "updatedAt": 1690997489334,
       "createdAt": 1689481110282
     },
     {
@@ -268,12 +268,12 @@
     },
     {
       "email": "minh1@gmail.com",
-      "password": "$2a$10$DxBs4O.3VWSizutPVrC3yex3qakdMBkT4KaG4OT9nkgSxIpWvRmZ.",
+      "password": "$2a$10$gzPRxJLjf8bWDH6STNfmdO3zzMv2uhhLfOe8CAkcjNyFnGWHHpzXS",
       "fullName": "Nguyễn Thị Thanh Loan",
       "phone": "+84919695233",
       "address": "23 Hải Phòng",
       "createdAt": 1689731542642,
-      "updatedAt": 1690990143454,
+      "updatedAt": 1691080340132,
       "id": 2,
       "gender": "Nữ",
       "dateOfBirth": 1690615701643,

@@ -4,7 +4,6 @@ import { Link, generatePath, useNavigate, useParams } from 'react-router-dom';
 import {
   Row,
   Col,
-  Image,
   Descriptions,
   Card,
   Form,

@@ -14,6 +14,14 @@ const initialState = {
     loading: false,
     error: null,
   },
+  updateUserInfoData: {
+    load: false,
+    error: '',
+  },
+  changePasswordData: {
+    load: false,
+    error: '',
+  },
 };
 
 export const authSlice = createSlice({
@@ -87,6 +95,21 @@ export const authSlice = createSlice({
       state.userInfo.data = {};
       localStorage.removeItem('accessToken');
     },
+    // changePassword
+    changePasswordRequest: (state, action) => {
+      state.changePasswordData.loading = true;
+      state.changePasswordData.error = null;
+    },
+    changePasswordSuccess: (state, action) => {
+      const { data } = action.payload;
+      state.changePasswordData.data = data;
+      state.changePasswordData.loading = false;
+    },
+    changePasswordFailure: (state, action) => {
+      const { error } = action.payload;
+      state.changePasswordData.loading = false;
+      state.changePasswordData.error = error;
+    },
   },
 });
 
@@ -104,6 +127,9 @@ export const {
   updateUserInfoSuccess,
   updateUserInfoFailure,
   logoutUser,
+  changePasswordRequest,
+  changePasswordSuccess,
+  changePasswordFailure,
 } = authSlice.actions;
 
 export default authSlice.reducer;

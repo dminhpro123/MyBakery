@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfoRequest } from 'redux/slicers/auth.slice';
@@ -30,6 +30,7 @@ import Checkout from 'pages/user/Checkout';
 
 function App() {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
   const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -39,6 +40,10 @@ function App() {
       dispatch(getUserInfoRequest({ id: parseInt(userData.sub) }));
     }
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <Routes>

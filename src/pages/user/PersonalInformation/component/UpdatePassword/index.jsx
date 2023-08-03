@@ -1,26 +1,37 @@
 import { Button, Form, Input } from 'antd';
-import { ROUTES } from 'constants/routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
-import { updateUserInfoRequest } from 'redux/slicers/auth.slice';
+import { changePasswordRequest } from 'redux/slicers/auth.slice';
 
 import * as S from './style';
+import { useEffect } from 'react';
 
 const UpdatePassword = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo, changePasswordData } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [updateUserPasswordForm] = Form.useForm();
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (changePasswordData.error) {
+      updateUserPasswordForm.setFields([
+        {
+          name: 'oldPassword',
+          errors: ['Mật khẩu không khớp!'],
+        },
+      ]);
+    }
+  }, [changePasswordData.error]);
 
   const handleSubmitForm = (values) => {
     dispatch(
-      updateUserInfoRequest({
+      changePasswordRequest({
+        id: userInfo.data.id,
         data: {
-          id: userInfo.data.id,
-          password: values.password,
+          email: userInfo.data.email,
+          password: values.oldPassword,
+          newPassword: values.password,
         },
-        callback: () => navigate(ROUTES.USER.PERSONAL_INFOR),
+        callback: () => updateUserPasswordForm.resetFields(),
       })
     );
   };
@@ -36,12 +47,25 @@ const UpdatePassword = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="Mật khẩu"
+            label="Mật khẩu cũ"
+            name="oldPassword"
+            rules={[
+              {
+                required: true,
+                message: 'Mật khẩu cũ là bắt buộc',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            label="Mật khẩu mới"
             name="password"
             rules={[
               {
                 required: true,
-                message: 'Mật khẩu là bắt buộc',
+                message: 'Mật khẩu mới là bắt buộc',
               },
               {
                 pattern:

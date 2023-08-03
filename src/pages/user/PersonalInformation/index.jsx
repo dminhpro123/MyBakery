@@ -15,6 +15,10 @@ const PersonalInformation = () => {
 
   useEffect(() => {}, []);
 
+  const onChange = (key) => {
+    return (key = '1');
+  };
+
   if (!accessToken) return <Navigate to={ROUTES.USER.HOME} />;
 
   return (
@@ -23,6 +27,10 @@ const PersonalInformation = () => {
         <Card bordered={false} size="small">
           <Tabs
             tabPosition="left"
+            // renderTabBar={<ShowInfo />}
+            defaultActiveKey={1}
+            onChange={onChange}
+            destroyInactiveTabPane
             items={[
               {
                 label: 'Thông tin cá nhân',

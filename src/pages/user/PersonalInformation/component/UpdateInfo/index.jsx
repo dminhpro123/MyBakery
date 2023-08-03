@@ -13,16 +13,14 @@ import {
   Select,
   Row,
   Col,
+  notification,
 } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { LoadingOutlined, UserOutlined } from '@ant-design/icons';
-import moment from 'moment';
 
 import { updateUserInfoRequest } from 'redux/slicers/auth.slice';
 import { ROUTES } from 'constants/routes';
-
-import * as S from './style';
 import {
   getCityListRequest,
   getDistrictExistRequest,
@@ -30,6 +28,8 @@ import {
   getWardExistRequest,
   getWardListRequest,
 } from 'redux/slicers/location.slice';
+
+import * as S from './style';
 dayjs.extend(customParseFormat);
 
 const getBase64 = (img, callback) => {
@@ -97,7 +97,6 @@ const UpdateInfo = () => {
       let districtExist = districtList.data.filter(
         (item) => item.code === userInfo.data.districtCode
       )[0]?.code;
-
       updateUserInfoForm.setFieldValue('districtCode', districtExist);
     }
   }, [
@@ -163,7 +162,9 @@ const UpdateInfo = () => {
           wardName: wardData?.name,
           dateOfBirth: dayjs(values.dateOfBirth).valueOf(),
         },
-        callback: () => navigate(ROUTES.USER.PERSONAL_INFOR),
+        callback: () => {
+          notification.success({ message: 'Thay đổi thông tin thành công' });
+        },
       })
     );
   };

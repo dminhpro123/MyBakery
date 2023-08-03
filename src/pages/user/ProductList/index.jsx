@@ -12,6 +12,7 @@ import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
 import { clearFilterParams, setFilterParams } from 'redux/slicers/common.slice';
 
+import T from 'components/Typography';
 import * as S from './styles';
 
 const { Meta } = Card;
