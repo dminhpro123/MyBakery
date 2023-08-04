@@ -69,8 +69,4 @@ export default function* orderSaga() {
   yield takeEvery(getOrderListRequest.type, getOrderListSaga);
   yield takeEvery(orderProductRequest.type, orderProductSaga);
   yield takeEvery(cancelOrderListRequest.type, cancelOrderListSaga);
-  console.log(
-    '🚀 ~ file: order.saga.js:72 ~ function*orderSaga ~ cancelOrderListSaga:',
-    cancelOrderListSaga
-  );
 }

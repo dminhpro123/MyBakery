@@ -1,5 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Card, Row, Col, Checkbox, Input, Select, Button, Empty } from 'antd';
+import {
+  Card,
+  Row,
+  Col,
+  Checkbox,
+  Input,
+  Select,
+  Button,
+  Empty,
+  Rate,
+  notification,
+  Space,
+} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -15,6 +27,12 @@ import loadingSpin from 'assets/gif/loading-spin.gif';
 
 import T from 'components/Typography';
 import * as S from './styles';
+import {
+  CommentOutlined,
+  HeartOutlined,
+  ShoppingCartOutlined,
+} from '@ant-design/icons';
+import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 const { Meta } = Card;
 
@@ -77,6 +95,23 @@ function ProductListPage() {
     });
   };
 
+  const handleAddToCart = (e, item) => {
+    e.preventDefault();
+    dispatch(
+      addToCartRequest({
+        data: {
+          productId: item.id,
+          images: item.images,
+          name: item.name,
+          price: item.price,
+          quantity: 1,
+        },
+      })
+    );
+    // console.log(item);
+    notification.success({ message: 'Bỏ vào giỏ thành công' });
+  };
+
   const renderProductList = useMemo(() => {
     if (loading === true) {
       return (
@@ -92,6 +127,12 @@ function ProductListPage() {
       );
     } else {
       return productList.data.map((item) => {
+        const averageRate = item.reviews.length
+          ? (
+              item.reviews.reduce((total, item) => total + item.rate, 0) /
+              item.reviews.length
+            ).toFixed(1)
+          : 0;
         return (
           <S.ItemOfList key={item.id}>
             <Link
@@ -105,8 +146,53 @@ function ProductListPage() {
                   overflow: 'hidden',
                 }}
                 cover={<img alt={item.name} src={item.images} />}
+                actions={[
+                  <Space>
+                    <HeartOutlined key="favorite" />
+                    <span>{item.favorites.length}</span>
+                  </Space>,
+                  <Space>
+                    <CommentOutlined key="review" />
+                    <span>{item.reviews.length}</span>
+                  </Space>,
+                ]}
               >
-                <Meta title={item.name} description={formatMoney(item.price)} />
+                <Row>
+                  <Col span={18}>
+                    <Meta
+                      title={item.name}
+                      description={formatMoney(item.price)}
+                    />
+                  </Col>
+                  <Col span={6}>
+                    <Meta
+                      title={
+                        <Button
+                          type="primary"
+                          ghost
+                          id={`cart_${item.id}`}
+                          onClick={(e) => handleAddToCart(e, item)}
+                        >
+                          <ShoppingCartOutlined />
+                        </Button>
+                      }
+                    />
+                  </Col>
+                </Row>
+                <Meta
+                  title={
+                    <Rate
+                      value={averageRate}
+                      allowHalf
+                      disabled
+                      style={{ fontSize: 12 }}
+                    />
+                  }
+                  description={`${
+                    averageRate !== 0 ? averageRate : 'chưa'
+                  } đánh giá`}
+                  style={{ marginTop: 10 }}
+                />
               </Card>
             </Link>
           </S.ItemOfList>
