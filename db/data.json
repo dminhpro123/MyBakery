@@ -59,11 +59,11 @@
       "id": 6,
       "name": "Kem flan",
       "price": 7000,
-      "view": 42,
+      "view": 43,
       "description": "Bánh Flan còn có tên gọi khác là Caramen. Đây là Một loại bánh vừa thơm ngon; mềm xốp; lại hấp dẫn được rất nhiều người từ nhiều lứa tuổi. Bánh được hấp chín từ các nguyên liệu chính là trứng và sữa; nước caramen. Đây là một loại bánh có lẽ xuất xứ từ nền ẩm thực châu Âu; tuy hiện nay đã phổ biến tại nhiều nơi trên thế giới.",
       "categoryId": 9,
       "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1690992002035,
+      "updatedAt": 1691155591713,
       "createdAt": 1689481114282
     }
   ],
@@ -71,47 +71,42 @@
     {
       "id": 1,
       "name": "Bánh mỳ",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/DanhMuc/Untitled-2-400x264f.jpg"
     },
     {
       "id": 2,
       "name": "Bánh ngọt",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/DanhMuc/Banh%20Socola%20Mehico-1-400x264f.jpg"
     },
     {
       "id": 3,
       "name": "Bánh mặn",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/Banh%20jambong-1-400x264f.jpg"
     },
     {
       "id": 4,
       "name": "Bánh kem",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/DanhMuc/Banh%20kem%20trai%20cay-400x264f.jpg"
     },
     {
       "id": 5,
       "name": "Bánh sandwich",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/DanhMuc/Sandwich%20lat2-400x264f.jpg"
     },
     {
       "id": 6,
       "name": "Bánh bông lan",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/DanhMuc/Banh%20bong%20lan%20cuon-400x264f.jpg"
     },
     {
       "id": 7,
-      "name": "Bánh tết",
-      "images": ""
+      "name": "Bánh trung thu",
+      "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20Trung%20Thu/IMG_9760-400x264f.JPG"
     },
     {
       "id": 8,
-      "name": "Bánh trung thu",
-      "images": ""
-    },
-    {
-      "id": 9,
       "name": "Tráng miệng",
-      "images": ""
+      "images": "http://dongtienbakery.com/image/cache/data/28704-400x264f.jpg"
     }
   ],
   "bakeryInformation": {
@@ -143,7 +138,7 @@
       ]
     }
   },
-  "advertisment": [
+  "advertisement": [
     {
       "id": 1,
       "image": "http://dongtienbakery.com/image/cache/data/Banner/Valentine%20day05-1349x700f.jpg",

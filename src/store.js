@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import productReducer from 'redux/slicers/product.slice';
 import categoryReducer from 'redux/slicers/category.slice';
 import bakeryInformationReducer from 'redux/slicers/bakeryInformation.slice';
-import advertismentReducer from 'redux/slicers/advertisment.slice';
+import advertisementReducer from 'redux/slicers/advertisement.slice';
 import newsReducer from 'redux/slicers/news.slice';
 import authReducer from 'redux/slicers/auth.slice';
 import contactReducer from 'redux/slicers/contact.slice';
@@ -24,7 +24,7 @@ const store = configureStore({
     product: productReducer,
     category: categoryReducer,
     bakeryInformation: bakeryInformationReducer,
-    advertisment: advertismentReducer,
+    advertisement: advertisementReducer,
     news: newsReducer,
     auth: authReducer,
     contact: contactReducer,

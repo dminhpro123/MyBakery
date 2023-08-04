@@ -1,24 +1,26 @@
-import { Button, Card, Col, Rate, Row, Space, notification } from 'antd';
-import React, { useEffect, useMemo } from 'react';
+import { Button, Card, Col, List, Rate, Row, Space, notification } from 'antd';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, generatePath } from 'react-router-dom';
-
-import { getAdvertismentListRequest } from 'redux/slicers/advertisment.slice';
-import {
-  getNewProductListRequest,
-  getOutstandingProductListRequest,
-} from 'redux/slicers/product.slice';
-import { ROUTES } from 'constants/routes';
-import { formatMoney } from 'helper';
-
-import * as S from './styles';
+import { Link, generatePath, useNavigate } from 'react-router-dom';
 import {
   CommentOutlined,
   HeartOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
+import qs from 'qs';
+
+import { getAdvertisementListRequest } from 'redux/slicers/advertisement.slice';
+import {
+  getNewProductListRequest,
+  getOutstandingProductListRequest,
+} from 'redux/slicers/product.slice';
 import { addToCartRequest } from 'redux/slicers/cart.slice';
+import { setFilterParams } from 'redux/slicers/common.slice';
+import { ROUTES } from 'constants/routes';
+import { formatMoney } from 'helper';
+
+import * as S from './styles';
 
 const { Meta } = Card;
 
@@ -44,18 +46,22 @@ const someProductListSettings = {
 
 function HomePage() {
   const dispatch = useDispatch();
-  const { advertismentList } = useSelector((state) => state.advertisment);
+  const { advertisementList } = useSelector((state) => state.advertisement);
   const { outstandingProductList, newProductList } = useSelector(
     (state) => state.product
   );
+  const { filterParams } = useSelector((state) => state.common);
+  const { categoriesList } = useSelector((state) => state.category);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getAdvertismentListRequest());
+    dispatch(getAdvertisementListRequest());
     dispatch(getOutstandingProductListRequest());
     dispatch(getNewProductListRequest());
   }, []);
 
-  const handleAddToCart = (e, item) => {
+  const handleAddToCart = useCallback((e, item) => {
     e.preventDefault();
     dispatch(
       addToCartRequest({
@@ -70,7 +76,7 @@ function HomePage() {
     );
     // console.log(item);
     notification.success({ message: 'Bỏ vào giỏ thành công' });
-  };
+  }, []);
 
   const renderOutstandingProductListSlide = useMemo(() => {
     if (!outstandingProductList.data) return null;
@@ -225,8 +231,8 @@ function HomePage() {
   }, [newProductList.data, handleAddToCart]);
 
   const renderAdvertisementSlide = useMemo(() => {
-    if (!advertismentList) return null;
-    return advertismentList.data.map((item) => {
+    if (!advertisementList) return null;
+    return advertisementList.data.map((item) => {
       return (
         <div key={item.id} style={{ height: '400px' }}>
           <S.AdvertisementSlide>
@@ -235,7 +241,7 @@ function HomePage() {
         </div>
       );
     });
-  }, [advertismentList]);
+  }, [advertisementList]);
 
   return (
     <S.HomeWrapper>
@@ -243,6 +249,43 @@ function HomePage() {
       <Row gutter={[16, 16]}>
         <Col span={1} />
         <Col span={22}>
+          <S.ItemCategoryList>
+            <List
+              grid={{
+                gutter: 16,
+                md: 3,
+                lg: 2,
+              }}
+              dataSource={categoriesList.data}
+              renderItem={(item) => (
+                <List.Item
+                  key={item.id}
+                  onClick={() => {
+                    dispatch(
+                      setFilterParams({
+                        ...filterParams,
+                        categoryId: [item.id],
+                      })
+                    );
+                    navigate({
+                      pathname: ROUTES.USER.PRODUCT_LIST,
+                      search: qs.stringify({
+                        ...filterParams,
+                        categoryId: [item.id],
+                      }),
+                    });
+                  }}
+                >
+                  <S.CategoryContainer>
+                    <S.ImgCategory alt={item.name} src={item.images} />
+                    <S.TextCategoryContainer>
+                      <span> {item.name.toUpperCase()}</span>
+                    </S.TextCategoryContainer>
+                  </S.CategoryContainer>
+                </List.Item>
+              )}
+            />
+          </S.ItemCategoryList>
           <S.SomeProductListWrapper>
             <h2>Sản phẩm nổi bật</h2>
             <Slider {...someProductListSettings}>
