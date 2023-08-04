@@ -10,6 +10,7 @@ import contactSaga from './contact.saga';
 import reviewSaga from './review.saga';
 import locationSaga from './location.saga';
 import orderSaga from './order.saga';
+import favoriteSaga from './favorite.saga';
 
 export default function* rootSaga() {
   yield fork(productSaga);
@@ -22,4 +23,5 @@ export default function* rootSaga() {
   yield fork(reviewSaga);
   yield fork(locationSaga);
   yield fork(orderSaga);
+  yield fork(favoriteSaga);
 }

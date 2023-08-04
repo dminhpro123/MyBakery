@@ -189,8 +189,8 @@ function ProductListPage() {
                     />
                   }
                   description={`${
-                    averageRate !== 0 ? averageRate : 'chưa'
-                  } đánh giá`}
+                    averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
+                  } `}
                   style={{ marginTop: 10 }}
                 />
               </Card>

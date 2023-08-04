@@ -83,6 +83,7 @@ function* getOutstandingProductListSaga(action) {
   try {
     const result = yield axios.get('http://localhost:4000/products', {
       params: {
+        _embed: ['reviews', 'favorites'],
         _sort: 'view',
         _order: 'desc',
         _limit: 8,
@@ -102,6 +103,7 @@ function* getNewProductListSaga(action) {
   try {
     const result = yield axios.get('http://localhost:4000/products', {
       params: {
+        _embed: ['reviews', 'favorites'],
         _sort: 'createdAt',
         _order: 'desc',
         _limit: 8,
