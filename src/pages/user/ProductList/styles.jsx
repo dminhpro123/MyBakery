@@ -30,3 +30,7 @@ export const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const ShowListLength = styled.div`
+  padding: 5px;
+`;

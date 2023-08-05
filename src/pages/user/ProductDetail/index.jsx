@@ -16,7 +16,12 @@ import {
   notification,
 } from 'antd';
 import moment from 'moment';
-import { UserOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  ShoppingCartOutlined,
+  HeartFilled,
+  HeartOutlined,
+} from '@ant-design/icons';
 
 import TopIcon from '../components/TopIcon';
 import { formatMoney } from 'helper';
@@ -34,6 +39,10 @@ import { ROUTES } from 'constants/routes';
 import { addToCartRequest } from 'redux/slicers/cart.slice';
 
 import * as S from './style';
+import {
+  favoriteProductRequest,
+  unFavoriteProductRequest,
+} from 'redux/slicers/favorite.slice';
 const { Meta } = Card;
 
 const ProductDetail = () => {
@@ -50,9 +59,20 @@ const ProductDetail = () => {
   const [existUserReviewIndex, setExistUserReviewIndex] = useState(0);
   const navigate = useNavigate();
 
-  const productRate =
-    reviewList.data.reduce((total, item) => total + item.rate, 0) /
-      reviewList.data.length || 0;
+  const productRate = useMemo(
+    () =>
+      reviewList.data.reduce((total, item) => total + item.rate, 0) /
+        reviewList.data.length || 0,
+    [reviewList.data]
+  );
+
+  const isFavorite = useMemo(
+    () =>
+      productDetail.data.favorites?.some(
+        (item) => item.userId === userInfo.data.id
+      ),
+    [productDetail.data.favorites, userInfo.data.id]
+  );
 
   useEffect(() => {
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
@@ -78,12 +98,33 @@ const ProductDetail = () => {
     }
     dispatch(getProductDetailRequest({ id: parseInt(id) }));
     dispatch(getReviewListRequest({ productId: parseInt(id) }));
-    if (
-      productDetail.data.name &&
-      productDetail.data.name.toLowerCase() !== name
-    )
-      navigate(ROUTES.USER.HOME);
-  }, [productDetail.data.id, id, name, productDetail.data.name]);
+  }, [productDetail.data.id, id]);
+
+  const handleToggleFavorite = () => {
+    if (userInfo.data.id) {
+      if (isFavorite) {
+        const favoriteData = productDetail.data.favorites?.find(
+          (item) => item.userId === userInfo.data.id
+        );
+        dispatch(
+          unFavoriteProductRequest({
+            id: favoriteData.id,
+          })
+        );
+      } else {
+        dispatch(
+          favoriteProductRequest({
+            productId: productDetail.data.id,
+            userId: userInfo.data.id,
+          })
+        );
+      }
+    } else {
+      notification.error({
+        message: 'Vui lòng đăng nhập để thực hiện chức năng này!',
+      });
+    }
+  };
 
   const hasReview = useMemo(() => {
     return reviewList.data.some((item) => item.userId === userInfo.data.id);
@@ -101,7 +142,7 @@ const ProductDetail = () => {
     return productDetail.data === undefined ? null : (
       <>
         <Col xs={24} md={12} xl={8}>
-          <img src={productDetail.data.images} />
+          <img src={productDetail.data.images} alt={productDetail.data.name} />
         </Col>
         <Col xs={24} md={6} xl={8}>
           <Row gutter={[12, 12]}>
@@ -112,7 +153,7 @@ const ProductDetail = () => {
             </Col>
             <br />
             <Col span={24}>
-              <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Space align="baseline">
                   <Rate value={productRate} allowHalf disabled />
                   <span>{`(${
@@ -121,6 +162,24 @@ const ProductDetail = () => {
                       : productRate.toFixed(2)
                   })`}</span>
                 </Space>
+                <Space align="baseline">
+                  <Button
+                    size="large"
+                    type="text"
+                    danger={isFavorite}
+                    icon={
+                      isFavorite ? (
+                        <HeartFilled style={{ fontSize: 24 }} />
+                      ) : (
+                        <HeartOutlined
+                          style={{ fontSize: 24, color: '#414141' }}
+                        />
+                      )
+                    }
+                    onClick={() => handleToggleFavorite()}
+                  ></Button>
+                  {productDetail.data?.favorites?.length || 0} Lượt thích
+                </Space>
               </div>
             </Col>
             <br />
@@ -128,7 +187,7 @@ const ProductDetail = () => {
               <Descriptions>
                 <Descriptions.Item
                   label="Đơn giá"
-                  contentStyle={{ fontSize: 'xx-larger', fontWeight: 'bold' }}
+                  contentStyle={{ fontSize: 'larger', fontWeight: 'bold' }}
                   labelStyle={{ fontSize: 'larger' }}
                 >
                   {formatMoney(productDetail.data.price)}
@@ -137,7 +196,7 @@ const ProductDetail = () => {
               <Descriptions>
                 <Descriptions.Item
                   label="Mô tả"
-                  contentStyle={{ fontSize: 'xx-larger', fontWeight: 'bold' }}
+                  contentStyle={{ fontSize: 'larger', fontWeight: 'bold' }}
                   labelStyle={{ fontSize: 'larger' }}
                 >
                   {productDetail.data.description}

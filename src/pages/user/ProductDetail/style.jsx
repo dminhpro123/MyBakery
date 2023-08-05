@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+// background-image: url(http://www.daidongtam.com.vn/images/bg_sp.jpg);
 
 export const ProductDetailWrapper = styled.div`
   margin-top: 10px;

@@ -54,9 +54,31 @@ export const favoriteSlice = createSlice({
       state.unFavoriteProductData.error = null;
     },
     unFavoriteProductSuccess: (state, action) => {
+      const { id } = action.payload;
       state.unFavoriteProductData.loading = false;
+      state.favoriteList.data = state.favoriteList.data.filter(
+        (item) => item.id !== id
+      );
     },
     unFavoriteProductFailure: (state, action) => {
+      const { error } = action.payload;
+      state.unFavoriteProductData.loading = false;
+      state.unFavoriteProductData.error = error;
+    },
+
+    // deleteFavoriteProduct
+    deleteFavoriteProductRequest: (state, action) => {
+      state.unFavoriteProductData.loading = true;
+      state.unFavoriteProductData.error = null;
+    },
+    deleteFavoriteProductSuccess: (state, action) => {
+      const { id } = action.payload;
+      state.unFavoriteProductData.loading = false;
+      state.favoriteList.data = state.favoriteList.data.filter(
+        (item) => item.id !== id
+      );
+    },
+    deleteFavoriteProductFailure: (state, action) => {
       const { error } = action.payload;
       state.unFavoriteProductData.loading = false;
       state.unFavoriteProductData.error = error;
@@ -74,6 +96,9 @@ export const {
   unFavoriteProductRequest,
   unFavoriteProductSuccess,
   unFavoriteProductFailure,
+  deleteFavoriteProductRequest,
+  deleteFavoriteProductSuccess,
+  deleteFavoriteProductFailure,
 } = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

@@ -1,5 +1,5 @@
 import { Button, Card, Col, List, Rate, Row, Space, notification } from 'antd';
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
@@ -19,6 +19,7 @@ import { addToCartRequest } from 'redux/slicers/cart.slice';
 import { setFilterParams } from 'redux/slicers/common.slice';
 import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
+import loadingSpin from 'assets/gif/loading-spin.gif';
 
 import * as S from './styles';
 
@@ -42,6 +43,39 @@ const someProductListSettings = {
   slidesToShow: 5,
   slidesToScroll: 1,
   arrows: false,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 function HomePage() {
@@ -52,10 +86,15 @@ function HomePage() {
   );
   const { filterParams } = useSelector((state) => state.common);
   const { categoriesList } = useSelector((state) => state.category);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     dispatch(getAdvertisementListRequest());
     dispatch(getOutstandingProductListRequest());
     dispatch(getNewProductListRequest());
@@ -245,57 +284,89 @@ function HomePage() {
 
   return (
     <S.HomeWrapper>
-      <Slider {...advertisementSettings}>{renderAdvertisementSlide}</Slider>
+      <Row>
+        <Col span={24}>
+          <Slider {...advertisementSettings}>
+            {loading ? (
+              <S.LoadingWrapper>
+                <img src={loadingSpin} alt="loading" />
+              </S.LoadingWrapper>
+            ) : (
+              renderAdvertisementSlide
+            )}
+          </Slider>
+        </Col>
+      </Row>
       <Row gutter={[16, 16]}>
         <Col span={1} />
         <Col span={22}>
           <S.ItemCategoryList>
-            <List
-              grid={{
-                gutter: 16,
-                md: 3,
-                lg: 2,
-              }}
-              dataSource={categoriesList.data}
-              renderItem={(item) => (
-                <List.Item
-                  key={item.id}
-                  onClick={() => {
-                    dispatch(
-                      setFilterParams({
-                        ...filterParams,
-                        categoryId: [item.id],
-                      })
-                    );
-                    navigate({
-                      pathname: ROUTES.USER.PRODUCT_LIST,
-                      search: qs.stringify({
-                        ...filterParams,
-                        categoryId: [item.id],
-                      }),
-                    });
-                  }}
-                >
-                  <S.CategoryContainer>
-                    <S.ImgCategory alt={item.name} src={item.images} />
-                    <S.TextCategoryContainer>
-                      <span> {item.name.toUpperCase()}</span>
-                    </S.TextCategoryContainer>
-                  </S.CategoryContainer>
-                </List.Item>
-              )}
-            />
+            {loading ? (
+              <S.LoadingWrapper>
+                <img src={loadingSpin} alt="loading" />
+              </S.LoadingWrapper>
+            ) : (
+              <List
+                grid={{
+                  gutter: 16,
+                  md: 3,
+                  lg: 2,
+                  sm: 1,
+                }}
+                title="Sản phẩm"
+                dataSource={categoriesList.data}
+                renderItem={(item) => (
+                  <List.Item
+                    key={item.id}
+                    onClick={() => {
+                      dispatch(
+                        setFilterParams({
+                          ...filterParams,
+                          categoryId: [item.id],
+                        })
+                      );
+                      navigate({
+                        pathname: ROUTES.USER.PRODUCT_LIST,
+                        search: qs.stringify({
+                          ...filterParams,
+                          categoryId: [item.id],
+                        }),
+                      });
+                    }}
+                  >
+                    <S.CategoryContainer>
+                      <S.ImgCategory alt={item.name} src={item.images} />
+                      <S.TextCategoryContainer>
+                        <strong> {item.name.toUpperCase()}</strong>
+                      </S.TextCategoryContainer>
+                    </S.CategoryContainer>
+                  </List.Item>
+                )}
+              />
+            )}
           </S.ItemCategoryList>
           <S.SomeProductListWrapper>
             <h2>Sản phẩm nổi bật</h2>
             <Slider {...someProductListSettings}>
-              {renderOutstandingProductListSlide}
+              {loading ? (
+                <S.LoadingWrapper>
+                  <img src={loadingSpin} alt="loading" />
+                </S.LoadingWrapper>
+              ) : (
+                renderOutstandingProductListSlide
+              )}
             </Slider>
           </S.SomeProductListWrapper>
           <S.SomeProductListWrapper>
             <h2>Sản phẩm mới</h2>
             <Slider {...someProductListSettings}>
-              {renderNewProductListSlide}
+              {loading ? (
+                <S.LoadingWrapper>
+                  <img src={loadingSpin} alt="loading" />
+                </S.LoadingWrapper>
+              ) : (
+                renderNewProductListSlide
+              )}
             </Slider>
           </S.SomeProductListWrapper>
         </Col>

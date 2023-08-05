@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import {
+  favoriteProductSuccess,
+  unFavoriteProductSuccess,
+} from 'redux/slicers/favorite.slice';
+
 const initialState = {
   productList: {
     data: [],
@@ -136,6 +141,17 @@ export const productSlice = createSlice({
       const { error } = action.payload;
       state.similarProduct.loading = false;
       state.similarProduct.error = error;
+    },
+  },
+  extraReducers: {
+    [favoriteProductSuccess.type]: (state, action) => {
+      const { data } = action.payload;
+      state.productDetail.data.favorites.push(data);
+    },
+    [unFavoriteProductSuccess.type]: (state, action) => {
+      const { id } = action.payload;
+      state.productDetail.data.favorites =
+        state.productDetail.data.favorites.filter((item) => item.id !== id);
     },
   },
 });

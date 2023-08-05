@@ -6,6 +6,7 @@ import UpdateInfo from './component/UpdateInfo';
 import ShowInfo from './component/ShowInfo';
 import UpdatePassword from './component/UpdatePassword';
 import OderHistory from './component/OderHistory';
+import FavoriteProducts from './component/FavoriteProducts';
 import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
@@ -55,8 +56,7 @@ const PersonalInformation = () => {
               {
                 label: 'Sản phẩm yêu thích',
                 key: 5,
-                // children: <FavoriteProducts />,
-                children: null,
+                children: <FavoriteProducts />,
               },
             ]}
           />

@@ -261,6 +261,14 @@ function ProductListPage() {
         </Col>
 
         <Col lg={18} xs={24}>
+          {productList.data.length !== 0 && (
+            <Row>
+              <S.ShowListLength>
+                <h4>{`Hiển thị 1 - ${productList.data.length} của ${productList.meta.total} sản phẩm`}</h4>
+              </S.ShowListLength>
+            </Row>
+          )}
+
           <Row>{renderProductList}</Row>
           {productList.data.length !== productList.meta.total && (
             <Row justify="center" style={{ marginTop: '10px' }}>

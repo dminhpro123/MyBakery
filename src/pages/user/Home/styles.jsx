@@ -34,8 +34,13 @@ export const ItemCategoryList = styled.div`
 
 export const CategoryContainer = styled.div`
   position: relative;
-  &:hover {
+  visibility: visible;
+  &:hover span {
     opacity: 1;
+  }
+  &:hover img {
+    opacity: 0.4;
+    transform: scale(1.05);
   }
 `;
 export const ImgCategory = styled.img`
@@ -50,7 +55,7 @@ export const ImgCategory = styled.img`
     opacity: 0.4;
   }
 `;
-export const TextCategoryContainer = styled.div`
+export const TextCategoryContainer = styled.span`
   transition: 0.5s ease;
   opacity: 0;
   position: absolute;
@@ -62,8 +67,11 @@ export const TextCategoryContainer = styled.div`
 
   color: white;
   font-size: 20px;
+  cursor: pointer;
+`;
 
-  &:hover {
-    opacity: 1;
-  }
+export const LoadingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;

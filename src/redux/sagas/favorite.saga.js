@@ -11,6 +11,9 @@ import {
   unFavoriteProductRequest,
   unFavoriteProductSuccess,
   unFavoriteProductFailure,
+  deleteFavoriteProductRequest,
+  deleteFavoriteProductSuccess,
+  deleteFavoriteProductFailure,
 } from 'redux/slicers/favorite.slice';
 
 function* getFavoriteListSaga(action) {
@@ -46,7 +49,17 @@ function* unFavoriteProductSaga(action) {
     yield axios.delete(`http://localhost:4000/favorites/${id}`);
     yield put(unFavoriteProductSuccess({ id: id }));
   } catch (e) {
-    yield put(unFavoriteProductFailure({ error: 'Lỗi' }));
+    yield put(unFavoriteProductFailure({ error: e }));
+  }
+}
+
+function* deleteFavoriteProductSaga(action) {
+  try {
+    const { id } = action.payload;
+    yield axios.delete(`http://localhost:4000/favorites/${id}`);
+    yield put(deleteFavoriteProductSuccess({ id: id }));
+  } catch (e) {
+    yield put(deleteFavoriteProductFailure({ error: e }));
   }
 }
 
@@ -54,4 +67,5 @@ export default function* favoriteSaga() {
   yield takeEvery(getFavoriteListRequest.type, getFavoriteListSaga);
   yield takeEvery(favoriteProductRequest.type, favoriteProductSaga);
   yield takeEvery(unFavoriteProductRequest.type, unFavoriteProductSaga);
+  yield takeEvery(deleteFavoriteProductRequest.type, deleteFavoriteProductSaga);
 }
