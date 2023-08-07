@@ -29,10 +29,15 @@ import T from 'components/Typography';
 import * as S from './styles';
 import {
   CommentOutlined,
+  HeartFilled,
   HeartOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { addToCartRequest } from 'redux/slicers/cart.slice';
+import {
+  favoriteProductRequest,
+  unFavoriteProductRequest,
+} from 'redux/slicers/favorite.slice';
 
 const { Meta } = Card;
 
@@ -41,7 +46,9 @@ function ProductListPage() {
   const { productList } = useSelector((state) => state.product);
   const { categoriesList } = useSelector((state) => state.category);
   const { filterParams } = useSelector((state) => state.common);
+  const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
+  const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -112,6 +119,50 @@ function ProductListPage() {
     notification.success({ message: 'Bỏ vào giỏ thành công' });
   };
 
+  const handleLike = (e, item) => {
+    e.preventDefault();
+    if (accessToken) {
+      if (
+        item.favorites.some(
+          (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
+        )
+      ) {
+        const favoriteData = item.favorites.find(
+          (itemFavorite) => itemFavorite.userId === userInfo.data?.id
+        );
+
+        dispatch(
+          unFavoriteProductRequest({
+            id: favoriteData.id,
+          })
+        );
+        dispatch(
+          getProductListRequest({
+            ...filterParams,
+            page: 1,
+            limit: PRODUCT_LIMIT,
+          })
+        );
+      } else {
+        dispatch(
+          favoriteProductRequest({
+            productId: item.id,
+            userId: userInfo.data.id,
+          })
+        );
+        dispatch(
+          getProductListRequest({
+            ...filterParams,
+            page: 1,
+            limit: PRODUCT_LIMIT,
+          })
+        );
+      }
+    } else {
+      notification.error({ message: 'Quý khách cần đăng nhập để like' });
+    }
+  };
+
   const renderProductList = useMemo(() => {
     if (loading === true) {
       return (
@@ -148,7 +199,25 @@ function ProductListPage() {
                 cover={<img alt={item.name} src={item.images} />}
                 actions={[
                   <Space>
-                    <HeartOutlined key="favorite" />
+                    <Button
+                      icon={
+                        item.favorites.some(
+                          (item) =>
+                            parseInt(item.userId) ===
+                            parseInt(userInfo.data?.id)
+                        ) ? (
+                          <HeartFilled
+                            style={{ color: '#414141' }}
+                            type="link"
+                          />
+                        ) : (
+                          <HeartOutlined type="link" />
+                        )
+                      }
+                      key="favorite"
+                      onClick={(e) => handleLike(e, item)}
+                    ></Button>
+
                     <span>{item.favorites.length}</span>
                   </Space>,
                   <Space>

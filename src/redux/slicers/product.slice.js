@@ -147,6 +147,7 @@ export const productSlice = createSlice({
     [favoriteProductSuccess.type]: (state, action) => {
       const { data } = action.payload;
       state.productDetail.data.favorites.push(data);
+      console.log(state.productList.data);
     },
     [unFavoriteProductSuccess.type]: (state, action) => {
       const { id } = action.payload;

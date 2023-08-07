@@ -13,6 +13,7 @@ import {
 } from 'redux/slicers/favorite.slice';
 
 import * as S from './style';
+import { formatMoney } from 'helper';
 
 function FavoriteProducts() {
   const dispatch = useDispatch();
@@ -29,7 +30,6 @@ function FavoriteProducts() {
   }, []);
 
   const handleFavorite = (item) => {
-    console.log('🚀 ~ file: index.jsx:47 ~ handleFavorite ~ item:', item);
     dispatch(deleteFavoriteProductRequest({ id: item.id }));
   };
 
@@ -57,6 +57,12 @@ function FavoriteProducts() {
           {item.product.name}
         </Link>
       ),
+    },
+    {
+      title: 'Giá',
+      dataIndex: 'price',
+      key: 'price',
+      render: (_, item) => formatMoney(item.product.price),
     },
     {
       title: ' ',
