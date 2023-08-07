@@ -146,14 +146,24 @@ export const productSlice = createSlice({
   extraReducers: {
     [favoriteProductSuccess.type]: (state, action) => {
       const { data } = action.payload;
-      state.productDetail.data.favorites.push(data);
-      console.log(state.productList.data);
+      state.productDetail?.data?.favorites.push(data);
+      // state.productList?.data?.favorites.push(data);
     },
     [unFavoriteProductSuccess.type]: (state, action) => {
       const { id } = action.payload;
       state.productDetail.data.favorites =
         state.productDetail.data.favorites.filter((item) => item.id !== id);
     },
+
+    // [favoriteProductSuccess.type]: (state, action) => {
+    //   const { data } = action.payload;
+    //   state.productList?.data?.favorites.push(data);
+    // },
+    // [unFavoriteProductSuccess.type]: (state, action) => {
+    //   const { id } = action.payload;
+    //   state.productList.data.favorites =
+    //     state.productList.data.favorites.filter((item) => item.id !== id);
+    // },
   },
 });
 

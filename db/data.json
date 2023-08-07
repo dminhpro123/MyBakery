@@ -4,22 +4,22 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 109,
+      "view": 129,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691382339174,
+      "updatedAt": 1691387283927,
       "createdAt": 1689481189282
     },
     {
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 97,
+      "view": 98,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691381365859,
+      "updatedAt": 1691384680851,
       "createdAt": 1689481110282
     },
     {
@@ -376,16 +376,9 @@
     {
       "productId": 6,
       "userId": 1,
-      "createdAt": 1691383590528,
-      "updatedAt": 1691383590528,
-      "id": 2
-    },
-    {
-      "productId": 5,
-      "userId": 1,
-      "createdAt": 1691383618427,
-      "updatedAt": 1691383618427,
-      "id": 3
+      "createdAt": 1691386623740,
+      "updatedAt": 1691386623740,
+      "id": 1
     }
   ],
   "orders": [

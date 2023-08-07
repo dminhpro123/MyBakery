@@ -50,6 +50,7 @@ function ProductListPage() {
   const [loading, setLoading] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
+  const { favoriteProductData } = useSelector((state) => state.favorite);
 
   useEffect(() => {
     setLoading(true);
@@ -121,6 +122,7 @@ function ProductListPage() {
 
   const handleLike = (e, item) => {
     e.preventDefault();
+    console.log(item);
     if (accessToken) {
       if (
         item.favorites.some(
@@ -130,37 +132,27 @@ function ProductListPage() {
         const favoriteData = item.favorites.find(
           (itemFavorite) => itemFavorite.userId === userInfo.data?.id
         );
+        console.log('unfavorite');
 
         dispatch(
           unFavoriteProductRequest({
             id: favoriteData.id,
           })
         );
-        dispatch(
-          getProductListRequest({
-            ...filterParams,
-            page: 1,
-            limit: PRODUCT_LIMIT,
-          })
-        );
       } else {
+        console.log('favorite');
         dispatch(
           favoriteProductRequest({
             productId: item.id,
             userId: userInfo.data.id,
           })
         );
-        dispatch(
-          getProductListRequest({
-            ...filterParams,
-            page: 1,
-            limit: PRODUCT_LIMIT,
-          })
-        );
       }
     } else {
       notification.error({ message: 'Quý khách cần đăng nhập để like' });
     }
+
+    console.log(favoriteProductData.error);
   };
 
   const renderProductList = useMemo(() => {
@@ -200,18 +192,17 @@ function ProductListPage() {
                 actions={[
                   <Space>
                     <Button
+                      type="link"
+                      danger
                       icon={
                         item.favorites.some(
                           (item) =>
                             parseInt(item.userId) ===
                             parseInt(userInfo.data?.id)
                         ) ? (
-                          <HeartFilled
-                            style={{ color: '#414141' }}
-                            type="link"
-                          />
+                          <HeartFilled />
                         ) : (
-                          <HeartOutlined type="link" />
+                          <HeartOutlined />
                         )
                       }
                       key="favorite"
@@ -268,7 +259,7 @@ function ProductListPage() {
         );
       });
     }
-  }, [productList.data, loading]);
+  }, [productList.data, loading, userInfo.data.id]);
 
   const handleShowMore = () => {
     dispatch(

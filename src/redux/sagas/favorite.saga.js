@@ -39,7 +39,7 @@ function* favoriteProductSaga(action) {
     );
     yield put(favoriteProductSuccess({ data: result.data }));
   } catch (e) {
-    yield put(favoriteProductFailure({ error: 'Lỗi' }));
+    yield put(favoriteProductFailure({ error: e }));
   }
 }
 
