@@ -1,19 +1,14 @@
-import React, { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBakeryInformationRequest } from 'redux/slicers/bakeryInformation.slice';
-import * as S from './style';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { Col, Image, Row } from 'antd';
+
+import * as S from './style';
 import TopIcon from '../components/TopIcon';
 
 const AboutUs = () => {
-  const dispatch = useDispatch();
   const { bakeryInformationList } = useSelector(
     (state) => state.bakeryInformation
   );
-
-  useEffect(() => {
-    dispatch(getBakeryInformationRequest());
-  }, []);
 
   const informationData = bakeryInformationList.data.aboutUs;
 

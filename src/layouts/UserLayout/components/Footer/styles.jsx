@@ -40,6 +40,7 @@ export const DataInfo = styled.div`
 
 export const Channel = styled.a`
   color: white;
+
   &:hover {
     color: #d7b1b1;
   }

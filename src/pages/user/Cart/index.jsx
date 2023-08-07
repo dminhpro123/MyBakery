@@ -91,12 +91,26 @@ const Cart = () => {
       <S.CartWrapper>
         <h2>Giỏ hàng</h2>
         <br />
-        <Table columns={tableColumn} dataSource={cartList} pagination={false} />
+        {cartList.length === 0 ? (
+          <>
+            <hr />
+            <p>Giỏ hàng của bạn đang trống</p>
+          </>
+        ) : (
+          <Table
+            columns={tableColumn}
+            dataSource={cartList}
+            pagination={false}
+          />
+        )}
+
         <br />
         <Row>
           <Col span={17}></Col>
           <Col span={7}>
-            <h4>Tổng tiền: {formatMoney(totalPrice)}</h4>
+            {cartList.length !== 0 && (
+              <h4>Tổng tiền: {formatMoney(totalPrice)}</h4>
+            )}
           </Col>
         </Row>
         <S.ButtonWrapper>

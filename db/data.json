@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 130,
+      "view": 131,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691389120695,
+      "updatedAt": 1691393537134,
       "createdAt": 1689481189282
     },
     {
@@ -250,7 +250,7 @@
       "fullName": "Nguyễn Văn Đức Minh",
       "phone": "+84919695234",
       "createdAt": 1689481389282,
-      "updatedAt": 1690988752002,
+      "updatedAt": 1691393446478,
       "id": 1,
       "address": "34 Ông Ích Khiêm ",
       "gender": "Nam",
@@ -385,8 +385,8 @@
     {
       "productId": 1,
       "userId": 1,
-      "createdAt": 1691393323871,
-      "updatedAt": 1691393323871,
+      "createdAt": 1691393539501,
+      "updatedAt": 1691393539501,
       "id": 2
     }
   ],
