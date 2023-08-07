@@ -69,7 +69,6 @@ const OderHistory = () => {
             return <Tag color="lime">{item.paymentMethod.toUpperCase()}</Tag>;
           case 'atm':
             return <Tag color="cyan">{item.paymentMethod.toUpperCase()}</Tag>;
-
           default:
             break;
         }

@@ -57,7 +57,6 @@ function App() {
         <Route path={ROUTES.USER.CART} element={<Cart />} />
         <Route path={ROUTES.USER.PRODUCT_DETAIL} element={<ProductDetail />} />
         <Route path={ROUTES.USER.CHECKOUT} element={<Checkout />} />
-
         <Route
           path={ROUTES.USER.PERSONAL_INFOR}
           element={<PersonalInformation />}

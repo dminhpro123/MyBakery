@@ -388,6 +388,13 @@
       "createdAt": 1691393539501,
       "updatedAt": 1691393539501,
       "id": 2
+    },
+    {
+      "productId": 2,
+      "userId": 1,
+      "createdAt": 1691413917277,
+      "updatedAt": 1691413917277,
+      "id": 3
     }
   ],
   "orders": [
