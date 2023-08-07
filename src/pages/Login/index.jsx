@@ -1,6 +1,6 @@
 import { Button, Form, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { loginRequest } from 'redux/slicers/auth.slice';
@@ -64,7 +64,7 @@ const Login = () => {
             </Form.Item>
 
             <Form.Item
-              label="Password"
+              label="Mật khẩu"
               name="password"
               rules={[
                 {
@@ -75,6 +75,10 @@ const Login = () => {
             >
               <Input.Password />
             </Form.Item>
+
+            <div style={{ marginBottom: 16 }}>
+              Bạn chưa có tài khoản? <Link to={ROUTES.REGISTER}>Đăng ký</Link>
+            </div>
 
             <Form.Item
               wrapperCol={{

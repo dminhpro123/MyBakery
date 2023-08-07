@@ -17,7 +17,9 @@ import {
 import { ROUTES } from 'constants/routes';
 import {
   getCityListRequest,
+  getDistrictExistRequest,
   getDistrictListRequest,
+  getWardExistRequest,
   getWardListRequest,
 } from 'redux/slicers/location.slice';
 import { orderProductRequest } from 'redux/slicers/order.slice';
@@ -37,12 +39,6 @@ function Checkout() {
   );
   const { cartList } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.auth);
-
-  const initialValues = {
-    fullName: userInfo.data.fullName,
-    email: userInfo.data.email,
-    phoneNumber: userInfo.data.phone,
-  };
 
   const tableColumn = [
     {
@@ -68,10 +64,59 @@ function Checkout() {
   }, []);
 
   useEffect(() => {
+    if (userInfo.data.districtCode)
+      dispatch(
+        getDistrictExistRequest({
+          code: userInfo.data.cityCode,
+        })
+      );
+
+    if (userInfo.data.wardCode)
+      dispatch(getWardExistRequest({ code: userInfo.data.districtCode }));
+  }, [
+    userInfo.data.districtCode,
+    userInfo.data.cityCode,
+    userInfo.data.wardCode,
+  ]);
+
+  useEffect(() => {
     if (userInfo.data.id) {
       checkoutForm.resetFields();
     }
   }, [userInfo.data]);
+
+  useEffect(() => {
+    if (wardList.data.length !== 0 && userInfo.data.wardCode) {
+      let wardExist = wardList.data.filter(
+        (item) => item.code === userInfo.data.wardCode
+      )[0]?.code;
+      checkoutForm.setFieldValue('wardCode', wardExist);
+    }
+    if (districtList.data.length !== 0 && userInfo.data.districtCode) {
+      let districtExist = districtList.data.filter(
+        (item) => item.code === userInfo.data.districtCode
+      )[0]?.code;
+      checkoutForm.setFieldValue('districtCode', districtExist);
+    }
+    // if (userInfo.data.cityCode) {
+    //   checkoutForm.setFieldValue('cityCode', userInfo.data.cityCode);
+    // }
+  }, [
+    districtList.data,
+    checkoutForm,
+    userInfo.data.districtCode,
+    userInfo.data.wardCode,
+    // userInfo.data.cityCode,
+    wardList.data,
+  ]);
+
+  const initialValues = {
+    fullName: userInfo.data.fullName,
+    email: userInfo.data.email,
+    phoneNumber: userInfo.data.phone,
+    address: userInfo.data?.address,
+    cityCode: userInfo.data?.cityCode,
+  };
 
   const handleSubmitCheckoutForm = (values) => {
     const totalPrice = cartList.reduce(

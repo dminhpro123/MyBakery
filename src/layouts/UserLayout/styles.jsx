@@ -10,7 +10,7 @@ export const UserLayoutWrapper = styled.div`
 
 export const MainWrapper = styled.div`
   flex: 1;
-  margin-top: 160px;
+  margin-top: 150px;
   background-color: #ede2d4;
   width: 100%;
 `;

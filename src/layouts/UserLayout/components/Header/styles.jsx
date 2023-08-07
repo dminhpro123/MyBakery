@@ -8,7 +8,8 @@ export const HeaderWrapper = styled.div`
   padding-top: 5px;
   padding: 0 16px;
   width: 100%;
-  min-height: 160px;
+  height: 150px;
+
   background-color: #e6e6e6;
   z-index: 99;
 `;
