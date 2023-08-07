@@ -60,6 +60,22 @@ const OderHistory = () => {
         `${item.address}, ${item.wardName}, ${item.districtName}, ${item.cityName}`,
     },
     {
+      title: 'Phương thức thanh toán',
+      dataIndex: 'paymentMethod',
+      key: 'paymentMethod',
+      render: (_, item) => {
+        switch (item.paymentMethod) {
+          case 'cod':
+            return <Tag color="lime">{item.paymentMethod.toUpperCase()}</Tag>;
+          case 'atm':
+            return <Tag color="cyan">{item.paymentMethod.toUpperCase()}</Tag>;
+
+          default:
+            break;
+        }
+      },
+    },
+    {
       title: 'tình trạng',
       dataIndex: 'status',
       key: 'status',
