@@ -30,3 +30,17 @@ export const CategoryItem = styled.div`
     background-color: #e56c50;
   }
 `;
+
+export const DataInfo = styled.div`
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const Channel = styled.a`
+  color: white;
+  &:hover {
+    color: #d7b1b1;
+  }
+`;

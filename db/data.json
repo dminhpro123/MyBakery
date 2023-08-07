@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 129,
+      "view": 130,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691387283927,
+      "updatedAt": 1691389120695,
       "createdAt": 1689481189282
     },
     {
@@ -114,6 +114,8 @@
     "telephone": "0919695233",
     "email": "nguyenvducminh@gmail.com",
     "slogan": "Bakery - Tinh hoa của ẩm thực Việt",
+    "youtubeChannel": "https://www.youtube.com/channel/UCyxFxySagoaHfj6gQS-TSsQ",
+    "facebookChannel": "https://www.facebook.com/nguyenvanducminh/",
     "aboutUs": {
       "aboutUsTitle1": "Khởi Nguồn",
       "aboutUsContent1": "Bakery khởi đầu là một cơ sở sản xuất bánh mì nhỏ với quy mô gia đình vào đầu những năm 2023. Trải qua gần 20 năm xây dựng và phát triển, Bakery đã xây dựng được chuỗi hệ thống cửa hàng với hơn 40 cửa hàng bánh mì, bánh ngọt lớn nhỏ trải khắp thành phố Đà Nẵng. Là thương hiệu được biết đến với những sản phẩm chất lượng và ngon miệng từ bánh mì, bánh ngọt, bánh kem đến các sản phẩm khác như hamburger, sandwich,... Cùng với tinh thần ham học hỏi, trách nhiệm,  Bakery đã, đang và sẽ luôn mang đến cho khách hàng những ổ bánh mì nóng giòn, những chiếc bánh thơm ngon, dinh dưỡng nhất.",
@@ -379,6 +381,13 @@
       "createdAt": 1691386623740,
       "updatedAt": 1691386623740,
       "id": 1
+    },
+    {
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1691393323871,
+      "updatedAt": 1691393323871,
+      "id": 2
     }
   ],
   "orders": [

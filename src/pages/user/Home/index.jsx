@@ -1,4 +1,14 @@
-import { Button, Card, Col, List, Rate, Row, Space, notification } from 'antd';
+import {
+  Button,
+  Card,
+  Col,
+  List,
+  Rate,
+  Row,
+  Skeleton,
+  Space,
+  notification,
+} from 'antd';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
@@ -284,95 +294,78 @@ function HomePage() {
 
   return (
     <S.HomeWrapper>
-      <Row>
-        <Col span={24}>
-          <Slider {...advertisementSettings}>
-            {loading ? (
-              <S.LoadingWrapper>
-                <img src={loadingSpin} alt="loading" />
-              </S.LoadingWrapper>
-            ) : (
-              renderAdvertisementSlide
-            )}
-          </Slider>
-        </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
-        <Col span={1} />
-        <Col span={22}>
-          <S.ItemCategoryList>
-            {loading ? (
-              <S.LoadingWrapper>
-                <img src={loadingSpin} alt="loading" />
-              </S.LoadingWrapper>
-            ) : (
-              <List
-                grid={{
-                  gutter: 16,
-                  md: 3,
-                  lg: 2,
-                  sm: 1,
-                }}
-                title="Sản phẩm"
-                dataSource={categoriesList.data}
-                renderItem={(item) => (
-                  <List.Item
-                    key={item.id}
-                    onClick={() => {
-                      dispatch(
-                        setFilterParams({
-                          ...filterParams,
-                          categoryId: [item.id],
-                        })
-                      );
-                      navigate({
-                        pathname: ROUTES.USER.PRODUCT_LIST,
-                        search: qs.stringify({
-                          ...filterParams,
-                          categoryId: [item.id],
-                        }),
-                      });
+      {loading ? (
+        <Skeleton active loading={loading} paragraph={{ rows: 20 }} />
+      ) : (
+        <>
+          <Row>
+            <Col span={24}>
+              <Slider {...advertisementSettings}>
+                {renderAdvertisementSlide}
+              </Slider>
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]}>
+            <Col span={1} />
+            <Col span={22}>
+              <S.ItemCategoryList>
+                {
+                  <List
+                    grid={{
+                      gutter: 16,
+                      md: 3,
+                      lg: 2,
+                      sm: 1,
                     }}
-                  >
-                    <S.CategoryContainer>
-                      <S.ImgCategory alt={item.name} src={item.images} />
-                      <S.TextCategoryContainer>
-                        <strong> {item.name.toUpperCase()}</strong>
-                      </S.TextCategoryContainer>
-                    </S.CategoryContainer>
-                  </List.Item>
-                )}
-              />
-            )}
-          </S.ItemCategoryList>
-          <S.SomeProductListWrapper>
-            <h2>Sản phẩm nổi bật</h2>
-            <Slider {...someProductListSettings}>
-              {loading ? (
-                <S.LoadingWrapper>
-                  <img src={loadingSpin} alt="loading" />
-                </S.LoadingWrapper>
-              ) : (
-                renderOutstandingProductListSlide
-              )}
-            </Slider>
-          </S.SomeProductListWrapper>
-          <S.SomeProductListWrapper>
-            <h2>Sản phẩm mới</h2>
-            <Slider {...someProductListSettings}>
-              {loading ? (
-                <S.LoadingWrapper>
-                  <img src={loadingSpin} alt="loading" />
-                </S.LoadingWrapper>
-              ) : (
-                renderNewProductListSlide
-              )}
-            </Slider>
-          </S.SomeProductListWrapper>
-        </Col>
-        <Col span={1} />
-      </Row>
-      {}
+                    title="Sản phẩm"
+                    dataSource={categoriesList.data}
+                    renderItem={(item) => (
+                      <List.Item
+                        key={item.id}
+                        onClick={() => {
+                          dispatch(
+                            setFilterParams({
+                              ...filterParams,
+                              categoryId: [item.id],
+                            })
+                          );
+                          navigate({
+                            pathname: ROUTES.USER.PRODUCT_LIST,
+                            search: qs.stringify({
+                              ...filterParams,
+                              categoryId: [item.id],
+                            }),
+                          });
+                        }}
+                      >
+                        <S.CategoryContainer>
+                          <S.ImgCategory alt={item.name} src={item.images} />
+                          <S.TextCategoryContainer>
+                            <strong> {item.name.toUpperCase()}</strong>
+                          </S.TextCategoryContainer>
+                        </S.CategoryContainer>
+                      </List.Item>
+                    )}
+                  />
+                }
+              </S.ItemCategoryList>
+              <S.SomeProductListWrapper>
+                <h2>Sản phẩm nổi bật</h2>
+                <Slider {...someProductListSettings}>
+                  {renderOutstandingProductListSlide}
+                </Slider>
+              </S.SomeProductListWrapper>
+              <S.SomeProductListWrapper>
+                <h2>Sản phẩm mới</h2>
+                <Slider {...someProductListSettings}>
+                  {renderNewProductListSlide}
+                </Slider>
+              </S.SomeProductListWrapper>
+            </Col>
+            <Col span={1} />
+          </Row>
+        </>
+      )}
     </S.HomeWrapper>
   );
 }
