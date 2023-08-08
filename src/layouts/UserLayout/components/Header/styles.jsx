@@ -22,7 +22,7 @@ export const NavLinkContainer = styled.nav`
   width: 100vw;
 `;
 
-export const HeadTop = styled.div`
+export const HeadBottom = styled.div`
   height: 100%;
 
   display: flex;
@@ -81,7 +81,7 @@ export const RouteLink = styled.div`
   }
 `;
 
-export const HeadBottom = styled.div`
+export const HeadTop = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -98,10 +98,13 @@ export const LoginLogoutBar = styled.div`
   margin-right: 4vw;
 `;
 
-export const Log = styled.span`
+export const Log = styled.a`
   text-decoration: none;
   color: #151515;
-  cursor: pointer;
+  /* cursor: pointer; */
+  &:hover {
+    color: #282020;
+  }
 `;
 
 export const UserIcon = styled.div`

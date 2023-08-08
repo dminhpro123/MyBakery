@@ -191,22 +191,30 @@ const OderHistory = () => {
   // }, [orderList.data, tableColumns, tableColumnDetails]);
 
   return (
-    <Table
-      columns={tableColumns}
-      dataSource={orderList.data}
-      rowKey="id"
-      pagination={false}
-      expandable={{
-        expandedRowRender: (record) => (
-          <Table
-            columns={tableColumnDetails}
-            rowKey="id"
-            pagination={false}
-            dataSource={record.orderDetails}
-          />
-        ),
-      }}
-    />
+    <>
+      {orderList.data.length === 0 ? (
+        <S.Nodata>
+          <h3>Bạn chưa đặt mua hàng!</h3>
+        </S.Nodata>
+      ) : (
+        <Table
+          columns={tableColumns}
+          dataSource={orderList.data}
+          rowKey="id"
+          pagination={false}
+          expandable={{
+            expandedRowRender: (record) => (
+              <Table
+                columns={tableColumnDetails}
+                rowKey="id"
+                pagination={false}
+                dataSource={record.orderDetails}
+              />
+            ),
+          }}
+        />
+      )}
+    </>
   );
 };
 

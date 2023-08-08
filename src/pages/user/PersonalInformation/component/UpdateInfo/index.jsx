@@ -297,12 +297,12 @@ const UpdateInfo = () => {
           </Form.Item>
 
           <Row gutter={[16, 16]}>
-            <Col span={12}>
+            <Col md={12} xs={24}>
               <Form.Item label="Ngày sinh" name="dateOfBirth">
                 <DatePicker format={dateFormat} placement="bottomLeft" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col md={12} xs={24}>
               <Form.Item label="Giới tính" name="gender">
                 <Radio.Group onChange={handleChangeGender} value={valueGender}>
                   <Radio value="Nam">Nam</Radio>
@@ -314,7 +314,7 @@ const UpdateInfo = () => {
           </Row>
 
           <Row gutter={[16, 16]}>
-            <Col span={8}>
+            <Col md={8} xs={24}>
               <Form.Item label="Tỉnh/Thành" name="cityCode">
                 <Select
                   onChange={(value) => {
@@ -329,7 +329,7 @@ const UpdateInfo = () => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col md={8} xs={24}>
               <Form.Item label="Quận/Huyện" name="districtCode">
                 <Select
                   onChange={(value) => {
@@ -345,7 +345,7 @@ const UpdateInfo = () => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col md={8} xs={24}>
               <Form.Item label="Phường/Xã" name="wardCode">
                 <Select
                   disabled={!updateUserInfoForm.getFieldValue('districtCode')}

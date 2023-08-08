@@ -27,11 +27,13 @@ const PersonalInformation = () => {
       <S.PersonalInformationWrapper>
         <Card bordered={false} size="small">
           <Tabs
-            tabPosition="left"
             // renderTabBar={<ShowInfo />}
+            // onTabScroll={'bottom'}
+            tabPosition="left"
             defaultActiveKey={1}
             onChange={onChange}
             destroyInactiveTabPane
+            size="small"
             items={[
               {
                 label: 'Thông tin cá nhân',

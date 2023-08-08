@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 131,
+      "view": 132,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691393537134,
+      "updatedAt": 1691467205213,
       "createdAt": 1689481189282
     },
     {
@@ -37,22 +37,22 @@
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
-      "view": 36,
+      "view": 37,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
-      "updatedAt": 1691250735992,
+      "updatedAt": 1691417821487,
       "createdAt": 1689481112282
     },
     {
       "id": 5,
       "name": "Bánh kem giáng sinh",
       "price": 205000,
-      "view": 32,
+      "view": 33,
       "description": "Kích thước (đường kính bánh) : 20cm",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
-      "updatedAt": 1691325460317,
+      "updatedAt": 1691467153196,
       "createdAt": 1689481113282
     },
     {
@@ -287,9 +287,9 @@
       "password": "$2a$10$k5QJQOxgQkOgGJ0eNFWtDuPvyZQlFfmcNzFf5WFsoUGY2SDu5xKJq",
       "fullName": "Duc Minh Van Nguyen",
       "phone": "+84231123151",
-      "address": "32 Hoàn Kiếm",
+      "address": "",
       "createdAt": 1689732275487,
-      "updatedAt": 1690990195288,
+      "updatedAt": 1691416001889,
       "id": 3,
       "dateOfBirth": 651249638200,
       "cityName": "Thành phố Đà Nẵng",
@@ -395,6 +395,27 @@
       "createdAt": 1691413917277,
       "updatedAt": 1691413917277,
       "id": 3
+    },
+    {
+      "productId": 6,
+      "userId": 3,
+      "createdAt": 1691467174039,
+      "updatedAt": 1691467174039,
+      "id": 4
+    },
+    {
+      "productId": 4,
+      "userId": 3,
+      "createdAt": 1691467183691,
+      "updatedAt": 1691467183692,
+      "id": 5
+    },
+    {
+      "productId": 1,
+      "userId": 3,
+      "createdAt": 1691467209621,
+      "updatedAt": 1691467209621,
+      "id": 6
     }
   ],
   "orders": [
@@ -454,6 +475,25 @@
       "createdAt": 1690895761403,
       "updatedAt": 1690899152027,
       "id": 3
+    },
+    {
+      "fullName": "Duc Minh Van Nguyen",
+      "email": "minh2@gmail.com",
+      "phoneNumber": "+84231123151",
+      "cityCode": "48",
+      "districtCode": "305",
+      "wardCode": "11392",
+      "address": "60 Ông Ích Khiêm",
+      "paymentMethod": "atm",
+      "cityName": "Thành phố Đà Nẵng",
+      "districtName": "Quận Lê Chân",
+      "wardName": "Phường Hàng Kênh",
+      "userId": 3,
+      "totalPrice": 16000,
+      "status": "pending",
+      "createdAt": 1691467262130,
+      "updatedAt": 1691467262130,
+      "id": 4
     }
   ],
   "orderDetails": [
@@ -506,6 +546,16 @@
       "createdAt": 1690895761627,
       "updatedAt": 1690895761627,
       "id": 5
+    },
+    {
+      "orderId": 4,
+      "image": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
+      "name": "Bánh mỳ trứng",
+      "price": 16000,
+      "quantity": 1,
+      "createdAt": 1691467262185,
+      "updatedAt": 1691467262185,
+      "id": 6
     }
   ],
   "cities": [

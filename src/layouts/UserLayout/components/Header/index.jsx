@@ -31,7 +31,8 @@ function AdminHeader() {
         label: (
           <S.Icon
             style={{ textDecoration: 'none' }}
-            onClick={() => navigate(ROUTES.USER.PERSONAL_INFOR)}
+            href={ROUTES.USER.PERSONAL_INFOR}
+            // onClick={() => navigate(ROUTES.USER.PERSONAL_INFOR)}
           >
             Thông tin cá nhân
           </S.Icon>
@@ -98,7 +99,7 @@ function AdminHeader() {
         <Row gutter={[16, 16]}>
           <Col xl={1} lg={1} xs={1}></Col>
           <Col xl={10} lg={9} xs={8}>
-            <S.HeadBottom>{renderChannel}</S.HeadBottom>
+            <S.HeadTop>{renderChannel}</S.HeadTop>
           </Col>
           <Col xl={2} lg={4} xs={6}>
             <S.Logo>
@@ -110,20 +111,23 @@ function AdminHeader() {
             </S.Logo>
           </Col>
           <Col xl={10} lg={9} xs={8}>
-            <S.HeadBottom>
+            <S.HeadTop>
               <S.UserBar>
                 <S.LoginLogoutBar>
-                  <S.Log onClick={() => navigate(ROUTES.USER.LOGIN)}>
-                    Đăng nhập
-                  </S.Log>{' '}
+                  <Link to={ROUTES.USER.LOGIN}>
+                    <S.Log>Đăng nhập</S.Log>
+                  </Link>{' '}
                   /{' '}
-                  <S.Log onClick={() => navigate(ROUTES.USER.REGISTER)}>
-                    Đăng ký
-                  </S.Log>
+                  <Link to={ROUTES.USER.REGISTER}>
+                    <S.Log>Đăng ký</S.Log>
+                  </Link>
                 </S.LoginLogoutBar>
 
                 <S.UserIcon>
-                  <S.Icon onClick={() => navigate(ROUTES.USER.CART)}>
+                  <S.Icon
+                    href={ROUTES.USER.CART}
+                    // onClick={() => navigate(ROUTES.USER.CART)}
+                  >
                     <Space size="large">
                       {cartList.length === 0 ? (
                         <FontAwesomeIcon icon={faCartShopping} />
@@ -138,12 +142,12 @@ function AdminHeader() {
                   {renderUserInfo}
                 </S.UserIcon>
               </S.UserBar>
-            </S.HeadBottom>
+            </S.HeadTop>
           </Col>
           <Col xl={1} lg={1} xs={1}></Col>
         </Row>
         <S.NavLinkContainer>
-          <S.HeadTop>
+          <S.HeadBottom>
             <S.TopNav>
               {NAVBAR.map((item) => {
                 return (
@@ -159,7 +163,7 @@ function AdminHeader() {
                 );
               })}
             </S.TopNav>
-          </S.HeadTop>
+          </S.HeadBottom>
 
           <S.HeadTopHamburgerNavbar>
             <Popover placement="top" content={content} trigger="click">

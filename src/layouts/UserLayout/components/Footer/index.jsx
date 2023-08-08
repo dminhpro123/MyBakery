@@ -1,6 +1,6 @@
 import { Col, Row, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useMemo } from 'react';
 import qs from 'qs';
 

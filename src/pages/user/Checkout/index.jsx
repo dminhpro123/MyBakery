@@ -64,6 +64,9 @@ function Checkout() {
   }, []);
 
   useEffect(() => {
+    if (userInfo.data.id) {
+      checkoutForm.resetFields();
+    }
     if (userInfo.data.districtCode)
       dispatch(
         getDistrictExistRequest({
@@ -77,13 +80,9 @@ function Checkout() {
     userInfo.data.districtCode,
     userInfo.data.cityCode,
     userInfo.data.wardCode,
+    userInfo.data,
+    checkoutForm,
   ]);
-
-  useEffect(() => {
-    if (userInfo.data.id) {
-      checkoutForm.resetFields();
-    }
-  }, [userInfo.data]);
 
   useEffect(() => {
     if (wardList.data.length !== 0 && userInfo.data.wardCode) {
@@ -98,15 +97,15 @@ function Checkout() {
       )[0]?.code;
       checkoutForm.setFieldValue('districtCode', districtExist);
     }
-    // if (userInfo.data.cityCode) {
-    //   checkoutForm.setFieldValue('cityCode', userInfo.data.cityCode);
-    // }
+    if (userInfo.data.cityCode) {
+      checkoutForm.setFieldValue('cityCode', userInfo.data.cityCode);
+    }
   }, [
     districtList.data,
     checkoutForm,
+    userInfo.data.cityCode,
     userInfo.data.districtCode,
     userInfo.data.wardCode,
-    // userInfo.data.cityCode,
     wardList.data,
   ]);
 
@@ -115,7 +114,7 @@ function Checkout() {
     email: userInfo.data.email,
     phoneNumber: userInfo.data.phone,
     address: userInfo.data?.address,
-    cityCode: userInfo.data?.cityCode,
+    // cityCode: userInfo.data?.cityCode,
   };
 
   const handleSubmitCheckoutForm = (values) => {
