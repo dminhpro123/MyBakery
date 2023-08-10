@@ -6,6 +6,8 @@ import {
   getNewsListRequest,
   getNewsDetailRequest,
 } from 'redux/slicers/news.slice';
+import T from 'components/Typography';
+// import { fontSizes } from 'themes/common';
 
 import * as S from './style';
 
@@ -85,6 +87,7 @@ const News = () => {
   return (
     <>
       <S.NewsListWrapper>
+        {/* <T.Title size="xs">hi</T.Title> */}
         <Row gutter={[16, 16]}>{renderNewsList}</Row>
       </S.NewsListWrapper>
       {renderNewsModal()}

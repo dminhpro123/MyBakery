@@ -18,6 +18,9 @@ export const NavLinkContainer = styled.nav`
   display: flex;
   flex-direction: column;
 
+  justify-content: center;
+  align-items: center;
+
   height: 8vh;
   width: 100vw;
 `;
@@ -28,8 +31,12 @@ export const HeadBottom = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 900px) {
+
+  @media screen and (min-width: 200px) {
     display: none;
+  }
+  @media screen and (min-width: 900px) {
+    display: block;
   }
 `;
 export const HeadTopHamburgerNavbar = styled.div`
@@ -39,6 +46,9 @@ export const HeadTopHamburgerNavbar = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media screen and (min-width: 200px) {
+    display: block;
+  }
   @media screen and (min-width: 900px) {
     display: none;
   }
