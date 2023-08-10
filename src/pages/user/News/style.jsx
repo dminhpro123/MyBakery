@@ -31,6 +31,16 @@ export const NewsTitle = styled.span`
 export const NewsContent = styled.p`
   font-size: x-small;
   text-indent: 10px;
+
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: ${2};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const NewsModalParagraph = styled.p`

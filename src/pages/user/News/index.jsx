@@ -33,7 +33,7 @@ const News = () => {
   };
 
   const renderNewsList = useMemo(() => {
-    if (!newsList) return <div>'null'</div>;
+    if (!newsList) return <h2>Hiện tại chưa có tin tức</h2>;
     return newsList.data.map((item) => {
       return (
         <Col sm={24} md={12} key={item.id}>
@@ -62,12 +62,13 @@ const News = () => {
         title={newsDetail.data[0].title}
         open={isModalOpen}
         onOk={handleOk}
+        okText="Đã xem"
         onCancel={handleCancel}
       >
         <S.NewsModalParagraph>
           {newsDetail.data[0].firstParagraph}
         </S.NewsModalParagraph>
-        <img src={newsDetail.data[0].images[0]} />
+        <img src={newsDetail.data[0].images[0]} alt="" />
         {newsDetail.data[0].content.map((item, index) => {
           return (
             <S.NewsModalParagraph key={index}>{item}</S.NewsModalParagraph>

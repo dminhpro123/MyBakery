@@ -4,55 +4,55 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 132,
+      "view": 134,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691467205213,
+      "updatedAt": 1691476025782,
       "createdAt": 1689481189282
     },
     {
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 98,
+      "view": 101,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691384680851,
+      "updatedAt": 1691476040051,
       "createdAt": 1689481110282
     },
     {
       "id": 3,
       "name": "Bánh bao chiên",
       "price": 3000,
-      "view": 45,
+      "view": 46,
       "description": "Thành phần: Bột mì, trứng gà, men ngọt, dầu,…",
       "categoryId": 2,
       "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20chi%C3%AAn%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1691249311671,
+      "updatedAt": 1691476160248,
       "createdAt": 1689481111282
     },
     {
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
-      "view": 37,
+      "view": 38,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
-      "updatedAt": 1691417821487,
+      "updatedAt": 1691476172832,
       "createdAt": 1689481112282
     },
     {
       "id": 5,
       "name": "Bánh kem giáng sinh",
       "price": 205000,
-      "view": 33,
+      "view": 34,
       "description": "Kích thước (đường kính bánh) : 20cm",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
-      "updatedAt": 1691467153196,
+      "updatedAt": 1691476194998,
       "createdAt": 1689481113282
     },
     {
@@ -372,6 +372,15 @@
       "createdAt": 1690457249961,
       "updatedAt": 1690457249961,
       "id": 5
+    },
+    {
+      "rate": 5,
+      "comment": "bánh ngon, giao hàng mhanh, quá ok",
+      "userId": 1,
+      "productId": 2,
+      "createdAt": 1691476115751,
+      "updatedAt": 1691476115751,
+      "id": 6
     }
   ],
   "favorites": [
@@ -388,13 +397,6 @@
       "createdAt": 1691393539501,
       "updatedAt": 1691393539501,
       "id": 2
-    },
-    {
-      "productId": 2,
-      "userId": 1,
-      "createdAt": 1691413917277,
-      "updatedAt": 1691413917277,
-      "id": 3
     },
     {
       "productId": 6,
@@ -416,6 +418,13 @@
       "createdAt": 1691467209621,
       "updatedAt": 1691467209621,
       "id": 6
+    },
+    {
+      "productId": 2,
+      "userId": 1,
+      "createdAt": 1691476148580,
+      "updatedAt": 1691476148581,
+      "id": 7
     }
   ],
   "orders": [
