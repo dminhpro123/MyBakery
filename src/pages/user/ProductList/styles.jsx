@@ -34,3 +34,7 @@ export const LoadingWrapper = styled.div`
 export const ShowListLength = styled.div`
   padding: 5px;
 `;
+
+export const ReviewListWrapper = styled.div`
+  margin: 5 0 5 0;
+`;

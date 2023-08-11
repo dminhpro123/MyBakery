@@ -43,6 +43,11 @@ export const reviewSlice = createSlice({
       state.createReviewData.loading = false;
       state.createReviewData.error = error;
     },
+
+    //clearReviewList
+    clearReviewListRequest: (state, action) => {
+      state.reviewList.data = [];
+    },
   },
 });
 
@@ -53,6 +58,7 @@ export const {
   createReviewRequest,
   createReviewSuccess,
   createReviewFailure,
+  clearReviewListRequest,
 } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

@@ -7,10 +7,11 @@ import {
   Input,
   Select,
   Button,
-  Empty,
   Rate,
   notification,
   Space,
+  Modal,
+  Avatar,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
@@ -24,20 +25,28 @@ import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
 import { clearFilterParams, setFilterParams } from 'redux/slicers/common.slice';
 import loadingSpin from 'assets/gif/loading-spin.gif';
-
-import T from 'components/Typography';
-import * as S from './styles';
 import {
   CommentOutlined,
   HeartFilled,
   HeartOutlined,
   ShoppingCartOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
+
+import T from 'components/Typography';
+import * as S from './styles';
+
 import { addToCartRequest } from 'redux/slicers/cart.slice';
 import {
   favoriteProductRequest,
+  getFavoriteListRequest,
   unFavoriteProductRequest,
 } from 'redux/slicers/favorite.slice';
+import {
+  getReviewListRequest,
+  clearReviewListRequest,
+} from 'redux/slicers/review.slice';
+import moment from 'moment';
 
 const { Meta } = Card;
 
@@ -50,7 +59,25 @@ function ProductListPage() {
   const [loading, setLoading] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
-  const { favoriteProductData } = useSelector((state) => state.favorite);
+  const { favoriteList, favoriteProductData } = useSelector(
+    (state) => state.favorite
+  );
+  const { reviewList } = useSelector((state) => state.review);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    dispatch(clearReviewListRequest());
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    dispatch(clearReviewListRequest());
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -81,7 +108,9 @@ function ProductListPage() {
         limit: PRODUCT_LIMIT,
       })
     );
-  }, [filterParams]);
+    if (userInfo.data.id)
+      dispatch(getFavoriteListRequest({ userId: userInfo.data.id }));
+  }, [filterParams, userInfo.data.id]);
 
   const handleFilter = (key, values) => {
     const newFilterParams = {
@@ -122,7 +151,7 @@ function ProductListPage() {
 
   const handleLike = (e, item) => {
     e.preventDefault();
-    console.log(item);
+    console.log(item.favorites);
     if (accessToken) {
       if (
         item.favorites.some(
@@ -139,6 +168,7 @@ function ProductListPage() {
             id: favoriteData.id,
           })
         );
+        // dispatch()
       } else {
         console.log('favorite');
         dispatch(
@@ -153,6 +183,12 @@ function ProductListPage() {
     }
 
     console.log(favoriteProductData.error);
+  };
+
+  const handleComment = (e, item) => {
+    e.preventDefault();
+    dispatch(getReviewListRequest({ productId: parseInt(item.id) }));
+    showModal();
   };
 
   const renderProductList = useMemo(() => {
@@ -206,12 +242,10 @@ function ProductListPage() {
                         )
                       }
                       key="favorite"
-                      onClick={(e) => handleLike(e, item)}
                     ></Button>
-
                     <span>{item.favorites.length}</span>
                   </Space>,
-                  <Space>
+                  <Space onClick={(e) => handleComment(e, item)}>
                     <CommentOutlined key="review" />
                     <span>{item.reviews.length}</span>
                   </Space>,
@@ -284,6 +318,51 @@ function ProductListPage() {
     });
   }, [categoriesList.data]);
 
+  const renderReviewModal = useMemo(() => {
+    return (
+      <Modal
+        title="Bình luận"
+        open={isModalOpen}
+        onOk={handleOk}
+        okText="Đã xem"
+        onCancel={handleCancel}
+      >
+        {reviewList.data.length === 0 ? (
+          <S.ReviewListWrapper>Không có bình luận</S.ReviewListWrapper>
+        ) : (
+          reviewList.data.map((item) => {
+            return (
+              <S.ReviewListWrapper key={item.id}>
+                <br />
+                <Space align="baseline">
+                  <Avatar
+                    size={24}
+                    icon={
+                      item.user.avatar ? (
+                        <img src={item.user.avatar} alt="Ảnh đại diện" />
+                      ) : (
+                        <UserOutlined />
+                      )
+                    }
+                  />
+                  <h3>{item.user.fullName}</h3>
+                  {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
+                  <span>{moment(item.createdAt).fromNow()}</span>
+                </Space>
+
+                <div>
+                  <Rate value={item.rate} disabled style={{ fontSize: 12 }} />
+                </div>
+                <strong>Bình luận:</strong>
+                <p>{item.comment}</p>
+              </S.ReviewListWrapper>
+            );
+          })
+        )}
+      </Modal>
+    );
+  }, [isModalOpen, reviewList.data]);
+
   return (
     <S.ProductListWrapper>
       <TopIcon key={2} titleString="PRODUCTS" />
@@ -339,6 +418,7 @@ function ProductListPage() {
           )}
         </Col>
       </Row>
+      {renderReviewModal}
     </S.ProductListWrapper>
   );
 }

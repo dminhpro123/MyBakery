@@ -37,11 +37,11 @@
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
-      "view": 40,
+      "view": 41,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
-      "updatedAt": 1691734862182,
+      "updatedAt": 1691736209283,
       "createdAt": 1689481112282
     },
     {
@@ -250,11 +250,11 @@
   "users": [
     {
       "email": "minh@gmail.com",
-      "password": "$2a$10$ZeOrDiUOkf6J5SHNY0kyxeVjjbuRWdtgB2NftbpLHIu/ecFZQ1cMy",
+      "password": "$2a$10$hYk9c22.hKoLmWQoiMj4vujqhJFGF9gg0pA3RBL/oYeixRq8w8lsi",
       "fullName": "Nguyễn Văn Đức Minh",
       "phone": "+84919695234",
       "createdAt": 1689481389282,
-      "updatedAt": 1691393446478,
+      "updatedAt": 1691735140753,
       "id": 1,
       "address": "34 Ông Ích Khiêm ",
       "gender": "Nam",
@@ -433,18 +433,32 @@
       "id": 7
     },
     {
-      "productId": 1,
-      "userId": 1,
-      "createdAt": 1691718843227,
-      "updatedAt": 1691718843227,
-      "id": 8
-    },
-    {
       "productId": 4,
       "userId": 1,
       "createdAt": 1691734796041,
       "updatedAt": 1691734796041,
       "id": 9
+    },
+    {
+      "productId": 5,
+      "userId": 1,
+      "createdAt": 1691735544426,
+      "updatedAt": 1691735544426,
+      "id": 10
+    },
+    {
+      "productId": 5,
+      "userId": 1,
+      "createdAt": 1691735544426,
+      "updatedAt": 1691735544426,
+      "id": 11
+    },
+    {
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1691737704407,
+      "updatedAt": 1691737704407,
+      "id": 12
     }
   ],
   "orders": [
