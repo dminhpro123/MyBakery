@@ -7,7 +7,6 @@ import bakeryInformationReducer from 'redux/slicers/bakeryInformation.slice';
 import advertisementReducer from 'redux/slicers/advertisement.slice';
 import newsReducer from 'redux/slicers/news.slice';
 import authReducer from 'redux/slicers/auth.slice';
-import contactReducer from 'redux/slicers/contact.slice';
 import reviewReducer from 'redux/slicers/review.slice';
 import cartReducer from 'redux/slicers/cart.slice';
 import locationReducer from 'redux/slicers/location.slice';
@@ -27,7 +26,6 @@ const store = configureStore({
     advertisement: advertisementReducer,
     news: newsReducer,
     auth: authReducer,
-    contact: contactReducer,
     review: reviewReducer,
     cart: cartReducer,
     location: locationReducer,

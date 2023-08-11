@@ -87,7 +87,6 @@ const News = () => {
   return (
     <>
       <S.NewsListWrapper>
-        {/* <T.Title size="xs">hi</T.Title> */}
         <Row gutter={[16, 16]}>{renderNewsList}</Row>
       </S.NewsListWrapper>
       {renderNewsModal()}

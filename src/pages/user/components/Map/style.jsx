@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MapBorder = styled.div`
   width: 100%;
-  height: 30vw;
+  height: 50vw;
 `;
 
 export const MapRender = styled.div`
