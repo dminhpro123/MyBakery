@@ -149,7 +149,7 @@ const UpdateInfo = () => {
           id: userInfo.data.id,
           avatar: imageUrl,
           fullName: values.fullName,
-          email: values.email,
+          // email: values.email,
           password: values.password,
           phone: phoneNumberPrefix + values.phone,
           address: values.address,
@@ -211,7 +211,7 @@ const UpdateInfo = () => {
           initialValues={{
             avatar: userInfo.data?.avatar,
             fullName: userInfo.data.fullName,
-            email: userInfo.data.email,
+            // email: userInfo.data.email,
             phone: userInfo.data.phone.substring(3),
             address: userInfo.data?.address,
             gender: userInfo.data?.gender,
@@ -256,23 +256,6 @@ const UpdateInfo = () => {
                 min: 3,
                 max: 40,
                 message: 'Họ và tên phải từ 3-40 kí tự',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: 'Email là bắt buộc',
-              },
-              {
-                pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                message: 'Email không đúng định dạng',
               },
             ]}
           >

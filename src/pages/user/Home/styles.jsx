@@ -76,3 +76,7 @@ export const LoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const ReviewListWrapper = styled.div`
+  margin: 5 0 5 0;
+`;

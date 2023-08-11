@@ -1,8 +1,10 @@
 import {
+  Avatar,
   Button,
   Card,
   Col,
   List,
+  Modal,
   Rate,
   Row,
   Skeleton,
@@ -15,9 +17,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
 import {
   CommentOutlined,
+  HeartFilled,
   HeartOutlined,
   ShoppingCartOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
+import moment from 'moment';
 import qs from 'qs';
 
 import { getAdvertisementListRequest } from 'redux/slicers/advertisement.slice';
@@ -30,8 +35,13 @@ import { setFilterParams } from 'redux/slicers/common.slice';
 import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
 import loadingSpin from 'assets/gif/loading-spin.gif';
+import {
+  clearReviewListRequest,
+  getReviewListRequest,
+} from 'redux/slicers/review.slice';
 
 import * as S from './styles';
+import T from 'components/Typography';
 
 const { Meta } = Card;
 
@@ -106,6 +116,9 @@ function HomePage() {
   const { filterParams } = useSelector((state) => state.common);
   const { categoriesList } = useSelector((state) => state.category);
   const [loading, setLoading] = useState(false);
+  const { reviewList } = useSelector((state) => state.review);
+  const { userInfo } = useSelector((state) => state.auth);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -118,6 +131,20 @@ function HomePage() {
     dispatch(getOutstandingProductListRequest());
     dispatch(getNewProductListRequest());
   }, []);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    dispatch(clearReviewListRequest());
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    dispatch(clearReviewListRequest());
+  };
 
   const handleAddToCart = useCallback((e, item) => {
     e.preventDefault();
@@ -159,52 +186,66 @@ function HomePage() {
               }}
               cover={<img alt={item.name} src={item.images} />}
               actions={[
-                <Space>
-                  <HeartOutlined key="favorite" />
+                <Space onClick={(e) => handleLike(e, item)}>
+                  <Button
+                    type="link"
+                    danger
+                    icon={
+                      item.favorites.some(
+                        (item) =>
+                          parseInt(item.userId) === parseInt(userInfo.data?.id)
+                      ) ? (
+                        <HeartFilled />
+                      ) : (
+                        <HeartOutlined />
+                      )
+                    }
+                    key="favorite"
+                  ></Button>
                   <span>{item.favorites.length}</span>
                 </Space>,
-                <Space>
+                <Space onClick={(e) => handleComment(e, item)}>
                   <CommentOutlined key="review" />
                   <span>{item.reviews.length}</span>
                 </Space>,
               ]}
             >
-              <Row>
+              <Row gutter={5}>
                 <Col span={18}>
-                  <Meta
-                    title={item.name}
-                    description={formatMoney(item.price)}
-                  />
+                  <T.Title
+                    size="lg"
+                    truncateMultiLine={1}
+                    style={{ height: 27 }}
+                  >
+                    {item.name}
+                  </T.Title>
                 </Col>
                 <Col span={6}>
-                  <Meta
-                    title={
-                      <Button
-                        type="primary"
-                        ghost
-                        id={`cart_${item.id}`}
-                        onClick={(e) => handleAddToCart(e, item)}
-                      >
-                        <ShoppingCartOutlined />
-                      </Button>
-                    }
-                  />
+                  <Button
+                    type="primary"
+                    ghost
+                    onClick={(e) => handleAddToCart(e, item)}
+                  >
+                    <ShoppingCartOutlined />
+                  </Button>
                 </Col>
               </Row>
-              <Meta
-                title={
-                  <Rate
-                    value={averageRate}
-                    allowHalf
-                    disabled
-                    style={{ fontSize: 12 }}
-                  />
-                }
-                description={`${
-                  averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
-                } `}
-                style={{ marginTop: 10 }}
-              />
+              <Space align="baseline">
+                <Rate
+                  value={averageRate}
+                  allowHalf
+                  disabled
+                  style={{ fontSize: 12 }}
+                />
+                <T.Text size="md">
+                  {`${
+                    averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
+                  } `}
+                </T.Text>
+              </Space>
+              <T.Text size="lg" style={{ marginTop: 5 }}>
+                {formatMoney(item.price)}
+              </T.Text>
             </Card>
           </Link>
         </S.ItemOfList>
@@ -235,52 +276,66 @@ function HomePage() {
               }}
               cover={<img alt={item.name} src={item.images} />}
               actions={[
-                <Space>
-                  <HeartOutlined key="favorite" />
+                <Space onClick={(e) => handleLike(e, item)}>
+                  <Button
+                    type="link"
+                    danger
+                    icon={
+                      item.favorites.some(
+                        (item) =>
+                          parseInt(item.userId) === parseInt(userInfo.data?.id)
+                      ) ? (
+                        <HeartFilled />
+                      ) : (
+                        <HeartOutlined />
+                      )
+                    }
+                    key="favorite"
+                  ></Button>
                   <span>{item.favorites.length}</span>
                 </Space>,
-                <Space>
+                <Space onClick={(e) => handleComment(e, item)}>
                   <CommentOutlined key="review" />
                   <span>{item.reviews.length}</span>
                 </Space>,
               ]}
             >
-              <Row>
+              <Row gutter={5}>
                 <Col span={18}>
-                  <Meta
-                    title={item.name}
-                    description={formatMoney(item.price)}
-                  />
+                  <T.Title
+                    size="lg"
+                    truncateMultiLine={1}
+                    style={{ height: 27 }}
+                  >
+                    {item.name}
+                  </T.Title>
                 </Col>
                 <Col span={6}>
-                  <Meta
-                    title={
-                      <Button
-                        type="primary"
-                        ghost
-                        id={`cart_${item.id}`}
-                        onClick={(e) => handleAddToCart(e, item)}
-                      >
-                        <ShoppingCartOutlined />
-                      </Button>
-                    }
-                  />
+                  <Button
+                    type="primary"
+                    ghost
+                    onClick={(e) => handleAddToCart(e, item)}
+                  >
+                    <ShoppingCartOutlined />
+                  </Button>
                 </Col>
               </Row>
-              <Meta
-                title={
-                  <Rate
-                    value={averageRate}
-                    allowHalf
-                    disabled
-                    style={{ fontSize: 12 }}
-                  />
-                }
-                description={`${
-                  averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
-                } `}
-                style={{ marginTop: 10 }}
-              />
+              <Space align="baseline">
+                <Rate
+                  value={averageRate}
+                  allowHalf
+                  disabled
+                  style={{ fontSize: 12 }}
+                />
+                <T.Text size="md">
+                  {`${
+                    averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
+                  } `}
+                </T.Text>
+              </Space>
+              <T.Text size="lg" style={{ marginTop: 5 }}>
+                {formatMoney(item.price)}
+              </T.Text>
             </Card>
           </Link>
         </S.ItemOfList>
@@ -300,6 +355,61 @@ function HomePage() {
       );
     });
   }, [advertisementList]);
+
+  const handleLike = (e, item) => {
+    e.preventDefault();
+  };
+
+  const handleComment = (e, item) => {
+    e.preventDefault();
+    dispatch(getReviewListRequest({ productId: parseInt(item.id) }));
+    showModal();
+  };
+
+  const renderReviewModal = useMemo(() => {
+    return (
+      <Modal
+        title="Bình luận"
+        open={isModalOpen}
+        onOk={handleOk}
+        okText="Đã xem"
+        onCancel={handleCancel}
+      >
+        {reviewList.data.length === 0 ? (
+          <S.ReviewListWrapper>Không có bình luận</S.ReviewListWrapper>
+        ) : (
+          reviewList.data.map((item) => {
+            return (
+              <S.ReviewListWrapper key={item.id}>
+                <br />
+                <Space align="baseline">
+                  <Avatar
+                    size={24}
+                    icon={
+                      item.user.avatar ? (
+                        <img src={item.user.avatar} alt="Ảnh đại diện" />
+                      ) : (
+                        <UserOutlined />
+                      )
+                    }
+                  />
+                  <h3>{item.user.fullName}</h3>
+                  {/* <span>{moment(item.createAt).format('DD/MM/YYYY HH:mm')}</span> */}
+                  <span>{moment(item.createdAt).fromNow()}</span>
+                </Space>
+
+                <div>
+                  <Rate value={item.rate} disabled style={{ fontSize: 12 }} />
+                </div>
+                <strong>Bình luận:</strong>
+                <p>{item.comment}</p>
+              </S.ReviewListWrapper>
+            );
+          })
+        )}
+      </Modal>
+    );
+  }, [isModalOpen, reviewList.data]);
 
   return (
     <S.HomeWrapper>
@@ -375,6 +485,7 @@ function HomePage() {
           </Row>
         </>
       )}
+      {renderReviewModal}
     </S.HomeWrapper>
   );
 }

@@ -33,9 +33,6 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 
-import T from 'components/Typography';
-import * as S from './styles';
-
 import { addToCartRequest } from 'redux/slicers/cart.slice';
 import {
   favoriteProductRequest,
@@ -48,6 +45,9 @@ import {
 } from 'redux/slicers/review.slice';
 import moment from 'moment';
 
+import T from 'components/Typography';
+import * as S from './styles';
+
 const { Meta } = Card;
 
 function ProductListPage() {
@@ -59,9 +59,6 @@ function ProductListPage() {
   const [loading, setLoading] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
-  const { favoriteList, favoriteProductData } = useSelector(
-    (state) => state.favorite
-  );
   const { reviewList } = useSelector((state) => state.review);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -151,38 +148,33 @@ function ProductListPage() {
 
   const handleLike = (e, item) => {
     e.preventDefault();
-    console.log(item.favorites);
-    if (accessToken) {
-      if (
-        item.favorites.some(
-          (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
-        )
-      ) {
-        const favoriteData = item.favorites.find(
-          (itemFavorite) => itemFavorite.userId === userInfo.data?.id
-        );
-        console.log('unfavorite');
 
-        dispatch(
-          unFavoriteProductRequest({
-            id: favoriteData.id,
-          })
-        );
-        // dispatch()
-      } else {
-        console.log('favorite');
-        dispatch(
-          favoriteProductRequest({
-            productId: item.id,
-            userId: userInfo.data.id,
-          })
-        );
-      }
-    } else {
-      notification.error({ message: 'Quý khách cần đăng nhập để like' });
-    }
-
-    console.log(favoriteProductData.error);
+    // if (accessToken) {
+    //   if (
+    //     item.favorites.some(
+    //       (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
+    //     )
+    //   ) {
+    //     const favoriteData = item.favorites.find(
+    //       (itemFavorite) => itemFavorite.userId === userInfo.data?.id
+    //     );
+    //     dispatch(
+    //       unFavoriteProductRequest({
+    //         id: favoriteData.id,
+    //       })
+    //     );
+    //   } else {
+    //     console.log('favorite');
+    //     dispatch(
+    //       favoriteProductRequest({
+    //         productId: item.id,
+    //         userId: userInfo.data.id,
+    //       })
+    //     );
+    //   }
+    // } else {
+    //   notification.error({ message: 'Quý khách cần đăng nhập để like' });
+    // }
   };
 
   const handleComment = (e, item) => {
@@ -251,42 +243,42 @@ function ProductListPage() {
                   </Space>,
                 ]}
               >
-                <Row>
+                <Row gutter={5}>
                   <Col span={18}>
-                    <Meta
-                      title={item.name}
-                      description={formatMoney(item.price)}
-                    />
+                    <T.Title
+                      size="lg"
+                      truncateMultiLine={1}
+                      style={{ height: 27 }}
+                    >
+                      {item.name}
+                    </T.Title>
                   </Col>
                   <Col span={6}>
-                    <Meta
-                      title={
-                        <Button
-                          type="primary"
-                          ghost
-                          id={`cart_${item.id}`}
-                          onClick={(e) => handleAddToCart(e, item)}
-                        >
-                          <ShoppingCartOutlined />
-                        </Button>
-                      }
-                    />
+                    <Button
+                      type="primary"
+                      ghost
+                      onClick={(e) => handleAddToCart(e, item)}
+                    >
+                      <ShoppingCartOutlined />
+                    </Button>
                   </Col>
                 </Row>
-                <Meta
-                  title={
-                    <Rate
-                      value={averageRate}
-                      allowHalf
-                      disabled
-                      style={{ fontSize: 12 }}
-                    />
-                  }
-                  description={`${
-                    averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
-                  } `}
-                  style={{ marginTop: 10 }}
-                />
+                <Space align="baseline">
+                  <Rate
+                    value={averageRate}
+                    allowHalf
+                    disabled
+                    style={{ fontSize: 12 }}
+                  />
+                  <T.Text size="md">
+                    {`${
+                      averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
+                    } `}
+                  </T.Text>
+                </Space>
+                <T.Text size="lg" style={{ marginTop: 5 }}>
+                  {formatMoney(item.price)}
+                </T.Text>
               </Card>
             </Link>
           </S.ItemOfList>

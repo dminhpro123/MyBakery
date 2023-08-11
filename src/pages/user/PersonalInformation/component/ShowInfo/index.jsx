@@ -15,7 +15,7 @@ const ShowInfo = () => {
           size={116}
           icon={
             userInfo.data.avatar ? (
-              <img src={userInfo.data.avatar} />
+              <img src={userInfo.data.avatar} alt="" />
             ) : (
               <UserOutlined />
             )

@@ -4,22 +4,22 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 140,
+      "view": 143,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691734526436,
+      "updatedAt": 1691757949525,
       "createdAt": 1689481189282
     },
     {
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 101,
+      "view": 102,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691476040051,
+      "updatedAt": 1691776378255,
       "createdAt": 1689481110282
     },
     {
@@ -59,11 +59,11 @@
       "id": 6,
       "name": "Kem flan",
       "price": 7000,
-      "view": 37,
+      "view": 39,
       "description": "Bánh flan hay gọi thẳng theo tiếng Việt là bánh lăng hay caramen (tiếng Pháp: crème caramel và flan au caramel) là loại bánh được hấp chín từ các nguyên liệu chính là trứng và sữa, caramel (đường thắng). Đây là một loại bánh xuất xứ từ nền ẩm thực châu Âu tuy hiện nay đã phổ biến tại nhiều nơi trên thế giới.",
       "categoryId": 8,
       "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1691259391528,
+      "updatedAt": 1691776455008,
       "createdAt": 1689481223282
     }
   ],
@@ -254,7 +254,7 @@
       "fullName": "Nguyễn Văn Đức Minh",
       "phone": "+84919695234",
       "createdAt": 1689481389282,
-      "updatedAt": 1691735140753,
+      "updatedAt": 1691754430333,
       "id": 1,
       "address": "34 Ông Ích Khiêm ",
       "gender": "Nam",
@@ -310,6 +310,15 @@
       "createdAt": 1689733475834,
       "updatedAt": 1689733475834,
       "id": 4
+    },
+    {
+      "email": "minh4@gmail.com",
+      "password": "$2a$10$s/vPnQ71f5vh.cgun0P2u.d6XI75hTRS60xnV.uqv4LAJfSBnPpDO",
+      "fullName": "Duc Minh Van Nguyen",
+      "phone": "+84123132123",
+      "createdAt": 1691757757121,
+      "updatedAt": 1691757757121,
+      "id": 5
     }
   ],
   "contacts": [
@@ -440,25 +449,18 @@
       "id": 9
     },
     {
-      "productId": 5,
-      "userId": 1,
-      "createdAt": 1691735544426,
-      "updatedAt": 1691735544426,
-      "id": 10
-    },
-    {
-      "productId": 5,
-      "userId": 1,
-      "createdAt": 1691735544426,
-      "updatedAt": 1691735544426,
-      "id": 11
-    },
-    {
       "productId": 1,
       "userId": 1,
       "createdAt": 1691737704407,
       "updatedAt": 1691737704407,
       "id": 12
+    },
+    {
+      "productId": 5,
+      "userId": 1,
+      "createdAt": 1691738738327,
+      "updatedAt": 1691738738327,
+      "id": 13
     }
   ],
   "orders": [
@@ -514,9 +516,9 @@
       "wardName": "Phường Thanh Bình",
       "userId": 1,
       "totalPrice": 63000,
-      "status": "pending",
+      "status": "cancel",
       "createdAt": 1690895761403,
-      "updatedAt": 1690899152027,
+      "updatedAt": 1691755266987,
       "id": 3
     },
     {

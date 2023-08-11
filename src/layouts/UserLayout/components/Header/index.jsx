@@ -32,7 +32,6 @@ function AdminHeader() {
           <S.Icon
             style={{ textDecoration: 'none' }}
             href={ROUTES.USER.PERSONAL_INFOR}
-            // onClick={() => navigate(ROUTES.USER.PERSONAL_INFOR)}
           >
             Thông tin cá nhân
           </S.Icon>
