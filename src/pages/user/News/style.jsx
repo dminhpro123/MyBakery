@@ -45,7 +45,7 @@ export const NewsContent = styled.p`
 
 export const NewsModalParagraph = styled.p`
   margin: 5px 0 5px 0;
-  text-indent: 15px;
+  text-indent: 10px;
 `;
 export const NewsModalImage = styled.img`
   margin: 5px 0 5px 0;

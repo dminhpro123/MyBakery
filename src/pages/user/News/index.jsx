@@ -68,18 +68,10 @@ const News = () => {
         onCancel={handleCancel}
       >
         <S.NewsModalParagraph>
-          {newsDetail.data[0].firstParagraph}
+          <T.Text
+            dangerouslySetInnerHTML={{ __html: newsDetail.data[0].content }}
+          ></T.Text>
         </S.NewsModalParagraph>
-        <img src={newsDetail.data[0].images[0]} alt="" />
-        {newsDetail.data[0].content.map((item, index) => {
-          return (
-            <S.NewsModalParagraph key={index}>{item}</S.NewsModalParagraph>
-          );
-        })}
-        {listNewsImg !== [] &&
-          listNewsImg.map((item, index) => {
-            return <S.NewsModalImage key={index} src={item} />;
-          })}
       </Modal>
     );
   };
