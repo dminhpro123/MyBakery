@@ -10,3 +10,8 @@ export const MapRender = styled.div`
   width: 100%;
   z-index: 3;
 `;
+
+export const StoreName = styled.span`
+  font-size: 10px;
+  color: red;
+`;

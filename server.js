@@ -1,9 +1,9 @@
-const jsonServer = require("json-server");
-const auth = require("json-server-auth");
-const moment = require("moment");
+const jsonServer = require('json-server');
+const auth = require('json-server-auth');
+const moment = require('moment');
 
 const server = jsonServer.create();
-const router = jsonServer.router("./db/data.json");
+const router = jsonServer.router('./db/data.json');
 
 const middlewares = jsonServer.defaults();
 
@@ -13,16 +13,16 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.use((req, res, next) => {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     req.body.createdAt = moment().valueOf();
     req.body.updatedAt = moment().valueOf();
   }
 
-  if (req.method === "PUT") {
-    req.method = "PATCH";
+  if (req.method === 'PUT') {
+    req.method = 'PATCH';
   }
 
-  if (req.method === "PATCH") {
+  if (req.method === 'PATCH') {
     req.body.updatedAt = moment().valueOf();
   }
 

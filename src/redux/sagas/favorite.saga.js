@@ -37,8 +37,11 @@ function* favoriteProductSaga(action) {
       'http://localhost:4000/favorites',
       action.payload
     );
+    console.log('like success');
     yield put(favoriteProductSuccess({ data: result.data }));
   } catch (e) {
+    console.log('like failure');
+
     yield put(favoriteProductFailure({ error: e }));
   }
 }
@@ -48,7 +51,10 @@ function* unFavoriteProductSaga(action) {
     const { id } = action.payload;
     yield axios.delete(`http://localhost:4000/favorites/${id}`);
     yield put(unFavoriteProductSuccess({ id: id }));
+    console.log('unlike success');
   } catch (e) {
+    console.log('unlike failure');
+
     yield put(unFavoriteProductFailure({ error: e }));
   }
 }

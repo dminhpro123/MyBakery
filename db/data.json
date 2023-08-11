@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 134,
+      "view": 140,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691476025782,
+      "updatedAt": 1691734526436,
       "createdAt": 1689481189282
     },
     {
@@ -37,11 +37,11 @@
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
-      "view": 38,
+      "view": 40,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
-      "updatedAt": 1691476172832,
+      "updatedAt": 1691734862182,
       "createdAt": 1689481112282
     },
     {
@@ -116,6 +116,10 @@
     "slogan": "Bakery - Tinh hoa của ẩm thực Việt",
     "youtubeChannel": "https://www.youtube.com/channel/UCyxFxySagoaHfj6gQS-TSsQ",
     "facebookChannel": "https://www.facebook.com/nguyenvanducminh/",
+    "position": {
+      "lat": 16.080858,
+      "lng": 108.2132054
+    },
     "aboutUs": {
       "aboutUsTitle1": "Khởi Nguồn",
       "aboutUsContent1": "Bakery khởi đầu là một cơ sở sản xuất bánh mì nhỏ với quy mô gia đình vào đầu những năm 2023. Trải qua gần 20 năm xây dựng và phát triển, Bakery đã xây dựng được chuỗi hệ thống cửa hàng với hơn 40 cửa hàng bánh mì, bánh ngọt lớn nhỏ trải khắp thành phố Đà Nẵng. Là thương hiệu được biết đến với những sản phẩm chất lượng và ngon miệng từ bánh mì, bánh ngọt, bánh kem đến các sản phẩm khác như hamburger, sandwich,... Cùng với tinh thần ham học hỏi, trách nhiệm,  Bakery đã, đang và sẽ luôn mang đến cho khách hàng những ổ bánh mì nóng giòn, những chiếc bánh thơm ngon, dinh dưỡng nhất.",
@@ -381,6 +385,15 @@
       "createdAt": 1691476115751,
       "updatedAt": 1691476115751,
       "id": 6
+    },
+    {
+      "rate": 4.5,
+      "comment": "ngon",
+      "userId": 3,
+      "productId": 1,
+      "createdAt": 1691683297103,
+      "updatedAt": 1691683297103,
+      "id": 7
     }
   ],
   "favorites": [
@@ -390,13 +403,6 @@
       "createdAt": 1691386623740,
       "updatedAt": 1691386623740,
       "id": 1
-    },
-    {
-      "productId": 1,
-      "userId": 1,
-      "createdAt": 1691393539501,
-      "updatedAt": 1691393539501,
-      "id": 2
     },
     {
       "productId": 6,
@@ -425,6 +431,20 @@
       "createdAt": 1691476148580,
       "updatedAt": 1691476148581,
       "id": 7
+    },
+    {
+      "productId": 1,
+      "userId": 1,
+      "createdAt": 1691718843227,
+      "updatedAt": 1691718843227,
+      "id": 8
+    },
+    {
+      "productId": 4,
+      "userId": 1,
+      "createdAt": 1691734796041,
+      "updatedAt": 1691734796041,
+      "id": 9
     }
   ],
   "orders": [

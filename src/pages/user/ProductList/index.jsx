@@ -190,7 +190,7 @@ function ProductListPage() {
                 }}
                 cover={<img alt={item.name} src={item.images} />}
                 actions={[
-                  <Space>
+                  <Space onClick={(e) => handleLike(e, item)}>
                     <Button
                       type="link"
                       danger
