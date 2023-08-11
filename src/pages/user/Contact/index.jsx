@@ -16,7 +16,6 @@ const ContactUs = () => {
     <>
       <S.ContactUsWrapper>
         <TopIcon key={5} titleString="CONTACT" />
-
         <div className="info-contact">
           <Descriptions title="My Bakery">
             <Descriptions.Item label="Địa chỉ">
