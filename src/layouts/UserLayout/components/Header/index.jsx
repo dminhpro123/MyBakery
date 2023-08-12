@@ -28,22 +28,28 @@ function AdminHeader() {
     () => [
       {
         key: '1',
-        label: (
+        label: userInfo.data.id ? (
           <S.Icon
             style={{ textDecoration: 'none' }}
             href={ROUTES.USER.PERSONAL_INFOR}
           >
             Thông tin cá nhân
           </S.Icon>
+        ) : (
+          <S.Icon style={{ textDecoration: 'none' }} href={ROUTES.REGISTER}>
+            Đăng ký
+          </S.Icon>
         ),
-        disabled: userInfo.data.id ? false : true,
       },
       {
         key: '2',
-        label: (
+        label: userInfo.data.id ? (
           <S.Icon onClick={() => dispatch(logoutUser())}>Đăng xuất</S.Icon>
+        ) : (
+          <S.Icon style={{ textDecoration: 'none' }} href={ROUTES.LOGIN}>
+            Đăng nhập
+          </S.Icon>
         ),
-        disabled: userInfo.data.id ? false : true,
       },
     ],
     [userInfo.data.id]
@@ -96,37 +102,20 @@ function AdminHeader() {
     <>
       <S.HeaderWrapper>
         <Row gutter={[16, 16]}>
-          <Col xl={1} lg={1} xs={1}></Col>
-          <Col xl={10} lg={9} xs={8}>
+          <Col xl={6} lg={6} md={4} sm={4} xs={1}></Col>
+          <Col xl={4} lg={4} md={6} sm={6} xs={8}>
             <S.HeadTop>{renderChannel}</S.HeadTop>
           </Col>
-          <Col xl={2} lg={4} xs={6}>
-            <S.Logo>
-              <S.LogoImg
-                src={logo}
-                alt="logo"
-                onClick={() => navigate(ROUTES.USER.HOME)}
-              />
+          <Col xl={4} lg={4} md={4} sm={4} xs={6}>
+            <S.Logo href={ROUTES.USER.HOME}>
+              <S.LogoImg src={logo} alt="logo" />
             </S.Logo>
           </Col>
-          <Col xl={10} lg={9} xs={8}>
+          <Col xl={6} lg={9} md={3} sm={4} xs={8}>
             <S.HeadTop>
               <S.UserBar>
-                <S.LoginLogoutBar>
-                  <Link to={ROUTES.USER.LOGIN}>
-                    <S.Log>Đăng nhập</S.Log>
-                  </Link>{' '}
-                  /{' '}
-                  <Link to={ROUTES.USER.REGISTER}>
-                    <S.Log>Đăng ký</S.Log>
-                  </Link>
-                </S.LoginLogoutBar>
-
                 <S.UserIcon>
-                  <S.Icon
-                    href={ROUTES.USER.CART}
-                    // onClick={() => navigate(ROUTES.USER.CART)}
-                  >
+                  <S.Icon href={ROUTES.USER.CART}>
                     <Space size="large">
                       {cartList.length === 0 ? (
                         <FontAwesomeIcon icon={faCartShopping} />
@@ -141,9 +130,10 @@ function AdminHeader() {
                   {renderUserInfo}
                 </S.UserIcon>
               </S.UserBar>
+              {userInfo.data.fullName && `${userInfo.data.fullName}`}
             </S.HeadTop>
           </Col>
-          <Col xl={1} lg={1} xs={1}></Col>
+          <Col xl={4} lg={1} md={7} sm={6} xs={1}></Col>
         </Row>
         <S.NavLinkContainer>
           <S.HeadBottom>

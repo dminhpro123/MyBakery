@@ -46,6 +46,7 @@ import {
   unFavoriteProductRequest,
 } from 'redux/slicers/favorite.slice';
 
+import T from 'components/Typography';
 import * as S from './style';
 
 const { Meta } = Card;
@@ -190,30 +191,33 @@ const ProductDetail = () => {
             </Col>
             <br />
             <Col span={24}>
-              <Descriptions>
-                <Descriptions.Item
-                  label="Đơn giá"
-                  contentStyle={{ fontSize: 'larger', fontWeight: 'bold' }}
-                  labelStyle={{ fontSize: 'larger' }}
-                >
-                  {formatMoney(productDetail.data.price)}
-                </Descriptions.Item>
-              </Descriptions>
-              <Descriptions>
-                <Descriptions.Item
-                  label="Mô tả"
-                  contentStyle={{ fontSize: 'larger', fontWeight: 'bold' }}
-                  labelStyle={{ fontSize: 'larger' }}
-                >
-                  {productDetail.data.description}
-                </Descriptions.Item>
-              </Descriptions>
+              <Row gutter={[16, 16]}>
+                <Col span={6}>
+                  <T.Label size="md" fontWeights="bold">
+                    <strong>Đơn giá:</strong>
+                  </T.Label>
+                </Col>
+                <Col span={18}>
+                  <T.Text>{formatMoney(productDetail.data.price)}</T.Text>
+                </Col>
+              </Row>
+              <br />
+              <Row gutter={[16, 16]}>
+                <Col span={6}>
+                  <T.Label size="md" fontWeights="bold">
+                    <strong>Mô tả:</strong>
+                  </T.Label>
+                </Col>
+                <Col span={18}>
+                  <T.Text>{productDetail.data.description}</T.Text>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Col>
       </>
     );
-  }, [productDetail.data, productRate]);
+  }, [productDetail.data, productRate, isFavorite]);
 
   const handleAddToCart = () => {
     dispatch(
@@ -496,10 +500,12 @@ const ProductDetail = () => {
           {renderReviewList}
         </Card>
         {similarProduct.data.length > 1 && (
-          <S.SimilarProductList>
+          <S.SimilarProductWrapper>
             <h2>Sản phẩm tương tự</h2>
-            {renderSimilarProductList}
-          </S.SimilarProductList>
+            <S.SimilarProductList>
+              {renderSimilarProductList}
+            </S.SimilarProductList>
+          </S.SimilarProductWrapper>
         )}
       </S.ProductDetailWrapper>
     </>

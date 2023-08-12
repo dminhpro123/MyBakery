@@ -4,33 +4,33 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 146,
-      "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
+      "view": 159,
+      "description": "Bánh mì trứng: là loại bánh mì có nhân gồm một hoặc hai quả trứng gà đánh tan với lá hành xanh, lật thật nhanh trên chảo, khi vừa chín tới thì bỏ nhanh vào chiếc bánh, nướng qua một xíu cho giòn vỏ rồi lấy ra quệt đẫm tương ớt.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691823155978,
+      "updatedAt": 1691853447121,
       "createdAt": 1689481189282
     },
     {
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 102,
-      "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
+      "view": 105,
+      "description": "Bánh mỳ kẹp thịt Việt Nam là một loại bánh mỳ ổ làm bằng bột mỳ, bánh được bổ dọc, bên trong kẹp pate, thịt, bơ sốt mayonnaise, kèm theo các loại rau củ quả như: hành, dưa chuột, cà rốt, rau mùi… rưới tương ớt và nước tương.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691776378255,
+      "updatedAt": 1691828440671,
       "createdAt": 1689481110282
     },
     {
       "id": 3,
       "name": "Bánh bao chiên",
       "price": 3000,
-      "view": 48,
-      "description": "Thành phần: Bột mì, trứng gà, men ngọt, dầu,…",
+      "view": 55,
+      "description": "Bánh bao chiên – Bánh bao Phong Lan trải qua khâu nhào, nặn, ủ bột, được tạo hình xinh xắn, trắng nõn, xếp đều nhau. Sau đó được đem hấp chín, để nguội. Cuối cùng để có được những chiếc bánh bao chiên vàng ruộm, đều màu, giòn đượm trong miệng, bánh phải trải qua quá trình chiên trên chảo dầu nóng.",
       "categoryId": 2,
       "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20chi%C3%AAn%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1691823171202,
+      "updatedAt": 1691853868868,
       "createdAt": 1689481111282
     },
     {
@@ -49,7 +49,7 @@
       "name": "Bánh kem giáng sinh",
       "price": 205000,
       "view": 35,
-      "description": "Kích thước (đường kính bánh) : 20cm",
+      "description": "Giáng sinh là mùa của yêu thương, đem lại sự ấm áp. Là cơ hội để mọi người sum họp và cùng nhau chia sẻ sau một năm dài bận rộn. Bánh kem giáng sinh là món quà tặng độc đáo cho bạn bè, người thân. Một set gồm bánh được thiết kế xinh xắn, thơm vị bơ và hương hoa quả tự nhiên, đã kèm hộp đem tặng.",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
       "updatedAt": 1691822406423,
@@ -71,7 +71,7 @@
       "name": "Bánh mì lúa mạch",
       "price": 24000,
       "view": 5,
-      "description": "Thành phần: Bột mì, bột mì nguyên cám, đường, sữa tươi, bơ, bột sữa, men ngọt",
+      "description": "Bánh mì đen (hay còn gọi là bánh mì lúa mạch) là loại bánh mì được chế biến bằng những tỷ lệ khác nhau của loại bột mì đặc biệt có chiết suất từ hạt lúa mạch đen. Loại bánh này có thể được làm sáng màu hoặc tối màu tùy theo loại bột được sử dụng; thường là màu đen, nâu hoặc xám đặc trưng.",
       "categoryId": 5,
       "images": "http://dongtienbakery.com/image/cache/data/IMG_744-608x416f.jpg",
       "updatedAt": 1691776455008,
@@ -82,7 +82,7 @@
       "name": "Bánh hotdog",
       "price": 18000,
       "view": 6,
-      "description": "Thành phần: bột mì, bơ, trứng gà, đường, sữa tươi, hotdog, sốt tiêu, tương ớt,  muối …. ",
+      "description": "Hot dog thực chất là bánh mì kẹp với xúc xích, thường có kèm thêm mù tạc, xốt cà chua, hành và xốt mayonnaise. Là món ăn nhanh tại Mỹ. Ở Việt Nam, hot dog được biến đổi thành hình dạng tam giác, kèm với những loại nhân như xúc xích, chà bông và phô mai.",
       "categoryId": 3,
       "images": "http://dongtienbakery.com/image/cache/data/20200327_banhHotdog_qk-608x416f.png",
       "updatedAt": 1691822034472,
@@ -92,12 +92,122 @@
       "id": 9,
       "name": "Bánh kem sữa tươi",
       "price": 210000,
-      "view": 7,
-      "description": "Kích thước (đường kính bánh) : 20cm",
+      "view": 8,
+      "description": "Chiếc bánh kem truyền thống hay Bánh kem sữa tươi bao gồm cốt bánh gato bông lan mềm xốp thơm mịn và lớp kem trang trí có thể được làm từ nhiều loại kem khác nhau. ",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/1S3-013%20(1)-608x416f.jpg",
-      "updatedAt": 1691822485540,
+      "updatedAt": 1691826758897,
       "createdAt": 1689481224284
+    },
+    {
+      "id": 10,
+      "name": "Sữa chua",
+      "price": 10000,
+      "view": 11,
+      "description": "Sữa chua chính là sữa bò tươi hoặc sữa được pha theo công thức tươi cho lên men với các chủng vi khuẩn có lợi cho hệ đường ruột. Quá trình chủ yếu xảy ra trong lên men sữa chua là đường Lactose chuyển thành đường glucose rồi chuyển thành acid pyruvic và cuối cùng là axit lactic.",
+      "categoryId": 8,
+      "images": "https://dayphache.edu.vn/wp-content/uploads/2019/05/hinh-sua-chua-khong-dong-da.jpg",
+      "updatedAt": 1691824873622,
+      "createdAt": 1689481224285
+    },
+    {
+      "id": 11,
+      "name": "Bánh dừa phomai",
+      "price": 12000,
+      "view": 16,
+      "description": "Thành phần: bột mì, trứng gà, đường, bột sữa, bơ, muối, phomai, dừa, nho vàng,...",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20ng%E1%BB%8Dt/Dua1-608x416f.jpg",
+      "updatedAt": 1691853835713,
+      "createdAt": 1689481224286
+    },
+    {
+      "id": 12,
+      "name": "Bông lan cuốn nhỏ",
+      "price": 34000,
+      "view": 14,
+      "description": "Với từng lớp bột được phết lên một thanh tròn quay liên tục trên lò nướng, hết lớp này đến lớp khác. Sau khi để nguội, bánh bông lan cuộn ngàn lớp được cắt thành từng khoanh nhỏ, màu vàng ươm trông thật đẹp mắt và hấp dẫn.",
+      "categoryId": 6,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C3%B4ng%20lan%20cu%E1%BB%91n%20nh%E1%BB%8F_1_fix-608x416f.jpg",
+      "updatedAt": 1691825687871,
+      "createdAt": 1689481224287
+    },
+    {
+      "id": 13,
+      "name": "Bông mì hoa cúc",
+      "price": 25000,
+      "view": 18,
+      "description": "Bánh mì hoa cúc là một loại bánh mì công nghiệp đến từ Pháp với tên gọi đúng là Harrys Brioche Tressée do bánh được tạo hình bím tóc, lấy cảm hứng từ loại bánh mì bơ Brioche nổi tiếng rất mềm, thơm và xốp. Bánh mì hoa cúc ngoài mùi bơ thơm lừng thì còn có mùi tinh dầu hoa cam đặc biệt kết hợp với vani.",
+      "categoryId": 1,
+      "images": "http://dongtienbakery.com/image/cache/data/hoa%20c%C3%BAc-608x416f.jpg",
+      "updatedAt": 1691853649383,
+      "createdAt": 1689481224288
+    },
+    {
+      "id": 14,
+      "name": "Bánh mousse dừa",
+      "price": 23000,
+      "view": 53,
+      "description": "Bánh Mousse Dừa là dòng sản phẩm đặc biệt của thương hiệu Jon Donaire, mang hương vị dừa truyền thống thơm béo đặc trưng của Việt Nam kết hợp cùng lớp bông lan mềm mịn, tạo nên điểm nhấn hương vị hoàn hảo.",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/mousse%20Dua-608x416f.jpg",
+      "updatedAt": 1691827407894,
+      "createdAt": 1689481224289
+    },
+    {
+      "id": 15,
+      "name": "Bông lan cuộn gà cay",
+      "price": 24000,
+      "view": 3,
+      "description": "Bánh bông lan cuộn gà cay sốt dầu trứng mềm mịn, ngọt béo, cay mặn, cực kỳ thích hợp để dùng cho buổi sáng hoặc ăn xế. ",
+      "categoryId": 3,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/blcgc2-608x416f.jpg",
+      "updatedAt": 1691827407894,
+      "createdAt": 1689481224290
+    },
+    {
+      "id": 16,
+      "name": "Bánh kem set nhiều vị",
+      "price": 280000,
+      "view": 6,
+      "description": "Bánh kem được làm từ các loại bột mỳ, đường, trứng, bơ và sữa, được kết hợp với các loại hương vị khác nhau như vani, socola, dâu tây, chanh, cam, dưa hấu, trà xanh… để tạo ra hương vị đa dạng và phong phú. ",
+      "categoryId": 4,
+      "images": "http://dongtienbakery.com/image/cache/data/Test/c3bd6801ad6659380077-608x416f.jpg",
+      "updatedAt": 1691827875661,
+      "createdAt": 1689481224291
+    },
+    {
+      "id": 17,
+      "name": "Bánh gấu",
+      "price": 14000,
+      "view": 9,
+      "description": "Bánh gấu là món ăn vặt yêu thích không những của trẻ em mà còn cả người lớn. Loại bánh này có hình dáng chú gấu siêu xinh và đáng yêu, bên trong có nhân kem. Bánh gấu dùng ăn liền, dễ ăn và thích hợp cho các buổi picnic, sinh nhật,...",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/BanhBongLan/287718599_2183803451796075_8089119361488353002_n-608x416f.jpg",
+      "updatedAt": 1691853849489,
+      "createdAt": 1689481224292
+    },
+    {
+      "id": 18,
+      "name": "Sandwich sữa",
+      "price": 17000,
+      "view": 21,
+      "description": "Sandwich sữa được xem là món bánh cơ bản và dễ ăn nhất trong nhóm Sandwich của chúng tôi. Nếu có điều gì đặc biệt thì đó chính là hương vị tự nhiên, độ mềm mại nhờ bơ sữa hảo hạng, không phụ gia và chất bảo quản… với phương pháp lên men chậm đúng kiểu truyền thống.",
+      "categoryId": 5,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20Sandwich/Sandwich%20s%E1%BB%AFa%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691854045968,
+      "createdAt": 1689481224293
+    },
+    {
+      "id": 19,
+      "name": "Su que",
+      "price": 18000,
+      "view": 21,
+      "description": "Bánh su kem là món bánh ngọt ở dạng kem sữa được làm từ các nguyên liệu như bột mì, trứng, sữa, bơ… đánh đều tạo thành một hỗn hợp và sau đó bằng thao tác ép và phun qua một cái túi để định hình thành những bánh nhỏ và cuối cùng được nướng chín. Bánh có xuất xứ từ nước Pháp.",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20ng%E1%BB%8Dt/suque_1_fix-608x416f.jpg",
+      "updatedAt": 1691854050308,
+      "createdAt": 1689481224294
     }
   ],
   "categories": [
@@ -351,6 +461,15 @@
       "createdAt": 1691683297103,
       "updatedAt": 1691683297103,
       "id": 7
+    },
+    {
+      "rate": 5,
+      "comment": "tuyệt vời",
+      "userId": 1,
+      "productId": 10,
+      "createdAt": 1691824731765,
+      "updatedAt": 1691824731765,
+      "id": 8
     }
   ],
   "favorites": [
@@ -416,6 +535,20 @@
       "createdAt": 1691822035698,
       "updatedAt": 1691822035698,
       "id": 14
+    },
+    {
+      "productId": 10,
+      "userId": 1,
+      "createdAt": 1691824716103,
+      "updatedAt": 1691824716103,
+      "id": 15
+    },
+    {
+      "productId": 11,
+      "userId": 1,
+      "createdAt": 1691853765123,
+      "updatedAt": 1691853765123,
+      "id": 16
     }
   ],
   "orders": [

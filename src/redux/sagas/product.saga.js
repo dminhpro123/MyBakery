@@ -130,7 +130,9 @@ function* getSimilarProductListSaga(action) {
     const result = yield axios.get('http://localhost:4000/products', {
       params: {
         categoryId: parseInt(categoryId),
-        _limit: 8,
+        _limit: 7,
+        _sort: 'view',
+        _order: 'desc',
       },
     });
     yield put(

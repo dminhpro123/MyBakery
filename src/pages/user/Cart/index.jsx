@@ -87,6 +87,7 @@ const Cart = () => {
       ),
     },
   ];
+
   return (
     <>
       <S.CartWrapper>

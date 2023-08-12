@@ -54,7 +54,8 @@ export const HeadTopHamburgerNavbar = styled.div`
   }
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.a`
+  display: block;
   cursor: pointer;
   height: 100%;
 `;
@@ -93,7 +94,6 @@ export const RouteLink = styled.div`
 
 export const HeadTop = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
 
   height: 100%;
@@ -101,6 +101,7 @@ export const HeadTop = styled.div`
 
 export const UserBar = styled.div`
   display: flex;
+  margin-right: 20px;
   align-items: center;
 `;
 
@@ -126,6 +127,7 @@ export const UserIcon = styled.div`
 export const Icon = styled.a`
   cursor: pointer;
   color: black;
+  text-decoration: none;
 `;
 
 export const Channel = styled.a`

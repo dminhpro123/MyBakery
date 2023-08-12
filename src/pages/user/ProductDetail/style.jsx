@@ -52,8 +52,14 @@ export const ReviewAttention = styled.div`
   margin: 5 0 5 0;
 `;
 
-export const SimilarProductList = styled.div`
+export const SimilarProductWrapper = styled.div`
   margin: 5 0 5 0;
+`;
+
+export const SimilarProductList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 `;
 
 export const ItemOfList = styled.div`
