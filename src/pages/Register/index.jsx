@@ -1,12 +1,23 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Form, Input, Button, notification, Spin } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  notification,
+  Spin,
+  Row,
+  Col,
+  Breadcrumb,
+  Space,
+} from 'antd';
 
 import { registerRequest } from 'redux/slicers/auth.slice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import * as S from './style';
 import { ROUTES } from 'constants/routes';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { HomeOutlined } from '@ant-design/icons';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -44,6 +55,30 @@ const Register = () => {
 
   return (
     <>
+      <Row gutter={16}>
+        <Col span={24}>
+          <S.TopIcons>
+            <Breadcrumb
+              items={[
+                {
+                  title: (
+                    <Link to={ROUTES.USER.HOME}>
+                      <Space>
+                        <HomeOutlined />
+                        <span>Trang chủ</span>
+                      </Space>
+                    </Link>
+                  ),
+                },
+                {
+                  title: 'Đăng ký',
+                },
+              ]}
+            />
+          </S.TopIcons>
+        </Col>
+      </Row>
+
       <S.RegisterWrapper>
         <S.RegisterForm>
           <Form

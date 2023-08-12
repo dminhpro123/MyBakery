@@ -1,5 +1,5 @@
-import { Card, Tabs } from 'antd';
-import { Navigate } from 'react-router-dom';
+import { Breadcrumb, Card, Col, Row, Space, Tabs } from 'antd';
+import { Link, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import UpdateInfo from './component/UpdateInfo';
@@ -10,6 +10,7 @@ import FavoriteProducts from './component/FavoriteProducts';
 import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
+import { HomeOutlined } from '@ant-design/icons';
 
 const PersonalInformation = () => {
   const accessToken = localStorage.getItem('accessToken');
@@ -25,6 +26,29 @@ const PersonalInformation = () => {
   return (
     <>
       <S.PersonalInformationWrapper>
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: 'Thông tin cá nhân',
+                  },
+                ]}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
         <Card bordered={false} size="small">
           <Tabs
             // renderTabBar={<ShowInfo />}

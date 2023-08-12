@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Form,
   Button,
@@ -12,6 +12,7 @@ import {
   Card,
   Space,
   Table,
+  Breadcrumb,
 } from 'antd';
 
 import { ROUTES } from 'constants/routes';
@@ -27,6 +28,7 @@ import { clearCartRequest } from 'redux/slicers/cart.slice';
 
 import * as S from './style';
 import { formatMoney } from 'helper';
+import { HomeOutlined } from '@ant-design/icons';
 
 function Checkout() {
   const [checkoutForm] = Form.useForm();
@@ -181,7 +183,30 @@ function Checkout() {
 
   return (
     <S.CheckoutWrapper>
-      <h2 style={{ marginBottom: 24 }}>Thủ tục thanh toán</h2>
+      <Row gutter={16}>
+        <Col span={24}>
+          <S.TopIcons>
+            <Breadcrumb
+              items={[
+                {
+                  title: (
+                    <Link to={ROUTES.USER.HOME}>
+                      <Space>
+                        <HomeOutlined />
+                        <span>Trang chủ</span>
+                      </Space>
+                    </Link>
+                  ),
+                },
+                {
+                  title: 'Thanh toán',
+                },
+              ]}
+            />
+          </S.TopIcons>
+        </Col>
+      </Row>
+
       <Row gutter={[16, 16]}>
         <Col md={14} sm={24}>
           <Form

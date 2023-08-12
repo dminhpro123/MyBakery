@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Col, Modal, Row } from 'antd';
+import { Breadcrumb, Col, Modal, Row, Space } from 'antd';
 
 import {
   getNewsListRequest,
   getNewsDetailRequest,
+  clearNewsDetailRequest,
 } from 'redux/slicers/news.slice';
 import T from 'components/Typography';
-// import { fontSizes } from 'themes/common';
 
 import * as S from './style';
+import { ROUTES } from 'constants/routes';
+import { Link } from 'react-router-dom';
+import { HomeOutlined } from '@ant-design/icons';
 
 const News = () => {
   const dispatch = useDispatch();
@@ -28,14 +31,16 @@ const News = () => {
 
   const handleOk = () => {
     setIsModalOpen(false);
+    dispatch(clearNewsDetailRequest());
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    dispatch(clearNewsDetailRequest());
   };
 
   const renderNewsList = useMemo(() => {
-    if (!newsList) return <h2>Hiện tại chưa có tin tức</h2>;
+    if (!newsList.data[0]) return <h2>Hiện tại chưa có tin tức</h2>;
     return newsList.data.map((item) => {
       return (
         <Col sm={24} md={12} key={item.id}>
@@ -55,10 +60,6 @@ const News = () => {
 
   const renderNewsModal = () => {
     if (!newsDetail.data[0]) return null;
-    const listNewsImg = [];
-    for (let i = 1; i < newsDetail.data[0].images.length; i++) {
-      listNewsImg.push(newsDetail.data[0].images[i]);
-    }
     return (
       <Modal
         title={newsDetail.data[0].title}
@@ -79,6 +80,29 @@ const News = () => {
   return (
     <>
       <S.NewsListWrapper>
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: 'Tin tức',
+                  },
+                ]}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
         <Row gutter={[16, 16]}>{renderNewsList}</Row>
       </S.NewsListWrapper>
       {renderNewsModal()}

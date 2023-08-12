@@ -1,9 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Col, Image, Row } from 'antd';
+import { Breadcrumb, Col, Image, Row, Space } from 'antd';
+import { Link } from 'react-router-dom';
+import { HomeOutlined } from '@ant-design/icons';
+
+import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
-import TopIcon from '../components/TopIcon';
 
 const AboutUs = () => {
   const { bakeryInformationList } = useSelector(
@@ -66,7 +69,29 @@ const AboutUs = () => {
   return (
     <>
       <S.AboutUsWrapper>
-        <TopIcon key={1} titleString="ABOUT_US" />
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: 'Giới Thiệu',
+                  },
+                ]}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
         {renderIntroductionBakery}
       </S.AboutUsWrapper>
     </>

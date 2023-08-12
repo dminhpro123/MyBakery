@@ -12,6 +12,8 @@ import {
   Space,
   Modal,
   Avatar,
+  Breadcrumb,
+  Skeleton,
 } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useNavigate } from 'react-router-dom';
@@ -29,6 +31,7 @@ import {
   CommentOutlined,
   HeartFilled,
   HeartOutlined,
+  HomeOutlined,
   ShoppingCartOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -187,7 +190,8 @@ function ProductListPage() {
     if (loading === true) {
       return (
         <S.LoadingWrapper>
-          <img src={loadingSpin} width={300} alt="loading" />
+          {/* <img src={loadingSpin} width={300} alt="loading" /> */}
+          <Skeleton active loading={loading} paragraph={{ rows: 7 }} />
         </S.LoadingWrapper>
       );
     } else if (productList.data.length === 0) {
@@ -357,7 +361,30 @@ function ProductListPage() {
 
   return (
     <S.ProductListWrapper>
-      <TopIcon key={2} titleString="PRODUCTS" />
+      <Row gutter={16}>
+        <Col span={24}>
+          <S.TopIcons>
+            <Breadcrumb
+              items={[
+                {
+                  title: (
+                    <Link to={ROUTES.USER.HOME}>
+                      <Space>
+                        <HomeOutlined />
+                        <span>Trang chủ</span>
+                      </Space>
+                    </Link>
+                  ),
+                },
+                {
+                  title: 'Danh sách sản phẩm',
+                },
+              ]}
+            />
+          </S.TopIcons>
+        </Col>
+      </Row>
+
       <Row gutter={[16, 16]}>
         <Col lg={6} xs={24}>
           <Card title="Sản phẩm" size="small">

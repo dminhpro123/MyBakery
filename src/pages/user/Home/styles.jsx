@@ -33,7 +33,8 @@ export const ItemCategoryList = styled.div`
   margin-top: 50px;
 `;
 
-export const CategoryContainer = styled.div`
+export const CategoryContainer = styled.a`
+  display: block;
   position: relative;
   visibility: visible;
   &:hover span {

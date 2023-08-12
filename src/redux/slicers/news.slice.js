@@ -47,6 +47,10 @@ export const newsSlice = createSlice({
       state.newsDetail.loading = false;
       state.newsDetail.error = error;
     },
+
+    clearNewsDetailRequest: (state, action) => {
+      state.newsDetail.data = {};
+    },
   },
 });
 
@@ -57,6 +61,7 @@ export const {
   getNewsDetailRequest,
   getNewsDetailSuccess,
   getNewsDetailFailure,
+  clearNewsDetailRequest,
 } = newsSlice.actions;
 
 export default newsSlice.reducer;

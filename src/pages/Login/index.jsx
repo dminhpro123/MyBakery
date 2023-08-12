@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Breadcrumb, Button, Col, Form, Input, Row, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -7,6 +7,7 @@ import { loginRequest } from 'redux/slicers/auth.slice';
 import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
+import { HomeOutlined } from '@ant-design/icons';
 
 const Login = () => {
   const [loginForm] = Form.useForm();
@@ -42,6 +43,29 @@ const Login = () => {
 
   return (
     <>
+      <Row gutter={16}>
+        <Col span={24}>
+          <S.TopIcons>
+            <Breadcrumb
+              items={[
+                {
+                  title: (
+                    <Link to={ROUTES.USER.HOME}>
+                      <Space>
+                        <HomeOutlined />
+                        <span>Trang chủ</span>
+                      </Space>
+                    </Link>
+                  ),
+                },
+                {
+                  title: 'Đăng nhập',
+                },
+              ]}
+            />
+          </S.TopIcons>
+        </Col>
+      </Row>
       <S.LoginWrapper>
         <S.LoginForm>
           <Form

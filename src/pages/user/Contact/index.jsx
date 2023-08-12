@@ -1,11 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Descriptions, Form } from 'antd';
+import { Breadcrumb, Col, Descriptions, Form, Row, Space } from 'antd';
 
 import Map from 'pages/user/components/Map';
 import TopIcon from '../components/TopIcon';
 
 import * as S from './style';
+import { ROUTES } from 'constants/routes';
+import { Link } from 'react-router-dom';
+import { HomeOutlined } from '@ant-design/icons';
 
 const ContactUs = () => {
   const { bakeryInformationList } = useSelector(
@@ -15,7 +18,29 @@ const ContactUs = () => {
   return (
     <>
       <S.ContactUsWrapper>
-        <TopIcon key={5} titleString="CONTACT" />
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: 'Liên Hệ',
+                  },
+                ]}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
         <div className="info-contact">
           <Descriptions title="My Bakery">
             <Descriptions.Item label="Địa chỉ">

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { Button, Table, InputNumber, Row, Col } from 'antd';
+import { Button, Table, InputNumber, Row, Col, Breadcrumb, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { updateCartRequest, deleteCartRequest } from 'redux/slicers/cart.slice';
@@ -10,6 +10,7 @@ import { formatMoney } from 'helper';
 import { ROUTES } from 'constants/routes';
 
 import * as S from './style';
+import { HomeOutlined } from '@ant-design/icons';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -89,8 +90,30 @@ const Cart = () => {
   return (
     <>
       <S.CartWrapper>
-        <h2>Giỏ hàng</h2>
-        <br />
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: 'Giỏ hàng',
+                  },
+                ]}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
+
         {cartList.length === 0 ? (
           <>
             <hr />

@@ -432,9 +432,11 @@ function HomePage() {
                   <List
                     grid={{
                       gutter: 16,
-                      md: 3,
-                      lg: 2,
                       sm: 1,
+                      md: 2,
+                      lg: 3,
+                      xl: 3,
+                      xxl: 3,
                     }}
                     title="Sản phẩm"
                     dataSource={categoriesList.data}

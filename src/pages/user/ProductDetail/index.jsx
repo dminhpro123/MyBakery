@@ -14,6 +14,7 @@ import {
   InputNumber,
   Avatar,
   notification,
+  Breadcrumb,
 } from 'antd';
 import moment from 'moment';
 import {
@@ -21,7 +22,9 @@ import {
   ShoppingCartOutlined,
   HeartFilled,
   HeartOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
+import qs from 'qs';
 
 import TopIcon from '../components/TopIcon';
 import { formatMoney } from 'helper';
@@ -37,12 +40,14 @@ import {
 } from 'redux/slicers/review.slice';
 import { ROUTES } from 'constants/routes';
 import { addToCartRequest } from 'redux/slicers/cart.slice';
-
-import * as S from './style';
+import { setFilterParams } from 'redux/slicers/common.slice';
 import {
   favoriteProductRequest,
   unFavoriteProductRequest,
 } from 'redux/slicers/favorite.slice';
+
+import * as S from './style';
+
 const { Meta } = Card;
 
 const ProductDetail = () => {
@@ -57,6 +62,7 @@ const ProductDetail = () => {
   const [id, name] = productSlug.split('-');
   const [reviewForm] = Form.useForm();
   const [existUserReviewIndex, setExistUserReviewIndex] = useState(0);
+  const { filterParams } = useSelector((state) => state.common);
   const navigate = useNavigate();
 
   const productRate = useMemo(
@@ -337,7 +343,59 @@ const ProductDetail = () => {
   return (
     <>
       <S.ProductDetailWrapper>
-        <TopIcon key={2} titleString="PRODUCTS" />
+        <Row gutter={16}>
+          <Col span={24}>
+            <S.TopIcons>
+              <Breadcrumb
+                items={[
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.HOME}>
+                        <Space>
+                          <HomeOutlined />
+                          <span>Trang chủ</span>
+                        </Space>
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: (
+                      <Link to={ROUTES.USER.PRODUCT_LIST}>
+                        Danh sách sản phẩm
+                      </Link>
+                    ),
+                  },
+                  {
+                    title: (
+                      <Link
+                        to={{
+                          pathname: ROUTES.USER.PRODUCT_LIST,
+                          search: qs.stringify({
+                            ...filterParams,
+                            categoryId: [productDetail.data.categoryId],
+                          }),
+                        }}
+                      >
+                        {productDetail.data.category?.name}
+                      </Link>
+                    ),
+                    onClick: () =>
+                      dispatch(
+                        setFilterParams({
+                          ...filterParams,
+                          categoryId: [productDetail.data.categoryId],
+                        })
+                      ),
+                  },
+                  {
+                    title: productDetail.data.name,
+                  },
+                ]}
+                style={{ marginBottom: 8 }}
+              />
+            </S.TopIcons>
+          </Col>
+        </Row>
         <Row
           gutter={[16, 16]}
           style={{ display: 'flex' }}

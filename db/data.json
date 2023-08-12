@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 143,
+      "view": 146,
       "description": "Thành phần: Bánh mỳ, rau, ớt, dưa leo, pate,...",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691757949525,
+      "updatedAt": 1691823155978,
       "createdAt": 1689481189282
     },
     {
@@ -26,33 +26,33 @@
       "id": 3,
       "name": "Bánh bao chiên",
       "price": 3000,
-      "view": 46,
+      "view": 48,
       "description": "Thành phần: Bột mì, trứng gà, men ngọt, dầu,…",
       "categoryId": 2,
       "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20chi%C3%AAn%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1691476160248,
+      "updatedAt": 1691823171202,
       "createdAt": 1689481111282
     },
     {
       "id": 4,
       "name": "Bơ Phere trái cây",
       "price": 60000,
-      "view": 41,
+      "view": 42,
       "description": "Thành phần: Trứng gà, bột mì, đường, bơ phere, bột sữa, sữa tươi, trái cây,…",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/B%C6%A1%20phere%20tr%C3%A1i%20c%C3%A2y%20(4)_fix-608x416f.jpg",
-      "updatedAt": 1691736209283,
+      "updatedAt": 1691822075220,
       "createdAt": 1689481112282
     },
     {
       "id": 5,
       "name": "Bánh kem giáng sinh",
       "price": 205000,
-      "view": 34,
+      "view": 35,
       "description": "Kích thước (đường kính bánh) : 20cm",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
-      "updatedAt": 1691476194998,
+      "updatedAt": 1691822406423,
       "createdAt": 1689481113282
     },
     {
@@ -65,6 +65,39 @@
       "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg",
       "updatedAt": 1691776455008,
       "createdAt": 1689481223282
+    },
+    {
+      "id": 7,
+      "name": "Bánh mì lúa mạch",
+      "price": 24000,
+      "view": 5,
+      "description": "Thành phần: Bột mì, bột mì nguyên cám, đường, sữa tươi, bơ, bột sữa, men ngọt",
+      "categoryId": 5,
+      "images": "http://dongtienbakery.com/image/cache/data/IMG_744-608x416f.jpg",
+      "updatedAt": 1691776455008,
+      "createdAt": 1689481224282
+    },
+    {
+      "id": 8,
+      "name": "Bánh hotdog",
+      "price": 18000,
+      "view": 6,
+      "description": "Thành phần: bột mì, bơ, trứng gà, đường, sữa tươi, hotdog, sốt tiêu, tương ớt,  muối …. ",
+      "categoryId": 3,
+      "images": "http://dongtienbakery.com/image/cache/data/20200327_banhHotdog_qk-608x416f.png",
+      "updatedAt": 1691822034472,
+      "createdAt": 1689481224283
+    },
+    {
+      "id": 9,
+      "name": "Bánh kem sữa tươi",
+      "price": 210000,
+      "view": 7,
+      "description": "Kích thước (đường kính bánh) : 20cm",
+      "categoryId": 4,
+      "images": "http://dongtienbakery.com/image/cache/data/1S3-013%20(1)-608x416f.jpg",
+      "updatedAt": 1691822485540,
+      "createdAt": 1689481224284
     }
   ],
   "categories": [
@@ -264,34 +297,6 @@
       "id": 5
     }
   ],
-  "contacts": [
-    {
-      "fullName": "áds",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123123114",
-      "createdAt": 1689511627577,
-      "updatedAt": 1689511627577,
-      "id": 1
-    },
-    {
-      "fullName": "áds",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123123114",
-      "createdAt": 1689511701800,
-      "updatedAt": 1689511701800,
-      "id": 2
-    },
-    {
-      "fullName": "Duc Minh Van Nguyen",
-      "email": "da.asd@asd.cas",
-      "phone": "+84123214123",
-      "title": "adsad",
-      "content": "asdsad",
-      "createdAt": 1689511936806,
-      "updatedAt": 1689511936806,
-      "id": 3
-    }
-  ],
   "reviews": [
     {
       "rate": 4,
@@ -404,6 +409,13 @@
       "createdAt": 1691738738327,
       "updatedAt": 1691738738327,
       "id": 13
+    },
+    {
+      "productId": 8,
+      "userId": 1,
+      "createdAt": 1691822035698,
+      "updatedAt": 1691822035698,
+      "id": 14
     }
   ],
   "orders": [
