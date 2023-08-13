@@ -15,11 +15,11 @@
       "id": 2,
       "name": "Bánh mỳ thịt chả",
       "price": 15000,
-      "view": 105,
+      "view": 107,
       "description": "Bánh mỳ kẹp thịt Việt Nam là một loại bánh mỳ ổ làm bằng bột mỳ, bánh được bổ dọc, bên trong kẹp pate, thịt, bơ sốt mayonnaise, kèm theo các loại rau củ quả như: hành, dưa chuột, cà rốt, rau mùi… rưới tương ớt và nước tương.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/M%C3%AC%20th%E1%BB%8Bt%20ch%E1%BA%A3%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691828440671,
+      "updatedAt": 1691911740105,
       "createdAt": 1689481110282
     },
     {
@@ -59,11 +59,11 @@
       "id": 6,
       "name": "Kem flan",
       "price": 7000,
-      "view": 39,
+      "view": 41,
       "description": "Bánh flan hay gọi thẳng theo tiếng Việt là bánh lăng hay caramen (tiếng Pháp: crème caramel và flan au caramel) là loại bánh được hấp chín từ các nguyên liệu chính là trứng và sữa, caramel (đường thắng). Đây là một loại bánh xuất xứ từ nền ẩm thực châu Âu tuy hiện nay đã phổ biến tại nhiều nơi trên thế giới.",
       "categoryId": 8,
       "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Kem%20flan%20(3)_fix-608x416f.jpg",
-      "updatedAt": 1691776455008,
+      "updatedAt": 1691911804324,
       "createdAt": 1689481223282
     },
     {
@@ -296,6 +296,50 @@
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/B%C3%A1nh%20m%C3%AC%20kh%C3%B4ng%20nh%C3%A2n%20(2)_fix-608x416f.jpg",
       "updatedAt": 1691910253500,
       "createdAt": 1689481224302
+    },
+    {
+      "id": 28,
+      "name": "Bánh sừng trâu",
+      "price": 12000,
+      "view": 171,
+      "description": "Bánh sừng trâu được làm từ loại gạo nếp nương có tên proong, thơm dẻo, vị béo bùi, chỉ có ở vùng miền núi Quảng Nam. Trung bình mỗi một kilogam gạo nếp có thể gói được hơn 20 cặp bánh. Khác với bánh chưng, bánh tét, để làm bánh sừng trâu không cần phải ngâm gạo trước khi gói và không cần nhân bánh.",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20ng%E1%BB%8Dt/S%E1%BB%ABng%20tr%C3%A2u%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691910582882,
+      "createdAt": 1689481224303
+    },
+    {
+      "id": 29,
+      "name": "Bánh mì ngọt sữa",
+      "price": 5000,
+      "view": 11,
+      "description": "Từng miếng bánh mềm, dai hòa quyện với phần nhân kem sữa khá béo ngậy chắc chắn sẽ khiến bạn mê mẩn khi nếm thử. Khi bạn sử dụng lò nướng có quạt gió sẽ giúp phân bổ nhiệt đều trong lò giúp thành phẩm bánh mì của bạn giòn bên ngoài và vẫn giữ được độ mềm xốp đặc trưng bên trong của bánh.",
+      "categoryId": 2,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20ng%E1%BB%8Dt/M%C3%AC%20ng%E1%BB%8Dt%20s%E1%BB%AFa%20(3)_fix-608x416f.jpg",
+      "updatedAt": 1691910582882,
+      "createdAt": 1689481224304
+    },
+    {
+      "id": 30,
+      "name": "Bánh kem rau câu",
+      "price": 340000,
+      "view": 11,
+      "description": "Bánh kem rau câu là một dạng bánh kem độc đáo được làm từ hỗn hợp rau câu và kem. Rau câu là một loại gelatin tự nhiên có nguồn gốc từ tảo biển. Đặc điểm nổi bật của bánh kem rau câu chính là độ mềm mịn và dai dẻo của lớp rau câu. Kết hợp cùng sự béo ngậy và thơm ngon của kem.",
+      "categoryId": 4,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20kem/raucau_471-608x416f.jpg",
+      "updatedAt": 1691910582882,
+      "createdAt": 1689481224305
+    },
+    {
+      "id": 31,
+      "name": "Bánh kem phô mai chanh dây",
+      "price": 210000,
+      "view": 18,
+      "description": "♥ Bánh làm từ bông lan vani; mousse gồm phô mai (cream cheese), tươi whipping (whipping cream), nước cốt chanh dây tươi. ♥ Mặt bánh là lớp thạch làm từ gelatin và nước cốt chanh dây tươi. ♥ Vị khá cân bằng: bánh béo vừa, chua và ngọt dịu, thơm mùi chanh dây.",
+      "categoryId": 4,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20kem/410-608x416f.jpg",
+      "updatedAt": 1691911684008,
+      "createdAt": 1689481224306
     }
   ],
   "categories": [

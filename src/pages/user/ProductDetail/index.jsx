@@ -223,7 +223,6 @@ const ProductDetail = () => {
                 <S.AddToCardWrapper>
                   <InputNumber
                     style={{ width: '100%' }}
-                    value={quantity}
                     min={1}
                     onChange={(value) => setQuantity(value)}
                   />

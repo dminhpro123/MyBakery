@@ -427,7 +427,7 @@ function ProductListPage() {
             </Row>
           )}
 
-          <Row>{renderProductList}</Row>
+          <Row style={{ gap: 10 }}>{renderProductList}</Row>
           {productList.data.length !== productList.meta.total && (
             <Row justify="center" style={{ marginTop: '10px' }}>
               <Button type="primary" onClick={() => handleShowMore()}>

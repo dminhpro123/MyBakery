@@ -13,8 +13,6 @@ export const AsideWrapper = styled.nav`
 `;
 
 export const ItemOfList = styled.div`
-  padding: 5px;
-  gap: 9px;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
