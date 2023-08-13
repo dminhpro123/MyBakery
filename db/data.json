@@ -136,22 +136,22 @@
       "id": 13,
       "name": "Bông mì hoa cúc",
       "price": 25000,
-      "view": 18,
+      "view": 19,
       "description": "Bánh mì hoa cúc là một loại bánh mì công nghiệp đến từ Pháp với tên gọi đúng là Harrys Brioche Tressée do bánh được tạo hình bím tóc, lấy cảm hứng từ loại bánh mì bơ Brioche nổi tiếng rất mềm, thơm và xốp. Bánh mì hoa cúc ngoài mùi bơ thơm lừng thì còn có mùi tinh dầu hoa cam đặc biệt kết hợp với vani.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/hoa%20c%C3%BAc-608x416f.jpg",
-      "updatedAt": 1691853649383,
+      "updatedAt": 1691857997971,
       "createdAt": 1689481224288
     },
     {
       "id": 14,
       "name": "Bánh mousse dừa",
       "price": 23000,
-      "view": 53,
+      "view": 57,
       "description": "Bánh Mousse Dừa là dòng sản phẩm đặc biệt của thương hiệu Jon Donaire, mang hương vị dừa truyền thống thơm béo đặc trưng của Việt Nam kết hợp cùng lớp bông lan mềm mịn, tạo nên điểm nhấn hương vị hoàn hảo.",
       "categoryId": 2,
       "images": "http://dongtienbakery.com/image/cache/data/mousse%20Dua-608x416f.jpg",
-      "updatedAt": 1691827407894,
+      "updatedAt": 1691857697762,
       "createdAt": 1689481224289
     },
     {
@@ -208,6 +208,83 @@
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20ng%E1%BB%8Dt/suque_1_fix-608x416f.jpg",
       "updatedAt": 1691854050308,
       "createdAt": 1689481224294
+    },
+    {
+      "id": 20,
+      "name": "Hamberger bò",
+      "price": 21000,
+      "view": 24,
+      "description": "Hamburger là bánh mì tròn kẹp thịt xay (thường là thịt bò ở giữa), rau xanh, cà chua, được ăn kèm phô mai hoặc khoai tây chiên. Tên hamburger có nguồn gốc từ tên của thành phố Hamburg (Đức).",
+      "categoryId": 1,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20m%C3%AC/Hambuger%20(5)_fix-608x416f.jpg",
+      "updatedAt": 1691855604645,
+      "createdAt": 1689481224295
+    },
+    {
+      "id": 21,
+      "name": "Bánh bao thịt",
+      "price": 13000,
+      "view": 24,
+      "description": "Bánh bao là một loại bánh làm bằng bột mì có nhân và hấp chín, chiên hoặc nướng trước khi ăn trong ẩm thực Trung Hoa.",
+      "categoryId": 3,
+      "images": "http://dongtienbakery.com/image/cache/data/B%C3%A1nh%20bao%20th%E1%BB%8Bt%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691855604645,
+      "createdAt": 1689481224296
+    },
+    {
+      "id": 22,
+      "name": "Rau câu",
+      "price": 7000,
+      "view": 26,
+      "description": "Rau câu là một món tráng miệng rất ngon và mát vào mùa hè và là một trong những món tráng miệng rất được ưa chuộng. Rau câu có nhiều hương vị để lựa chọn tùy vào loại trái cây hay hương liệu cho vào. Món rau câu làm từ bột rau câu hòa tan trong nước nóng và thêm hương liệu từ nước trái cây, sữa,....",
+      "categoryId": 8,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/Rau%20c%C3%A2u%20(3)_fix-608x416f.jpg",
+      "updatedAt": 1691856774277,
+      "createdAt": 1689481224297
+    },
+    {
+      "id": 23,
+      "name": "Bánh kem sữa chua dâu",
+      "price": 22000,
+      "view": 25,
+      "description": "Bánh kem sữa chua dâu cùng với lớp kem dâu trong bánh được bao bọc bởi hai lớp gato mềm. Bên trên mặt bánh phủ một lớp kem tươi, rắc hạt royaltine. Bánh có hương vị ngậy béo của lớp kem dâu cùng với vị ngọt nhẹ, thanh mát của sữa chua khiến người mua yêu thích.",
+      "categoryId": 8,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_Tr%C3%A1ng%20Mi%E1%BB%87ng/S%E1%BB%AFa%20chua%20d%C3%A2u%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691856542918,
+      "createdAt": 1689481224298
+    },
+    {
+      "id": 24,
+      "name": "Bánh sầu riêng",
+      "price": 11000,
+      "view": 33,
+      "description": "Bánh crepe sầu riêng hay còn gọi là bánh kếp có nguồn gốc từ Pháp. Món bánh này được rất nhiều người yêu thích nhờ có màu sắc bắt mắt, hương vị sầu riêng thơm ngon đặc trưng, hòa quyện trong lớp vỏ mềm dai cùng nhân kem béo ngậy.",
+      "categoryId": 2,
+      "images": "https://product.hstatic.net/200000688483/product/banh_ngan_lop_truyen_thong_vang_e26acf796df84a9181533d575b20e3e8_master.png",
+      "updatedAt": 1691857512442,
+      "createdAt": 1689481224299
+    },
+    {
+      "id": 25,
+      "name": "Muffin nho",
+      "price": 9000,
+      "view": 33,
+      "description": "Muffin là loại bánh mì ngọt có nhân (nhân ngọt hoặc nhân mặn) được trộn cùng với bột mì, không cần phải tốn thời gian ủ bột và dùng men nở như làm bánh mì. Thay vào đó, bạn dùng muối nở, bột nở như làm bánh kem, rồi trộn đều các nguyên liệu với nhau, cho hỗn hợp vào khuôn và đem đi nướng.",
+      "categoryId": 6,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/Muffin%20nho%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691857512442,
+      "createdAt": 1689481224300
+    },
+    {
+      "id": 26,
+      "name": "Muffin socola",
+      "price": 7000,
+      "view": 33,
+      "description": "Muffin socola có cốt bánh mềm ẩm, pha lẫn vị đắng nhẹ của socola/ nho khô mềm mại , đan xen vào đó là vị béo ngậy cùng hương thơm nồng, tất cả hòa quyện lại tạo thành một hương vị vô cùng hấp dẫn. ",
+      "categoryId": 6,
+      "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/Muffin%20socola%20(1)_fix-608x416f.jpg",
+      "updatedAt": 1691857512442,
+      "createdAt": 1689481224301
     }
   ],
   "categories": [

@@ -10,6 +10,8 @@ import 'moment/locale/vi';
 import 'dayjs/locale/vi';
 import { ConfigProvider } from 'antd';
 import vn from 'antd/locale/vi_VN';
+// require('dotenv').config();
+//
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

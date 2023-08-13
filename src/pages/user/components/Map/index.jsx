@@ -5,8 +5,6 @@ import * as S from './style';
 import { useSelector } from 'react-redux';
 
 const Map = () => {
-  // AIzaSyC2TOGDeSPh8C8oNxo1i59g2C_hry8t_To
-
   const { bakeryInformationList } = useSelector(
     (state) => state.bakeryInformation
   );
@@ -32,16 +30,13 @@ const Map = () => {
     renderMarkers(map, maps);
   };
 
-  console.log(process.env);
-
   return (
     <>
       <S.MapBorder>
         <S.MapRender>
           <GoogleMapReact
             bootstrapURLKeys={{
-              // key: process.env.GOOGLE_MAP_API_KEY,
-              key: 'AIzaSyC2TOGDeSPh8C8oNxo1i59g2C_hry8t_To',
+              key: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
             }}
             defaultCenter={{
               lat: 16.080858,

@@ -148,10 +148,10 @@ const ProductDetail = () => {
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
       <>
-        <Col xs={24} md={12} xl={8}>
+        <Col xs={24} md={10} xl={8}>
           <img src={productDetail.data.images} alt={productDetail.data.name} />
         </Col>
-        <Col xs={24} md={6} xl={8}>
+        <Col xs={24} md={10} xl={8}>
           <Row gutter={[12, 12]}>
             <Col span={24}>
               <S.ProductDetailName>
@@ -198,7 +198,11 @@ const ProductDetail = () => {
                   </T.Label>
                 </Col>
                 <Col span={18}>
-                  <T.Text>{formatMoney(productDetail.data.price)}</T.Text>
+                  <T.Text>
+                    <span style={{ color: 'red' }}>
+                      {formatMoney(productDetail.data.price)}
+                    </span>
+                  </T.Text>
                 </Col>
               </Row>
               <br />
@@ -209,11 +213,36 @@ const ProductDetail = () => {
                   </T.Label>
                 </Col>
                 <Col span={18}>
-                  <T.Text>{productDetail.data.description}</T.Text>
+                  <T.Text>
+                    <span style={{ opacity: 0.7 }}>
+                      {productDetail.data.description}
+                    </span>
+                  </T.Text>
                 </Col>
               </Row>
             </Col>
           </Row>
+        </Col>
+        <Col xs={24} md={4} xl={8}>
+          <S.AddToCardWrapper>
+            <h2>
+              <strong>Số lượng:</strong>
+            </h2>
+            <InputNumber
+              style={{ width: '100%' }}
+              value={quantity}
+              min={1}
+              onChange={(value) => setQuantity(value)}
+            />
+            <Button
+              size="large"
+              type="primary"
+              icon={<ShoppingCartOutlined />}
+              onClick={() => handleAddToCart()}
+            >
+              Thêm vào giỏ
+            </Button>
+          </S.AddToCardWrapper>
         </Col>
       </>
     );
@@ -334,7 +363,9 @@ const ProductDetail = () => {
                   width: 200,
                   overflow: 'hidden',
                 }}
-                cover={<img alt={item.name} src={item.images} />}
+                cover={
+                  <img alt={item.name} src={item.images} height={137.11} />
+                }
               >
                 <Meta title={item.name} description={formatMoney(item.price)} />
               </Card>
@@ -406,27 +437,6 @@ const ProductDetail = () => {
           justify={'space-around'}
         >
           {renderProductDetail}
-          <Col xs={24} md={6} xl={8}>
-            <S.AddToCardWrapper>
-              <h2>
-                <strong>Số lượng:</strong>
-              </h2>
-              <InputNumber
-                style={{ width: '100%' }}
-                value={quantity}
-                min={1}
-                onChange={(value) => setQuantity(value)}
-              />
-              <Button
-                size="large"
-                type="primary"
-                icon={<ShoppingCartOutlined />}
-                onClick={() => handleAddToCart()}
-              >
-                Thêm vào giỏ
-              </Button>
-            </S.AddToCardWrapper>
-          </Col>
         </Row>
         <Card
           size="small"

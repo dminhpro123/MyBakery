@@ -118,6 +118,7 @@ function HomePage() {
   const [loading, setLoading] = useState(false);
   const { reviewList } = useSelector((state) => state.review);
   const { userInfo } = useSelector((state) => state.auth);
+  const { productDetail } = useSelector((state) => state.product);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -184,7 +185,7 @@ function HomePage() {
                 width: 250,
                 overflow: 'hidden',
               }}
-              cover={<img alt={item.name} src={item.images} />}
+              cover={<img alt={item.name} src={item.images} height={249.4} />}
               actions={[
                 <Space onClick={(e) => handleLike(e, item)}>
                   <Button
@@ -274,7 +275,7 @@ function HomePage() {
                 width: 250,
                 overflow: 'hidden',
               }}
-              cover={<img alt={item.name} src={item.images} />}
+              cover={<img alt={item.name} src={item.images} height={249.4} />}
               actions={[
                 <Space onClick={(e) => handleLike(e, item)}>
                   <Button
@@ -450,21 +451,24 @@ function HomePage() {
                               categoryId: [item.id],
                             })
                           );
-                          navigate({
+                        }}
+                      >
+                        <Link
+                          to={{
                             pathname: ROUTES.USER.PRODUCT_LIST,
                             search: qs.stringify({
                               ...filterParams,
                               categoryId: [item.id],
                             }),
-                          });
-                        }}
-                      >
-                        <S.CategoryContainer>
-                          <S.ImgCategory alt={item.name} src={item.images} />
-                          <S.TextCategoryContainer>
-                            <strong> {item.name.toUpperCase()}</strong>
-                          </S.TextCategoryContainer>
-                        </S.CategoryContainer>
+                          }}
+                        >
+                          <S.CategoryContainer>
+                            <S.ImgCategory alt={item.name} src={item.images} />
+                            <S.TextCategoryContainer>
+                              <strong> {item.name.toUpperCase()}</strong>
+                            </S.TextCategoryContainer>
+                          </S.CategoryContainer>
+                        </Link>
                       </List.Item>
                     )}
                   />

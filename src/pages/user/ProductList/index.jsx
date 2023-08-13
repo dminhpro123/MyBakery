@@ -217,10 +217,10 @@ function ProductListPage() {
             >
               <Card
                 style={{
-                  width: 250,
+                  width: 249,
                   overflow: 'hidden',
                 }}
-                cover={<img alt={item.name} src={item.images} />}
+                cover={<img alt={item.name} src={item.images} height={249.4} />}
                 actions={[
                   <Space onClick={(e) => handleLike(e, item)}>
                     <Button
