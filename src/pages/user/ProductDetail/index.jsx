@@ -15,6 +15,7 @@ import {
   Avatar,
   notification,
   Breadcrumb,
+  Tabs,
 } from 'antd';
 import moment from 'moment';
 import {
@@ -148,102 +149,115 @@ const ProductDetail = () => {
   const renderProductDetail = useMemo(() => {
     return productDetail.data === undefined ? null : (
       <>
-        <Col xs={24} md={10} xl={8}>
-          <img src={productDetail.data.images} alt={productDetail.data.name} />
-        </Col>
-        <Col xs={24} md={10} xl={8}>
-          <Row gutter={[12, 12]}>
-            <Col span={24}>
-              <S.ProductDetailName>
-                {productDetail.data.name}
-              </S.ProductDetailName>
-            </Col>
-            <br />
-            <Col span={24}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Space align="baseline">
-                  <Rate value={productRate} allowHalf disabled />
-                  <span>{`(${
-                    productRate === 0
-                      ? 'Chưa có đánh giá'
-                      : productRate.toFixed(2)
-                  })`}</span>
-                </Space>
-                <Space align="baseline">
+        <Row
+          gutter={[16, 16]}
+          style={{ display: 'flex' }}
+          justify={'space-around'}
+        >
+          <Col xs={24} md={11} xl={9}>
+            <img
+              src={productDetail.data.images}
+              alt={productDetail.data.name}
+            />
+          </Col>
+          <Col xs={24} md={13} xl={15}>
+            <Row gutter={[12, 12]}>
+              <Col span={24}>
+                <S.ProductDetailName>
+                  {productDetail.data.name}
+                </S.ProductDetailName>
+              </Col>
+              <br />
+              <Col span={24}>
+                <Row>
+                  <Col span={12}>
+                    <Space align="baseline">
+                      <Rate value={productRate} allowHalf disabled />
+                      <span>{`(${
+                        productRate === 0
+                          ? 'Chưa có đánh giá'
+                          : productRate.toFixed(2)
+                      })`}</span>
+                    </Space>
+                  </Col>
+                  <Col span={12}>
+                    <Space align="baseline">
+                      <Button
+                        size="large"
+                        type="text"
+                        danger={isFavorite}
+                        icon={
+                          isFavorite ? (
+                            <HeartFilled style={{ fontSize: 24 }} />
+                          ) : (
+                            <HeartOutlined
+                              style={{ fontSize: 24, color: '#414141' }}
+                            />
+                          )
+                        }
+                        onClick={() => handleToggleFavorite()}
+                      ></Button>
+                      {productDetail.data?.favorites?.length || 0} Lượt thích
+                    </Space>
+                  </Col>
+                </Row>
+              </Col>
+              <br />
+              <Col span={24}>
+                <Row gutter={[16, 16]}>
+                  <Col span={5}>
+                    <T.Label size="md" fontWeights="bold">
+                      <strong>Đơn giá:</strong>
+                    </T.Label>
+                  </Col>
+                  <Col span={19}>
+                    <T.Text>
+                      <span style={{ color: 'red' }}>
+                        {formatMoney(productDetail.data.price)}
+                      </span>
+                    </T.Text>
+                  </Col>
+                </Row>
+                <br />
+
+                <S.AddToCardWrapper>
+                  <InputNumber
+                    style={{ width: '100%' }}
+                    value={quantity}
+                    min={1}
+                    onChange={(value) => setQuantity(value)}
+                  />
                   <Button
                     size="large"
-                    type="text"
-                    danger={isFavorite}
-                    icon={
-                      isFavorite ? (
-                        <HeartFilled style={{ fontSize: 24 }} />
-                      ) : (
-                        <HeartOutlined
-                          style={{ fontSize: 24, color: '#414141' }}
-                        />
-                      )
-                    }
-                    onClick={() => handleToggleFavorite()}
-                  ></Button>
-                  {productDetail.data?.favorites?.length || 0} Lượt thích
-                </Space>
-              </div>
-            </Col>
-            <br />
-            <Col span={24}>
-              <Row gutter={[16, 16]}>
-                <Col span={6}>
-                  <T.Label size="md" fontWeights="bold">
-                    <strong>Đơn giá:</strong>
-                  </T.Label>
-                </Col>
-                <Col span={18}>
-                  <T.Text>
-                    <span style={{ color: 'red' }}>
-                      {formatMoney(productDetail.data.price)}
-                    </span>
-                  </T.Text>
-                </Col>
-              </Row>
-              <br />
-              <Row gutter={[16, 16]}>
-                <Col span={6}>
-                  <T.Label size="md" fontWeights="bold">
-                    <strong>Mô tả:</strong>
-                  </T.Label>
-                </Col>
-                <Col span={18}>
+                    type="primary"
+                    icon={<ShoppingCartOutlined />}
+                    onClick={() => handleAddToCart()}
+                  >
+                    Thêm vào giỏ
+                  </Button>
+                </S.AddToCardWrapper>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Tabs
+          defaultActiveKey={1}
+          items={[
+            {
+              key: 1,
+              label: 'Mô tả:',
+              children: (
+                <>
                   <T.Text>
                     <span style={{ opacity: 0.7 }}>
                       {productDetail.data.description}
                     </span>
                   </T.Text>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Col>
-        <Col xs={24} md={4} xl={8}>
-          <S.AddToCardWrapper>
-            <h2>
-              <strong>Số lượng:</strong>
-            </h2>
-            <InputNumber
-              style={{ width: '100%' }}
-              value={quantity}
-              min={1}
-              onChange={(value) => setQuantity(value)}
-            />
-            <Button
-              size="large"
-              type="primary"
-              icon={<ShoppingCartOutlined />}
-              onClick={() => handleAddToCart()}
-            >
-              Thêm vào giỏ
-            </Button>
-          </S.AddToCardWrapper>
-        </Col>
+                </>
+              ),
+            },
+          ]}
+        />
       </>
     );
   }, [productDetail.data, productRate, isFavorite]);
@@ -431,13 +445,8 @@ const ProductDetail = () => {
             </S.TopIcons>
           </Col>
         </Row>
-        <Row
-          gutter={[16, 16]}
-          style={{ display: 'flex' }}
-          justify={'space-around'}
-        >
-          {renderProductDetail}
-        </Row>
+        <Card>{renderProductDetail}</Card>
+
         <Card
           size="small"
           title={`Đánh giá (${reviewList.data.length})`}

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Breadcrumb, Col, Descriptions, Form, Row, Space } from 'antd';
+import { Breadcrumb, Col, Descriptions, Row, Space } from 'antd';
 
-import Map from 'pages/user/components/Map';
-import TopIcon from '../components/TopIcon';
+import Map from './component/Map';
 
 import * as S from './style';
 import { ROUTES } from 'constants/routes';

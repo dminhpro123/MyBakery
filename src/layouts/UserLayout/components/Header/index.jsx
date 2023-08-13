@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Dropdown, Space, Badge, Popover, Row, Col } from 'antd';
+import { Dropdown, Space, Badge, Popover, Row, Col, Avatar } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -88,7 +88,7 @@ function AdminHeader() {
       <>
         <Space align="center" size={[16, 16]} style={{ padding: 5 }}>
           <S.Channel href={bakeryInformationList.data.facebookChannel}>
-            <FacebookFilled style={{ fontSize: 32 }} />
+            <FacebookFilled style={{ fontSize: 30 }} />
           </S.Channel>
           <S.Channel href={bakeryInformationList.data.youtubeChannel}>
             <YoutubeFilled style={{ fontSize: 36 }} />
