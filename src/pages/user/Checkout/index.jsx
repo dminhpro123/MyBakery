@@ -14,13 +14,12 @@ import {
   Table,
   Breadcrumb,
 } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 
 import { ROUTES } from 'constants/routes';
 import {
   getCityListRequest,
-  getDistrictExistRequest,
   getDistrictListRequest,
-  getWardExistRequest,
   getWardListRequest,
 } from 'redux/slicers/location.slice';
 import { orderProductRequest } from 'redux/slicers/order.slice';
@@ -28,7 +27,6 @@ import { clearCartRequest } from 'redux/slicers/cart.slice';
 
 import * as S from './style';
 import { formatMoney } from 'helper';
-import { HomeOutlined } from '@ant-design/icons';
 
 function Checkout() {
   const [checkoutForm] = Form.useForm();
@@ -69,54 +67,12 @@ function Checkout() {
     if (userInfo.data.id) {
       checkoutForm.resetFields();
     }
-    if (userInfo.data.districtCode)
-      dispatch(
-        getDistrictExistRequest({
-          code: userInfo.data.cityCode,
-        })
-      );
-
-    if (userInfo.data.wardCode)
-      dispatch(getWardExistRequest({ code: userInfo.data.districtCode }));
-  }, [
-    userInfo.data.districtCode,
-    userInfo.data.cityCode,
-    userInfo.data.wardCode,
-    userInfo.data,
-    checkoutForm,
-  ]);
-
-  useEffect(() => {
-    if (wardList.data.length !== 0 && userInfo.data.wardCode) {
-      let wardExist = wardList.data.filter(
-        (item) => item.code === userInfo.data.wardCode
-      )[0]?.code;
-      checkoutForm.setFieldValue('wardCode', wardExist);
-    }
-    if (districtList.data.length !== 0 && userInfo.data.districtCode) {
-      let districtExist = districtList.data.filter(
-        (item) => item.code === userInfo.data.districtCode
-      )[0]?.code;
-      checkoutForm.setFieldValue('districtCode', districtExist);
-    }
-    if (userInfo.data.cityCode) {
-      checkoutForm.setFieldValue('cityCode', userInfo.data.cityCode);
-    }
-  }, [
-    districtList.data,
-    checkoutForm,
-    userInfo.data.cityCode,
-    userInfo.data.districtCode,
-    userInfo.data.wardCode,
-    wardList.data,
-  ]);
+  }, [userInfo.data, checkoutForm]);
 
   const initialValues = {
     fullName: userInfo.data.fullName,
     email: userInfo.data.email,
     phoneNumber: userInfo.data.phone,
-    address: userInfo.data?.address,
-    // cityCode: userInfo.data?.cityCode,
   };
 
   const handleSubmitCheckoutForm = (values) => {

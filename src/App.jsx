@@ -16,18 +16,18 @@ import ProductListPage from 'pages/user/ProductList';
 import AboutUs from 'pages/user/AboutUs';
 import News from 'pages/user/News';
 import Contact from 'pages/user/Contact';
-import EventPage from 'pages/user/EventsPage';
 import Cart from 'pages/user/Cart';
 import PersonalInformation from 'pages/user/PersonalInformation';
 import ProductDetail from 'pages/user/ProductDetail';
+import Checkout from 'pages/user/Checkout';
+
+import AdminLayout from 'layouts/AdminLayout';
+import Dashboard from 'pages/admin/Dashboard';
 
 import Page404NotFound from 'pages/Page404NotFound';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
 
-import AdminLayout from 'layouts/AdminLayout';
-import Dashboard from 'pages/admin/Dashboard';
-import Checkout from 'pages/user/Checkout';
 import {
   breakpoint,
   colors,
@@ -43,7 +43,7 @@ import {
 function App() {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const { userInfo } = useSelector((state) => state.auth);
+  // const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
@@ -83,7 +83,6 @@ function App() {
           <Route path={ROUTES.USER.ABOUT_US} element={<AboutUs />} />
           <Route path={ROUTES.USER.NEWS} element={<News />} />
           <Route path={ROUTES.USER.CONTACT} element={<Contact />} />
-          <Route path={ROUTES.USER.EVENTS} element={<EventPage />} />
           <Route path={ROUTES.USER.CART} element={<Cart />} />
           <Route
             path={ROUTES.USER.PRODUCT_DETAIL}

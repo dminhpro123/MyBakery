@@ -64,7 +64,7 @@ const AboutUs = () => {
         </Row>
       </S.ContentContainer>
     );
-  }, [informationData]);
+  }, [bakeryInformationList.data.aboutUs.aboutUsTitle3, informationData]);
 
   return (
     <>

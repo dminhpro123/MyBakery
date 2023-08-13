@@ -34,7 +34,6 @@ import { addToCartRequest } from 'redux/slicers/cart.slice';
 import { setFilterParams } from 'redux/slicers/common.slice';
 import { ROUTES } from 'constants/routes';
 import { formatMoney } from 'helper';
-import loadingSpin from 'assets/gif/loading-spin.gif';
 import {
   clearReviewListRequest,
   getReviewListRequest,
@@ -42,8 +41,6 @@ import {
 
 import * as S from './styles';
 import T from 'components/Typography';
-
-const { Meta } = Card;
 
 const advertisementSettings = {
   infinite: true,
@@ -118,10 +115,7 @@ function HomePage() {
   const [loading, setLoading] = useState(false);
   const { reviewList } = useSelector((state) => state.review);
   const { userInfo } = useSelector((state) => state.auth);
-  const { productDetail } = useSelector((state) => state.product);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
