@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from 'react';
+import React, { Suspense, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, generatePath, useParams } from 'react-router-dom';
-import { Row, Col, Card, Space, Breadcrumb } from 'antd';
+import { Row, Col, Card, Space, Breadcrumb, Skeleton } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import qs from 'qs';
 
@@ -15,9 +15,11 @@ import {
 import { getReviewListRequest } from 'redux/slicers/review.slice';
 import { ROUTES } from 'constants/routes';
 import { setFilterParams } from 'redux/slicers/common.slice';
-import Detail from './components/Detail';
+// import Detail from './components/Detail';
 
 import * as S from './style';
+
+const Detail = React.lazy(() => import('./components/Detail'));
 
 const { Meta } = Card;
 
@@ -140,7 +142,9 @@ const ProductDetail = () => {
         </Row>
 
         <Card>
-          <Detail />
+          <Suspense fallback={<Skeleton active paragraph={{ rows: 7 }} />}>
+            <Detail />
+          </Suspense>
         </Card>
 
         {similarProduct.data.length > 1 && (
