@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfoRequest } from 'redux/slicers/auth.slice';
 import jwtDecode from 'jwt-decode';
@@ -10,23 +10,12 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { ROUTES } from 'constants/routes';
 
-import UserLayout from 'layouts/UserLayout';
-import HomePage from 'pages/user/Home';
-import ProductListPage from 'pages/user/ProductList';
-import AboutUs from 'pages/user/AboutUs';
-import News from 'pages/user/News';
-import Contact from 'pages/user/Contact';
-import Cart from 'pages/user/Cart';
-import PersonalInformation from 'pages/user/PersonalInformation';
-import ProductDetail from 'pages/user/ProductDetail';
-import Checkout from 'pages/user/Checkout';
+// import AdminLayout from 'layouts/AdminLayout';
+// import Dashboard from 'pages/admin/Dashboard';
 
-import AdminLayout from 'layouts/AdminLayout';
-import Dashboard from 'pages/admin/Dashboard';
-
-import Page404NotFound from 'pages/Page404NotFound';
-import Register from 'pages/Register';
-import Login from 'pages/Login';
+// import Page404NotFound from 'pages/Page404NotFound';
+// import Register from 'pages/Register';
+// import Login from 'pages/Login';
 
 import {
   breakpoint,
@@ -39,6 +28,26 @@ import {
   container,
   truncateMultipleLine,
 } from 'themes/common';
+
+const UserLayout = React.lazy(() => import('layouts/UserLayout'));
+const HomePage = React.lazy(() => import('pages/user/Home'));
+const ProductListPage = React.lazy(() => import('pages/user/ProductList'));
+const AboutUs = React.lazy(() => import('pages/user/AboutUs'));
+const News = React.lazy(() => import('pages/user/News'));
+const Contact = React.lazy(() => import('pages/user/Contact'));
+const Cart = React.lazy(() => import('pages/user/Cart'));
+const PersonalInformation = React.lazy(() =>
+  import('pages/user/PersonalInformation')
+);
+const ProductDetail = React.lazy(() => import('pages/user/ProductDetail'));
+const Checkout = React.lazy(() => import('pages/user/Checkout'));
+
+const AdminLayout = React.lazy(() => import('layouts/AdminLayout'));
+const Dashboard = React.lazy(() => import('pages/admin/Dashboard'));
+
+const Page404NotFound = React.lazy(() => import('pages/Page404NotFound'));
+const Register = React.lazy(() => import('pages/Register'));
+const Login = React.lazy(() => import('pages/Login'));
 
 function App() {
   const dispatch = useDispatch();
@@ -74,34 +83,128 @@ function App() {
       }}
     >
       <Routes>
-        <Route element={<UserLayout />}>
-          <Route path={ROUTES.USER.HOME} element={<HomePage />} />
+        <Route
+          element={
+            <Suspense>
+              <UserLayout />
+            </Suspense>
+          }
+        >
+          <Route
+            path={ROUTES.USER.HOME}
+            element={
+              <Suspense>
+                <HomePage />
+              </Suspense>
+            }
+          />
           <Route
             path={ROUTES.USER.PRODUCT_LIST}
-            element={<ProductListPage />}
+            element={
+              <Suspense>
+                <ProductListPage />
+              </Suspense>
+            }
           />
-          <Route path={ROUTES.USER.ABOUT_US} element={<AboutUs />} />
-          <Route path={ROUTES.USER.NEWS} element={<News />} />
-          <Route path={ROUTES.USER.CONTACT} element={<Contact />} />
-          <Route path={ROUTES.USER.CART} element={<Cart />} />
+          <Route
+            path={ROUTES.USER.ABOUT_US}
+            element={
+              <Suspense>
+                <AboutUs />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.USER.NEWS}
+            element={
+              <Suspense>
+                <News />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.USER.CONTACT}
+            element={
+              <Suspense>
+                <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.USER.CART}
+            element={
+              <Suspense>
+                <Cart />
+              </Suspense>
+            }
+          />
           <Route
             path={ROUTES.USER.PRODUCT_DETAIL}
-            element={<ProductDetail />}
+            element={
+              <Suspense>
+                <ProductDetail />
+              </Suspense>
+            }
           />
-          <Route path={ROUTES.USER.CHECKOUT} element={<Checkout />} />
+          <Route
+            path={ROUTES.USER.CHECKOUT}
+            element={
+              <Suspense>
+                <Checkout />
+              </Suspense>
+            }
+          />
           <Route
             path={ROUTES.USER.PERSONAL_INFOR}
-            element={<PersonalInformation />}
+            element={
+              <Suspense>
+                <PersonalInformation />
+              </Suspense>
+            }
           />
-          <Route path={ROUTES.USER.REGISTER} element={<Register />} />
-          <Route path={ROUTES.USER.LOGIN} element={<Login />} />
+          <Route
+            path={ROUTES.USER.REGISTER}
+            element={
+              <Suspense>
+                <Register />
+              </Suspense>
+            }
+          />
+          <Route
+            path={ROUTES.USER.LOGIN}
+            element={
+              <Suspense>
+                <Login />
+              </Suspense>
+            }
+          />
         </Route>
 
-        <Route element={<AdminLayout />}>
-          <Route path={ROUTES.ADMIN.DASHBOARD} element={<Dashboard />} />
+        <Route
+          element={
+            <Suspense>
+              <AdminLayout />
+            </Suspense>
+          }
+        >
+          <Route
+            path={ROUTES.ADMIN.DASHBOARD}
+            element={
+              <Suspense>
+                <Dashboard />
+              </Suspense>
+            }
+          />
         </Route>
 
-        <Route path="*" element={<Page404NotFound />} />
+        <Route
+          path="*"
+          element={
+            <Suspense>
+              <Page404NotFound />
+            </Suspense>
+          }
+        />
       </Routes>
     </ThemeProvider>
   );

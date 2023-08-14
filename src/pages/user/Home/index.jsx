@@ -4,16 +4,18 @@ import { Suspense } from 'react';
 
 import * as S from './styles';
 
-const AdvertisementList = React.lazy(() =>
-  import('./components/AdvertisementList')
-);
-const CategoryList = React.lazy(() => import('./components/CategoryList'));
-const NewProductList = React.lazy(() => import('./components/NewProductList'));
-const OutstandingProductList = React.lazy(() =>
-  import('./components/OutstandingProductList')
-);
-
 function HomePage() {
+  const AdvertisementList = React.lazy(() =>
+    import('./components/AdvertisementList')
+  );
+  const CategoryList = React.lazy(() => import('./components/CategoryList'));
+  const NewProductList = React.lazy(() =>
+    import('./components/NewProductList')
+  );
+  const OutstandingProductList = React.lazy(() =>
+    import('./components/OutstandingProductList')
+  );
+
   return (
     <S.HomeWrapper>
       <>
