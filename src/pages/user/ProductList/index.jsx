@@ -197,7 +197,7 @@ function ProductListPage() {
     } else if (productList.data.length === 0) {
       return (
         <S.NoData>
-          <h1>Xin lỗi quý khách hiện nay chưa có hàng!!!</h1>
+          <h1>Xin lỗi quý khách hiện nay chưa có sản phẩm này!!!</h1>
         </S.NoData>
       );
     } else {

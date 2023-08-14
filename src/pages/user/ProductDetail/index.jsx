@@ -139,7 +139,6 @@ const ProductDetail = () => {
           </Col>
         </Row>
 
-        {/* <Card>{renderProductDetail}</Card> */}
         <Card>
           <Detail />
         </Card>

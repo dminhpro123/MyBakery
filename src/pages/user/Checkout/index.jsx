@@ -24,9 +24,9 @@ import {
 } from 'redux/slicers/location.slice';
 import { orderProductRequest } from 'redux/slicers/order.slice';
 import { clearCartRequest } from 'redux/slicers/cart.slice';
+import { createUniqueId, formatMoney } from 'helper';
 
 import * as S from './style';
-import { formatMoney } from 'helper';
 
 function Checkout() {
   const [checkoutForm] = Form.useForm();
@@ -90,6 +90,7 @@ function Checkout() {
       orderProductRequest({
         data: {
           ...values,
+          codeOrder: createUniqueId(),
           cityName: cityData?.name,
           districtName: districtData?.name,
           wardName: wardData?.name,

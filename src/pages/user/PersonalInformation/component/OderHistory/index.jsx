@@ -31,8 +31,8 @@ const OderHistory = () => {
   const tableColumns = [
     {
       title: 'Mã đơn hàng',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'codeOrder',
+      key: 'codeOrder',
     },
     {
       title: 'Số lượng sản phẩm',
