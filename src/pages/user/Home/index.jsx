@@ -2,6 +2,7 @@ import { Row, Col, Skeleton } from 'antd';
 import React from 'react';
 import { Suspense } from 'react';
 
+import T from 'components/Typography';
 import * as S from './styles';
 
 function HomePage() {
@@ -35,13 +36,17 @@ function HomePage() {
               </Suspense>
             </S.ItemCategoryList>
             <S.SomeProductListWrapper>
-              <h2>Sản phẩm nổi bật</h2>
+              <T.Title fontSizes="xxl">
+                <strong>Sản phẩm nổi bật</strong>
+              </T.Title>
               <Suspense fallback={<Skeleton active paragraph={{ rows: 7 }} />}>
                 <OutstandingProductList />
               </Suspense>
             </S.SomeProductListWrapper>
             <S.SomeProductListWrapper>
-              <h2>Sản phẩm mới</h2>
+              <T.Title fontSizes="xxl">
+                <strong>Sản phẩm mới</strong>
+              </T.Title>
               {/* <Slider {...someProductListSettings}>
                 {renderNewProductListSlide}
               </Slider> */}
