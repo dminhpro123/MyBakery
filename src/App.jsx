@@ -10,13 +10,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import { ROUTES } from 'constants/routes';
 
-// import AdminLayout from 'layouts/AdminLayout';
-// import Dashboard from 'pages/admin/Dashboard';
-
-// import Page404NotFound from 'pages/Page404NotFound';
-// import Register from 'pages/Register';
-// import Login from 'pages/Login';
-
 import {
   breakpoint,
   colors,
