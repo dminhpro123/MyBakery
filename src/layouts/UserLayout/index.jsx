@@ -1,15 +1,18 @@
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
+import { Col, Row } from 'antd';
 
 import * as S from './styles';
-import { Col, Row } from 'antd';
+
+const Header = React.lazy(() => import('./components/Header'));
+const Footer = React.lazy(() => import('./components/Footer'));
 
 function UserLayout() {
   return (
     <S.UserLayoutWrapper>
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       <S.MainWrapper>
         <Row gutter={16}>
           <Col span={1}></Col>
@@ -19,7 +22,9 @@ function UserLayout() {
           <Col span={1}></Col>
         </Row>
       </S.MainWrapper>
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
     </S.UserLayoutWrapper>
   );
 }
