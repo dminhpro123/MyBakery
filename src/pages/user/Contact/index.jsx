@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Breadcrumb, Col, Descriptions, Row, Space } from 'antd';
-
-import Map from './component/Map';
 
 import * as S from './style';
 import { ROUTES } from 'constants/routes';
 import { Link } from 'react-router-dom';
 import { HomeOutlined } from '@ant-design/icons';
+
+const Map = React.lazy(() => import('./component/Map'));
 
 const ContactUs = () => {
   const { bakeryInformationList } = useSelector(
@@ -53,7 +53,9 @@ const ContactUs = () => {
             </Descriptions.Item>
           </Descriptions>
         </div>
-        <Map />
+        <Suspense>
+          <Map />
+        </Suspense>
       </S.ContactUsWrapper>
     </>
   );

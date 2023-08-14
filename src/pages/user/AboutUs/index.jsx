@@ -46,7 +46,7 @@ const AboutUs = () => {
         <Row gutter={16}>
           <Col span={9}>
             <S.TitleInfo>
-              {bakeryInformationList.data.aboutUs.aboutUsTitle3}
+              {bakeryInformationList.data.aboutUs?.aboutUsTitle3}
             </S.TitleInfo>
           </Col>
           {informationData.aboutUsContent3.map((item, index) => {
@@ -64,7 +64,7 @@ const AboutUs = () => {
         </Row>
       </S.ContentContainer>
     );
-  }, [bakeryInformationList.data.aboutUs.aboutUsTitle3, informationData]);
+  }, [bakeryInformationList.data.aboutUs?.aboutUsTitle3, informationData]);
 
   return (
     <>

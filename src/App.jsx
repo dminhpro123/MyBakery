@@ -23,18 +23,17 @@ import {
 } from 'themes/common';
 
 const UserLayout = React.lazy(() => import('layouts/UserLayout'));
+const AboutUs = React.lazy(() => import('pages/user/AboutUs'));
+const Contact = React.lazy(() => import('pages/user/Contact'));
 const HomePage = React.lazy(() => import('pages/user/Home'));
 const ProductListPage = React.lazy(() => import('pages/user/ProductList'));
-const AboutUs = React.lazy(() => import('pages/user/AboutUs'));
 const News = React.lazy(() => import('pages/user/News'));
-const Contact = React.lazy(() => import('pages/user/Contact'));
 const Cart = React.lazy(() => import('pages/user/Cart'));
 const PersonalInformation = React.lazy(() =>
   import('pages/user/PersonalInformation')
 );
 const ProductDetail = React.lazy(() => import('pages/user/ProductDetail'));
 const Checkout = React.lazy(() => import('pages/user/Checkout'));
-
 const AdminLayout = React.lazy(() => import('layouts/AdminLayout'));
 const Dashboard = React.lazy(() => import('pages/admin/Dashboard'));
 

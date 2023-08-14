@@ -48,11 +48,11 @@
       "id": 5,
       "name": "Bánh kem giáng sinh",
       "price": 205000,
-      "view": 35,
+      "view": 36,
       "description": "Giáng sinh là mùa của yêu thương, đem lại sự ấm áp. Là cơ hội để mọi người sum họp và cùng nhau chia sẻ sau một năm dài bận rộn. Bánh kem giáng sinh là món quà tặng độc đáo cho bạn bè, người thân. Một set gồm bánh được thiết kế xinh xắn, thơm vị bơ và hương hoa quả tự nhiên, đã kèm hộp đem tặng.",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/GSB1S4-001-608x416f.jpg",
-      "updatedAt": 1689481113282,
+      "updatedAt": 1691991608626,
       "createdAt": 1689481113282
     },
     {
@@ -334,11 +334,11 @@
       "id": 31,
       "name": "Bánh kem phô mai chanh dây",
       "price": 210000,
-      "view": 26,
+      "view": 27,
       "description": "♥ Bánh làm từ bông lan vani; mousse gồm phô mai (cream cheese), tươi whipping (whipping cream), nước cốt chanh dây tươi. ♥ Mặt bánh là lớp thạch làm từ gelatin và nước cốt chanh dây tươi. ♥ Vị khá cân bằng: bánh béo vừa, chua và ngọt dịu, thơm mùi chanh dây.",
       "categoryId": 4,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20kem/410-608x416f.jpg",
-      "updatedAt": 1691986537046,
+      "updatedAt": 1691991617413,
       "createdAt": 1689481224306
     },
     {
