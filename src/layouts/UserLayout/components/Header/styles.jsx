@@ -1,14 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
 
-  padding-top: 5px;
-  padding: 0 16px;
   width: 100%;
-  height: 150px;
+  height: 120px;
 
   background-color: #e6e6e6;
   z-index: 99;
@@ -21,13 +20,12 @@ export const NavLinkContainer = styled.nav`
   justify-content: center;
   align-items: center;
 
-  height: 8vh;
-  width: 100vw;
+  height: 48px;
+  width: 100%;
+  background-color: #d6d6d6;
 `;
 
 export const HeadBottom = styled.div`
-  height: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +45,7 @@ export const HeadTopHamburgerNavbar = styled.div`
   align-items: center;
 
   @media screen and (min-width: 200px) {
-    display: block;
+    display: flex;
   }
   @media screen and (min-width: 900px) {
     display: none;
@@ -61,8 +59,7 @@ export const Logo = styled.a`
 `;
 
 export const LogoImg = styled.img`
-  height: 100px;
-  height: 100px;
+  height: 56px;
 `;
 
 export const TopNav = styled.div`
@@ -72,7 +69,7 @@ export const TopNav = styled.div`
 `;
 
 export const RouteLink = styled.div`
-  height: 40px;
+  height: 36px;
   width: 120px;
   cursor: pointer;
   text-transform: uppercase;
@@ -84,11 +81,11 @@ export const RouteLink = styled.div`
 
   border-radius: 0.3rem;
 
-  color: red;
+  color: #d44d4d;
   align-items: center;
 
   &:hover {
-    background-color: rgb(215, 211, 211);
+    background-color: rgb(226, 184, 184);
   }
 `;
 
@@ -124,7 +121,7 @@ export const UserIcon = styled.div`
   width: 80px;
 `;
 
-export const Icon = styled.a`
+export const Icon = styled(Link)`
   cursor: pointer;
   color: black;
   text-decoration: none;

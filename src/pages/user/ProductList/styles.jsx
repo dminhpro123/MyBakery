@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProductListWrapper = styled.div`
-  margin: 5px 0 5px 0;
+  margin: 10px 0 10px 0;
 `;
 
 export const AsideWrapper = styled.nav`
@@ -14,8 +14,9 @@ export const AsideWrapper = styled.nav`
 
 export const ItemOfList = styled.div`
   cursor: pointer;
+  transition: all 0.2s;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 `;
 
@@ -30,11 +31,13 @@ export const LoadingWrapper = styled.div`
 `;
 
 export const ShowListLength = styled.div`
+  display: flex;
+  align-items: center;
   background-color: #fff;
 
   gap: 5px;
   width: 100%;
-  height: 8vh;
+  height: 40px;
 
   margin-bottom: 15px;
   padding: 14px;
@@ -50,11 +53,10 @@ export const TopIcons = styled.div`
   align-items: center;
 
   background-color: #fff;
-  box-shadow: 3px 3px gray;
 
   gap: 5px;
   width: 100%;
-  height: 8vh;
+  height: 40px;
 
   margin-bottom: 15px;
   padding: 14px;

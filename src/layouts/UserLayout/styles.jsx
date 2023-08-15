@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const UserLayoutWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const UserLayoutWrapper = styled.div`
 
 export const MainWrapper = styled.div`
   flex: 1;
-  margin-top: 150px;
+  margin-top: 120px;
   background-color: #ede2d4;
   width: 100%;
 `;

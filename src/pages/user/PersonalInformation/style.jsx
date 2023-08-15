@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PersonalInformationWrapper = styled.div`
   margin: 5px 0 5px 0;
@@ -31,11 +31,10 @@ export const TopIcons = styled.div`
   align-items: center;
 
   background-color: #fff;
-  box-shadow: 3px 3px gray;
 
   gap: 5px;
   width: 100%;
-  height: 8vh;
+  height: 40px;
 
   margin-bottom: 15px;
   padding: 14px;

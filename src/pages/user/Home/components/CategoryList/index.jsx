@@ -1,12 +1,12 @@
-import { List } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import qs from 'qs';
+import { List } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import qs from "qs";
 
-import { setFilterParams } from 'redux/slicers/common.slice';
-import { ROUTES } from 'constants/routes';
+import { setFilterParams } from "redux/slicers/common.slice";
+import { ROUTES } from "constants/routes";
 
-import * as S from './style';
+import * as S from "./style";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
@@ -18,11 +18,12 @@ const CategoryList = () => {
     <List
       grid={{
         gutter: 16,
-        sm: 1,
+        xs: 1,
+        sm: 2,
         md: 2,
-        lg: 3,
-        xl: 3,
-        xxl: 3,
+        lg: 4,
+        xl: 4,
+        xxl: 4,
       }}
       title="Sản phẩm"
       dataSource={categoriesList.data}
