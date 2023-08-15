@@ -7,27 +7,27 @@ import {
   Space,
   Tabs,
   notification,
-} from 'antd';
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+} from "antd";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { getProductDetailRequest } from 'redux/slicers/product.slice';
+import { getProductDetailRequest } from "redux/slicers/product.slice";
 
-import T from 'components/Typography';
-import * as S from './style';
+import T from "components/Typography";
+import * as S from "./style";
 import {
   HeartFilled,
   HeartOutlined,
   ShoppingCartOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 import {
   favoriteProductRequest,
   unFavoriteProductRequest,
-} from 'redux/slicers/favorite.slice';
-import Review from '../Review';
-import { addToCartRequest } from 'redux/slicers/cart.slice';
-import { formatMoney } from 'helper';
+} from "redux/slicers/favorite.slice";
+import Review from "../Review";
+import { addToCartRequest } from "redux/slicers/cart.slice";
+import { formatMoney } from "helper";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const Detail = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [quantity, setQuantity] = useState(1);
   const { productSlug } = useParams();
-  const [id, name] = productSlug.split('-');
+  const [id, name] = productSlug.split("-");
 
   const productRate = useMemo(
     () =>
@@ -62,8 +62,8 @@ const Detail = () => {
       <>
         <Row
           gutter={[16, 16]}
-          style={{ display: 'flex' }}
-          justify={'space-around'}
+          style={{ display: "flex" }}
+          justify={"space-around"}
         >
           <Col xs={24} md={11} xl={9}>
             <img
@@ -86,7 +86,7 @@ const Detail = () => {
                       <Rate value={productRate} allowHalf disabled />
                       <span>{`(${
                         productRate === 0
-                          ? 'Chưa có đánh giá'
+                          ? "Chưa có đánh giá"
                           : productRate.toFixed(2)
                       })`}</span>
                     </Space>
@@ -102,7 +102,7 @@ const Detail = () => {
                             <HeartFilled style={{ fontSize: 24 }} />
                           ) : (
                             <HeartOutlined
-                              style={{ fontSize: 24, color: '#414141' }}
+                              style={{ fontSize: 24, color: "#414141" }}
                             />
                           )
                         }
@@ -123,7 +123,7 @@ const Detail = () => {
                   </Col>
                   <Col span={19}>
                     <T.Text>
-                      <span style={{ color: 'red' }}>
+                      <span style={{ color: "red", fontSize: 24 }}>
                         {formatMoney(productDetail.data.price)}
                       </span>
                     </T.Text>
@@ -133,9 +133,10 @@ const Detail = () => {
 
                 <S.AddToCardWrapper>
                   <InputNumber
-                    style={{ width: '100%' }}
+                    style={{ width: 120 }}
                     min={1}
                     onChange={(value) => setQuantity(value)}
+                    value={quantity}
                   />
                   <Button
                     size="large"
@@ -155,7 +156,7 @@ const Detail = () => {
           items={[
             {
               key: 1,
-              label: 'Mô tả:',
+              label: "Mô tả:",
               children: (
                 <>
                   <T.Text>
@@ -198,7 +199,7 @@ const Detail = () => {
       }
     } else {
       notification.error({
-        message: 'Vui lòng đăng nhập để thực hiện chức năng này!',
+        message: "Vui lòng đăng nhập để thực hiện chức năng này!",
       });
     }
   };
@@ -215,7 +216,7 @@ const Detail = () => {
         },
       })
     );
-    notification.success({ message: 'Bỏ vào giỏ thành công' });
+    notification.success({ message: "Bỏ vào giỏ thành công" });
   };
 
   return <>{renderProductDetail}</>;

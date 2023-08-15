@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const AboutUsWrapper = styled.div`
   margin-top: 10px;
@@ -6,8 +6,8 @@ export const AboutUsWrapper = styled.div`
 `;
 
 export const TitleInfo = styled.h1`
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap');
-  font-family: 'Pacifico', cursive;
+  @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&display=swap");
+  font-family: "Pacifico", cursive;
   font-size: calc(4vw + 4vh + 2vmin);
   color: #ee9f1f;
 `;
@@ -58,11 +58,10 @@ export const TopIcons = styled.div`
   align-items: center;
 
   background-color: #fff;
-  box-shadow: 3px 3px gray;
 
   gap: 5px;
   width: 100%;
-  height: 8vh;
+  height: 40px;
 
   margin-bottom: 15px;
   padding: 14px;

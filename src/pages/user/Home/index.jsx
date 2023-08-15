@@ -1,20 +1,20 @@
-import { Row, Col, Skeleton } from 'antd';
-import React from 'react';
-import { Suspense } from 'react';
+import { Row, Col, Skeleton } from "antd";
+import React from "react";
+import { Suspense } from "react";
 
-import T from 'components/Typography';
-import * as S from './styles';
+import T from "components/Typography";
+import * as S from "./styles";
 
 function HomePage() {
   const AdvertisementList = React.lazy(() =>
-    import('./components/AdvertisementList')
+    import("./components/AdvertisementList")
   );
-  const CategoryList = React.lazy(() => import('./components/CategoryList'));
+  const CategoryList = React.lazy(() => import("./components/CategoryList"));
   const NewProductList = React.lazy(() =>
-    import('./components/NewProductList')
+    import("./components/NewProductList")
   );
   const OutstandingProductList = React.lazy(() =>
-    import('./components/OutstandingProductList')
+    import("./components/OutstandingProductList")
   );
 
   return (
@@ -39,9 +39,13 @@ function HomePage() {
               <T.Title fontSizes="xxl">
                 <strong>Sản phẩm nổi bật</strong>
               </T.Title>
-              <Suspense fallback={<Skeleton active paragraph={{ rows: 7 }} />}>
-                <OutstandingProductList />
-              </Suspense>
+              <div style={{ margin: "0 -8px" }}>
+                <Suspense
+                  fallback={<Skeleton active paragraph={{ rows: 7 }} />}
+                >
+                  <OutstandingProductList />
+                </Suspense>
+              </div>
             </S.SomeProductListWrapper>
             <S.SomeProductListWrapper>
               <T.Title fontSizes="xxl">
@@ -50,9 +54,13 @@ function HomePage() {
               {/* <Slider {...someProductListSettings}>
                 {renderNewProductListSlide}
               </Slider> */}
-              <Suspense fallback={<Skeleton active paragraph={{ rows: 7 }} />}>
-                <NewProductList />
-              </Suspense>
+              <div style={{ margin: "0 -8px" }}>
+                <Suspense
+                  fallback={<Skeleton active paragraph={{ rows: 7 }} />}
+                >
+                  <NewProductList />
+                </Suspense>
+              </div>
             </S.SomeProductListWrapper>
           </Col>
           <Col span={1} />

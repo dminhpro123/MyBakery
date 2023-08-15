@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 171,
+      "view": 182,
       "description": "Bánh mì trứng: là loại bánh mì có nhân gồm một hoặc hai quả trứng gà đánh tan với lá hành xanh, lật thật nhanh trên chảo, khi vừa chín tới thì bỏ nhanh vào chiếc bánh, nướng qua một xíu cho giòn vỏ rồi lấy ra quệt đẫm tương ớt.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1691986609994,
+      "updatedAt": 1692115320946,
       "createdAt": 1689481189282
     },
     {
@@ -559,6 +559,15 @@
       "createdAt": 1691757757121,
       "updatedAt": 1691757757121,
       "id": 5
+    },
+    {
+      "email": "tuan@gmail.com",
+      "password": "$2a$10$Or5iPR6g5yHpKnDwAX/cvOl/WHti0m0M1XUDrOgFF0yE/G.YJLX6y",
+      "fullName": "Tuan",
+      "phone": "+84123456789",
+      "createdAt": 1692114840430,
+      "updatedAt": 1692114840431,
+      "id": 6
     }
   ],
   "reviews": [
