@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Avatar,
   Button,
@@ -10,29 +10,29 @@ import {
   Row,
   Space,
   notification,
-} from "antd";
-import { Link, generatePath } from "react-router-dom";
+} from 'antd';
+import { Link, generatePath } from 'react-router-dom';
 import {
   CommentOutlined,
   HeartFilled,
   HeartOutlined,
   ShoppingCartOutlined,
   UserOutlined,
-} from "@ant-design/icons";
-import Slider from "react-slick";
-import moment from "moment";
+} from '@ant-design/icons';
+import Slider from 'react-slick';
+import moment from 'moment';
 
-import { getOutstandingProductListRequest } from "redux/slicers/product.slice";
+import { getOutstandingProductListRequest } from 'redux/slicers/product.slice';
 import {
   clearReviewListRequest,
   getReviewListRequest,
-} from "redux/slicers/review.slice";
-import { addToCartRequest } from "redux/slicers/cart.slice";
-import { ROUTES } from "constants/routes";
-import { formatMoney } from "helper";
+} from 'redux/slicers/review.slice';
+import { addToCartRequest } from 'redux/slicers/cart.slice';
+import { ROUTES } from 'constants/routes';
+import { formatMoney } from 'helper';
 
-import T from "components/Typography";
-import * as S from "./style";
+import T from 'components/Typography';
+import * as S from './style';
 
 const productListSettings = {
   infinite: true,
@@ -125,7 +125,7 @@ const OutstandingProductList = () => {
       })
     );
     // console.log(item);
-    notification.success({ message: "Bỏ vào giỏ thành công" });
+    notification.success({ message: 'Bỏ vào giỏ thành công' });
   }, []);
 
   const renderNewProductListSlide = useMemo(() => {
@@ -181,7 +181,7 @@ const OutstandingProductList = () => {
                     {item.name}
                   </T.Title>
                 </Col>
-                <Col span={6} style={{ textAlign: "right" }}>
+                <Col span={6} style={{ textAlign: 'right' }}>
                   <Button
                     type="primary"
                     ghost
@@ -198,9 +198,9 @@ const OutstandingProductList = () => {
                   disabled
                   style={{ fontSize: 12 }}
                 />
-                <T.Text size="md">
+                <T.Text size="md" truncateMultiLine={1}>
                   {`${
-                    averageRate !== 0 ? `(${averageRate})` : "chưa đánh giá"
+                    averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
                   } `}
                 </T.Text>
               </Space>

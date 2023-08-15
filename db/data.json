@@ -4,11 +4,11 @@
       "id": 1,
       "name": "Bánh mỳ trứng",
       "price": 16000,
-      "view": 182,
+      "view": 183,
       "description": "Bánh mì trứng: là loại bánh mì có nhân gồm một hoặc hai quả trứng gà đánh tan với lá hành xanh, lật thật nhanh trên chảo, khi vừa chín tới thì bỏ nhanh vào chiếc bánh, nướng qua một xíu cho giòn vỏ rồi lấy ra quệt đẫm tương ớt.",
       "categoryId": 1,
       "images": "http://dongtienbakery.com/image/cache/data/banh%20m%C3%AC%20tr%E1%BB%A9ng_1-608x416f.jpg",
-      "updatedAt": 1692115320946,
+      "updatedAt": 1692116566780,
       "createdAt": 1689481189282
     },
     {
@@ -279,11 +279,11 @@
       "id": 26,
       "name": "Muffin socola",
       "price": 7000,
-      "view": 35,
+      "view": 36,
       "description": "Muffin socola có cốt bánh mềm ẩm, pha lẫn vị đắng nhẹ của socola/ nho khô mềm mại , đan xen vào đó là vị béo ngậy cùng hương thơm nồng, tất cả hòa quyện lại tạo thành một hương vị vô cùng hấp dẫn. ",
       "categoryId": 6,
       "images": "http://dongtienbakery.com/image/cache/data/Product_B%C3%A1nh%20b%C3%B4ng%20lan/Muffin%20socola%20(1)_fix-608x416f.jpg",
-      "updatedAt": 1691934603763,
+      "updatedAt": 1692116966936,
       "createdAt": 1689481224301
     },
     {

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Card,
   Row,
@@ -14,19 +14,17 @@ import {
   Avatar,
   Breadcrumb,
   Skeleton,
-} from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, generatePath, useNavigate } from "react-router-dom";
-import qs from "qs";
+} from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, generatePath, useNavigate } from 'react-router-dom';
+import qs from 'qs';
 
-import { PRODUCT_LIMIT } from "constants/paging";
-import { getProductListRequest } from "redux/slicers/product.slice";
-import { getCategoryListRequest } from "redux/slicers/category.slice";
-import TopIcon from "../components/TopIcon";
-import { ROUTES } from "constants/routes";
-import { formatMoney } from "helper";
-import { clearFilterParams, setFilterParams } from "redux/slicers/common.slice";
-import loadingSpin from "assets/gif/loading-spin.gif";
+import { PRODUCT_LIMIT } from 'constants/paging';
+import { getProductListRequest } from 'redux/slicers/product.slice';
+import { getCategoryListRequest } from 'redux/slicers/category.slice';
+import { ROUTES } from 'constants/routes';
+import { formatMoney } from 'helper';
+import { clearFilterParams, setFilterParams } from 'redux/slicers/common.slice';
 import {
   CommentOutlined,
   HeartFilled,
@@ -34,22 +32,22 @@ import {
   HomeOutlined,
   ShoppingCartOutlined,
   UserOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
-import { addToCartRequest } from "redux/slicers/cart.slice";
+import { addToCartRequest } from 'redux/slicers/cart.slice';
 import {
   favoriteProductRequest,
   getFavoriteListRequest,
   unFavoriteProductRequest,
-} from "redux/slicers/favorite.slice";
+} from 'redux/slicers/favorite.slice';
 import {
   getReviewListRequest,
   clearReviewListRequest,
-} from "redux/slicers/review.slice";
-import moment from "moment";
+} from 'redux/slicers/review.slice';
+import moment from 'moment';
 
-import T from "components/Typography";
-import * as S from "./styles";
+import T from 'components/Typography';
+import * as S from './styles';
 
 const { Meta } = Card;
 
@@ -60,7 +58,7 @@ function ProductListPage() {
   const { filterParams } = useSelector((state) => state.common);
   const { userInfo } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem('accessToken');
   const navigate = useNavigate();
   const { reviewList } = useSelector((state) => state.review);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -146,38 +144,38 @@ function ProductListPage() {
       })
     );
     // console.log(item);
-    notification.success({ message: "Bỏ vào giỏ thành công" });
+    notification.success({ message: 'Bỏ vào giỏ thành công' });
   };
 
   const handleLike = (e, item) => {
     e.preventDefault();
 
-    if (accessToken) {
-      if (
-        item.favorites.some(
-          (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
-        )
-      ) {
-        const favoriteData = item.favorites.find(
-          (itemFavorite) => itemFavorite.userId === userInfo.data?.id
-        );
-        dispatch(
-          unFavoriteProductRequest({
-            id: favoriteData.id,
-          })
-        );
-      } else {
-        console.log("favorite");
-        dispatch(
-          favoriteProductRequest({
-            productId: item.id,
-            userId: userInfo.data.id,
-          })
-        );
-      }
-    } else {
-      notification.error({ message: "Quý khách cần đăng nhập để like" });
-    }
+    // if (accessToken) {
+    //   if (
+    //     item.favorites.some(
+    //       (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
+    //     )
+    //   ) {
+    //     const favoriteData = item.favorites.find(
+    //       (itemFavorite) => itemFavorite.userId === userInfo.data?.id
+    //     );
+    //     dispatch(
+    //       unFavoriteProductRequest({
+    //         id: favoriteData.id,
+    //       })
+    //     );
+    //   } else {
+    //     console.log("favorite");
+    //     dispatch(
+    //       favoriteProductRequest({
+    //         productId: item.id,
+    //         userId: userInfo.data.id,
+    //       })
+    //     );
+    //   }
+    // } else {
+    //   notification.error({ message: "Quý khách cần đăng nhập để like" });
+    // }
   };
 
   const handleComment = (e, item) => {
@@ -256,7 +254,7 @@ function ProductListPage() {
                         {item.name}
                       </T.Title>
                     </Col>
-                    <Col span={6} style={{ textAlign: "right" }}>
+                    <Col span={6} style={{ textAlign: 'right' }}>
                       <Button
                         type="primary"
                         ghost
@@ -273,9 +271,9 @@ function ProductListPage() {
                       disabled
                       style={{ fontSize: 12 }}
                     />
-                    <T.Text size="md">
+                    <T.Text size="md" truncateMultiLine={1}>
                       {`${
-                        averageRate !== 0 ? `(${averageRate})` : "chưa đánh giá"
+                        averageRate !== 0 ? `(${averageRate})` : 'chưa đánh giá'
                       } `}
                     </T.Text>
                   </Space>
@@ -377,7 +375,7 @@ function ProductListPage() {
                   ),
                 },
                 {
-                  title: "Danh sách sản phẩm",
+                  title: 'Danh sách sản phẩm',
                 },
               ]}
             />
@@ -389,23 +387,23 @@ function ProductListPage() {
         <Col lg={6} xs={24}>
           <Card title="Sản phẩm" size="small">
             <Checkbox.Group
-              onChange={(values) => handleFilter("categoryId", values)}
+              onChange={(values) => handleFilter('categoryId', values)}
               value={filterParams.categoryId}
             >
               <Row>{renderCategoryList}</Row>
             </Checkbox.Group>
 
             <Input
-              onChange={(e) => handleFilter("keyword", e.target.value)}
+              onChange={(e) => handleFilter('keyword', e.target.value)}
               placeholder="Search..."
-              style={{ width: "100%", margin: "5px 0 5px 0" }}
+              style={{ width: '100%', margin: '5px 0 5px 0' }}
               value={filterParams.keyword}
             />
 
             <Select
-              onChange={(value) => handleFilter("sort", value)}
+              onChange={(value) => handleFilter('sort', value)}
               placeholder="sắp xếp theo giá"
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
               value={filterParams.sort}
             >
               {/* 
@@ -429,7 +427,7 @@ function ProductListPage() {
 
           <Row gutter={[16, 16]}>{renderProductList}</Row>
           {productList.data.length !== productList.meta.total && (
-            <Row justify="center" style={{ marginTop: "10px" }}>
+            <Row justify="center" style={{ marginTop: '10px' }}>
               <Button type="primary" onClick={() => handleShowMore()}>
                 Xem thêm
               </Button>

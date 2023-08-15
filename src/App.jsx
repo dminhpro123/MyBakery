@@ -91,7 +91,7 @@ function App() {
             }
           />
           <Route
-            path={ROUTES.USER.PRODUCT_LIST}
+            path={ROUTES.USER.PRODUCTS}
             element={
               <Suspense>
                 <ProductListPage />
@@ -155,7 +155,7 @@ function App() {
             }
           />
           <Route
-            path={ROUTES.USER.REGISTER}
+            path={ROUTES.REGISTER}
             element={
               <Suspense>
                 <Register />
@@ -163,7 +163,7 @@ function App() {
             }
           />
           <Route
-            path={ROUTES.USER.LOGIN}
+            path={ROUTES.LOGIN}
             element={
               <Suspense>
                 <Login />
