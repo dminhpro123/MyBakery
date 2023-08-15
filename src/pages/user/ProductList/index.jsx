@@ -152,32 +152,32 @@ function ProductListPage() {
   const handleLike = (e, item) => {
     e.preventDefault();
 
-    // if (accessToken) {
-    //   if (
-    //     item.favorites.some(
-    //       (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
-    //     )
-    //   ) {
-    //     const favoriteData = item.favorites.find(
-    //       (itemFavorite) => itemFavorite.userId === userInfo.data?.id
-    //     );
-    //     dispatch(
-    //       unFavoriteProductRequest({
-    //         id: favoriteData.id,
-    //       })
-    //     );
-    //   } else {
-    //     console.log('favorite');
-    //     dispatch(
-    //       favoriteProductRequest({
-    //         productId: item.id,
-    //         userId: userInfo.data.id,
-    //       })
-    //     );
-    //   }
-    // } else {
-    //   notification.error({ message: 'Quý khách cần đăng nhập để like' });
-    // }
+    if (accessToken) {
+      if (
+        item.favorites.some(
+          (item) => parseInt(item.userId) === parseInt(userInfo.data?.id)
+        )
+      ) {
+        const favoriteData = item.favorites.find(
+          (itemFavorite) => itemFavorite.userId === userInfo.data?.id
+        );
+        dispatch(
+          unFavoriteProductRequest({
+            id: favoriteData.id,
+          })
+        );
+      } else {
+        console.log('favorite');
+        dispatch(
+          favoriteProductRequest({
+            productId: item.id,
+            userId: userInfo.data.id,
+          })
+        );
+      }
+    } else {
+      notification.error({ message: 'Quý khách cần đăng nhập để like' });
+    }
   };
 
   const handleComment = (e, item) => {
