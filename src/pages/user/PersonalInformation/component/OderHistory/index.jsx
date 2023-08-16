@@ -132,7 +132,7 @@ const OderHistory = () => {
               </Button>
             );
           default:
-            break;
+            return <> </>;
         }
       },
     },

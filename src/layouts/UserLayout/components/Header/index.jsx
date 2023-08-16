@@ -84,7 +84,7 @@ function AdminHeader() {
         </S.Icon>
       </Dropdown>
     );
-  }, [items]);
+  }, [items, userInfo.data]);
 
   const content = NAVBAR.map((item) => {
     return (

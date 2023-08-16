@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
-  margin: 5px 0 5px 0;
+  margin: 5px 0 10px 0;
   min-height: 100vh;
 `;
 

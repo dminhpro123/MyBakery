@@ -196,7 +196,8 @@ const NewProductList = () => {
                   value={averageRate}
                   allowHalf
                   disabled
-                  style={{ fontSize: 12 }}
+                  size="small"
+                  style={{ fontSize: 9 }}
                 />
                 <T.Text size="md" truncateMultiLine={1}>
                   {`${
